@@ -1,12 +1,12 @@
 import React from 'react';
 
-function ProgressBar({level, currXP, totalXP}) {
+function ProgressBar(props) {
     return (
         <div>
-        <p>{level}</p>
-        <p>{currXP}/{totalXP}</p>
+        <p>{props.level}</p>
+        <p>{props.currXP}/{props.totalXP}</p>
         <div>
-            <progress value={currXP} max={totalXP}>
+            <progress value={props.currXP} max={props.totalXP}>
             </progress>
         </div>
         </div>

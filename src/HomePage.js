@@ -18,7 +18,7 @@ const taskTest = [
       "taskFreq": 3,
       "currCount": 1,
       "totalCount": 12,
-      "taskCategory": "mind"
+      "taskCategory": "body"
       }
 ]
 
