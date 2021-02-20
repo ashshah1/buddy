@@ -1,3 +1,16 @@
+# buddy
+
+This is a capstone project that aims to build a system that helps users build long-lasting healthy habits, using a gamified model.
+
+## Team Members
+* Ash Shah
+* Kayla Chea
+* David Mai
+* Winnie Ma
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
