@@ -3,10 +3,10 @@
 This is a capstone project that aims to build a system that helps users build long-lasting healthy habits, using a gamified model.
 
 ## Team Members
-* Ash Shah
-* Kayla Chea
-* David Mai
-* Winnie Ma
+* Ash Shah - UX Design + Frontend Dev
+* Kayla Chea - Frontend Dev + Graphics
+* David Mai - Backend Dev
+* Winnie Ma - Backend Dev + PM
 
 
 
