@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Task from './Task';
-
+import './TaskList.css'
 
 
 function TaskList ({tasks}) {
@@ -13,7 +13,7 @@ function TaskList ({tasks}) {
     }
 
     return (
-        <div>
+        <div className="tasklist-container">
             {taskArray}
         </div>
     )

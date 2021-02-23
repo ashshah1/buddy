@@ -1,0 +1,6 @@
+.tasklist-container {
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    width: 22rem;
+}

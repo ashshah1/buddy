@@ -1,0 +1,13 @@
+.background {
+    width: 100%;
+    position: absolute;
+    height: auto;
+    z-index: -1;
+} 
+
+.content-containers {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 2rem;
+}
+

@@ -4,8 +4,9 @@ import React, { Component } from 'react';
 
 import Task from './Task.js';
 import TaskList from './TaskList.js';
-import ProgressBar from './ProgressBar.js';
+import ProgressBar from './XPBar.js';
 import HomePage from './HomePage.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 import {

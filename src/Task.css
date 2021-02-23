@@ -1,6 +1,25 @@
-#task-container {
+.task-container {
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;border-radius: 10px;
+    position: relative;
+    margin: 1rem;  
+    padding: 1rem;  
 }
+
+.curr-progress {
+    background-color: green;
+    position: absolute;
+    z-index: 2;
+}
+
+
+.container-one, .container-two {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 3;
+    position: relative;
+}
+
 

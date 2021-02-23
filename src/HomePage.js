@@ -1,6 +1,9 @@
 import React from 'react';
 import TaskList from './TaskList.js';
-import ProgressBar from './ProgressBar.js';
+import XPBar from './XPBar.js';
+import background from './backgrounds/bg-one.png';
+
+import './HomePage.css'
 
 function HomePage() {
 const taskTest = [
@@ -25,8 +28,11 @@ const taskTest = [
 
   return (
       <div>
-      <TaskList tasks={taskTest}></TaskList>
-      <ProgressBar level="4" currXP="45" totalXP="100"></ProgressBar>
+      <img className="background" src={background}></img>
+      <div className="content-containers">
+        <TaskList tasks={taskTest}></TaskList>
+        <XPBar level="4" currXP="45" totalXP="100"></XPBar>
+      </div>
       </div>
     );
 
