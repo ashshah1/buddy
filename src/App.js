@@ -8,6 +8,13 @@ import ProgressBar from './XPBar.js';
 import HomePage from './HomePage.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
+
+// firebase hooks - should make logins easier to work with
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 import {
   BrowserRouter as Router,
@@ -15,6 +22,16 @@ import {
   Route,
   Link
 } from "react-router-dom";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyDkOIY2JczQPTg3KyYBB2Ws0u48bty2veE",
+  authDomain: "buddy-7d855.firebaseapp.com",
+  projectId: "buddy-7d855",
+  storageBucket: "buddy-7d855.appspot.com",
+  messagingSenderId: "1049218301371",
+  appId: "1:1049218301371:web:f54951c850bed83548589e",
+  measurementId: "G-C44KGB4D8S"
+})  
 
 export default function App() {
   return (
