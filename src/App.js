@@ -64,9 +64,7 @@ export default function App() {
 }
 
 function Home() {
-  return <HomePage>
-    
-  </HomePage>;
+  return <HomePage></HomePage>;
 }
 
 function About() {
