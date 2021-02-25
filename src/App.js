@@ -34,6 +34,10 @@ firebase.initializeApp({
 })  
 
 export default function App() {
+
+  
+
+
   return (
     <Router>
       <div>
