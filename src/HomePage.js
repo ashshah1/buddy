@@ -2,12 +2,19 @@ import React from 'react';
 import TaskList from './TaskList.js';
 import XPBar from './XPBar.js';
 import background from './backgrounds/bg-one.png';
+import { useState, useEffect } from 'react';
 
 import './HomePage.css'
 
 import { firebase, fireauth } from './firebase.js'
 
 function HomePage() {
+
+// !!! Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  let confirm = "";
 
   const auth = fireauth;
 
@@ -21,13 +28,28 @@ function HomePage() {
 
   const provider = new firebase.auth.GoogleAuthProvider();
 
-  // new code here
-  signInBtn.onclick = () => auth.signInWithPopup(provider);
 
-  signOutBtn.onclick = () => auth.signOut();
-  
-  
-  // ends here
+// !!!! Handle user state changes
+  function onAuthStateChanged(user) {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  }
+
+  useEffect(() => {
+    const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
+    return subscriber; // unsubscribe on unmount
+  }, []);
+
+  if (initializing) return null;
+
+  // Tester code, if you're logged in the little green button should read "You're logged in", if not, "You need to log in!"
+
+  if (!user) {
+    confirm = "You need to log in!"
+  } else {
+    confirm = "You're logged in!"
+  }
+
 
   const taskTest = [
     {
@@ -52,17 +74,17 @@ function HomePage() {
   return (
       <div>
       <section id="whenSignedOut">
-        <button id="signInBtn">Sign in with Google</button>
+        <button id="signInBtn" onClick={() => auth.signInWithPopup(provider)}>Sign in with Google</button>
       </section>
-      <section id="whenSignedIn" hidden="true">
+      <section id="whenSignedIn">
         <div id="userDetails"></div>
-        <button id="signOutBtn">Sign out</button>
+        <button id="signOutBtn" onClick={() => auth.signOut()}>Sign out</button>
       </section>
       <section>
         <h2>My Firestore Things</h2>
         <ul id="thingsList">
         </ul>
-        <button id="createThing" className="btn btn-success">Create Random Thing</button>
+        <button id="createThing" className="btn btn-success">{confirm}</button>
       </section>
       <img className="background" src={background}></img>
       <div className="content-containers">
