@@ -8,10 +8,7 @@ import ProgressBar from './XPBar.js';
 import HomePage from './HomePage.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/auth';
-
+import firebase from './firebase.js';
 
 // firebase hooks - should make logins easier to work with
 import { useAuthState } from 'react-firebase-hooks/auth';
