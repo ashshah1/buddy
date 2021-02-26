@@ -15,6 +15,7 @@ const ContextProvider = props => {
                 const userRef = firestore.collection("users").doc(localUserData.uid);
 
                 (await userRef.get()).exists || await userRef.set({
+                    uid: localUserData.uid,
                     displayName: localUserData.displayName,
                     email: localUserData.email,
                     exp: 0,
