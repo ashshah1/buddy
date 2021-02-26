@@ -1,18 +1,22 @@
 .task-container {
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
-    border-radius: 10px;border-radius: 10px;
+    border-radius: 10px;
     position: relative;
-    margin: 1rem;  
-    padding: 1rem;  
+    margin: 1rem;
 }
 
 .curr-progress {
     background-color: green;
+    border-radius: 10px 0px 0px 10px;
     position: absolute;
     z-index: 2;
+    height: 100%;
 }
 
+#padding-div {
+    padding: 1rem;
+}
 
 .container-one, .container-two {
     display: flex;
@@ -21,5 +25,3 @@
     z-index: 3;
     position: relative;
 }
-
-
