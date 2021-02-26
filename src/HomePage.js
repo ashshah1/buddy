@@ -43,12 +43,12 @@ const HomePage = () => {
         </div>
         :
         <button onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>Sign in</button>}
-  
+     <img className="background" src={background}></img>
   <div className="content-containers">
         <TaskList tasks={taskTest}></TaskList>
        <XPBar level="4" currXP="45" totalXP="100"></XPBar>
      </div>
-   <img className="background" src={background}></img>
+
     </main>
   );
 };
