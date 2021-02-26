@@ -6,7 +6,7 @@ import './XPBar.css'
 
 function XPBar(props) {
     return (
-        <div>
+        <div id="xp-bar">
         <p>{props.level}</p>
         <p>{props.currXP}/{props.totalXP}</p>
         <div id="progress-bar">

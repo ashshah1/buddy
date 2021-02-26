@@ -1,23 +1,55 @@
 import { Context } from "./Context";
 import React, { useContext } from "react";
 import { firebase, fireauth } from "./firebase";
-import { useLocation } from "react-router-dom";
+import background from "./backgrounds/bg-one.png";
 
-import useUser from "./useUser";
+import TaskList from "./TaskList.js";
+import XPBar from "./XPBar.js";
+
+import "./HomePage.css";
 
 const HomePage = () => {
-const { user } = useContext(Context);
+  const { user } = useContext(Context);
 
-const userID = useLocation().pathname.split("/")[2];
-const user2 = useUser(userID);
+  // const userID = useLocation().pathname.split("/")[2];
+  // const user2 = useUser(userID);
+  const taskTest = [
+    {
+    "taskName": "testing1",
+    "taskDuration": "weekly",
+    "taskFreq": 3,
+    "currCount": 1,
+    "totalCount": 12,
+    "taskCategory": "mind"
+    },
+    {
+      "taskName": "testing2",
+      "taskDuration": "daily",
+      "taskFreq": 3,
+      "currCount": 1,
+      "totalCount": 12,
+      "taskCategory": "body"
+      }
+    ]
 
-return (
-      <main>
-          <h1>Gogo Recycling</h1>
-          {user ? <button onClick={() => fireauth.signOut()}>Hello {user.displayName}</button> :
-          <button onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>Sign in</button>}   
-         {/* <button id="createThing" className="btn btn-success">{confirm}</button> */}
-      </main>
+  return (
+    <main>
+      <h1>Buddy</h1>
+      {user ?
+        <div>
+          <button onClick={() => fireauth.signOut()}>Hello {user.displayName}</button>
+          <p>User exp: {user.exp}</p>
+          <p>User level: {user.level}</p>
+        </div>
+        :
+        <button onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>Sign in</button>}
+  
+  <div className="content-containers">
+        <TaskList tasks={taskTest}></TaskList>
+       <XPBar level="4" currXP="45" totalXP="100"></XPBar>
+     </div>
+   <img className="background" src={background}></img>
+    </main>
   );
 };
 
@@ -64,26 +96,24 @@ return (
 //   }
 
 
-//   const taskTest = [
-//     {
-//     "taskName": "testing1",
-//     "taskDuration": "weekly",
-//     "taskFreq": 3,
-//     "currCount": 1,
-//     "totalCount": 12,
-//     "taskCategory": "mind"
-//     },
-//     {
-//       "taskName": "testing2",
-//       "taskDuration": "daily",
-//       "taskFreq": 3,
-//       "currCount": 1,
-//       "totalCount": 12,
-//       "taskCategory": "body"
-//       }
+  // const taskTest = [
+  //   {
+  //   "taskName": "testing1",
+  //   "taskDuration": "weekly",
+  //   "taskFreq": 3,
+  //   "currCount": 1,
+  //   "totalCount": 12,
+  //   "taskCategory": "mind"
+  //   },
+  //   {
+  //     "taskName": "testing2",
+  //     "taskDuration": "daily",
+  //     "taskFreq": 3,
+  //     "currCount": 1,
+  //     "totalCount": 12,
+  //     "taskCategory": "body"
+  //     }
 // ]
-
-
 //   return (
 //       <div>
 //       <section id="whenSignedOut">
@@ -100,13 +130,12 @@ return (
 //         <button id="createThing" className="btn btn-success">{confirm}</button>
 //       </section>
 //       <img className="background" src={background}></img>
-//       <div className="content-containers">
-//         <TaskList tasks={taskTest}></TaskList>
-//         <XPBar level="4" currXP="45" totalXP="100"></XPBar>
-//       </div>
+      // <div className="content-containers">
+      //   <TaskList tasks={taskTest}></TaskList>
+      //   <XPBar level="4" currXP="45" totalXP="100"></XPBar>
+      // </div>
 //       </div>
 //     );
-
 //   }
 
 export default HomePage;
