@@ -10,6 +10,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import firebase from './firebase.js';
 
+import { ContextProvider } from "./Context";
+
 // firebase hooks - should make logins easier to work with
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -26,8 +28,10 @@ import {
 export default function App() {
 
   return (
+    <ContextProvider>
     <Router>
       <div>
+     
         <nav>
           <ul>
             <li>
@@ -57,6 +61,7 @@ export default function App() {
         </Switch>
       </div>
     </Router>
+    </ContextProvider>
   );
 }
 
