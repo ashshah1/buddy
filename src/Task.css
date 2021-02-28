@@ -3,11 +3,11 @@
     box-sizing: border-box;
     border-radius: 10px;
     position: relative;
-    margin: 1rem;
+    margin: 0rem 1rem 1rem 1rem;
+    height: auto;
 }
 
 .curr-progress {
-    background-color: green;
     border-radius: 10px 0px 0px 10px;
     position: absolute;
     z-index: 2;
@@ -15,13 +15,15 @@
 }
 
 #padding-div {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .container-one, .container-two {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
     z-index: 3;
     position: relative;
 }
+

@@ -1,5 +1,5 @@
 import { Context } from "./Context";
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { firebase, fireauth } from "./firebase";
 import background from "./backgrounds/bg-one.png";
 
@@ -8,29 +8,64 @@ import XPBar from "./XPBar.js";
 
 import "./HomePage.css";
 
-const HomePage = () => {
-  const { user } = useContext(Context);
+function HomePage() {
 
   // const userID = useLocation().pathname.split("/")[2];
   // const user2 = useUser(userID);
   const taskTest = [
     {
-    "taskName": "testing1",
+    "taskName": "Tester task #1",
     "taskDuration": "weekly",
-    "taskFreq": 3,
+    "taskFreq": 4,
     "currCount": 1,
     "totalCount": 12,
-    "taskCategory": "mind"
+    "taskCategory": "mind",
+    "color": "#ACE6A1",
+    "complete": false
     },
     {
-      "taskName": "testing2",
+      "taskName": "Tester task #2",
       "taskDuration": "daily",
       "taskFreq": 3,
       "currCount": 1,
       "totalCount": 12,
-      "taskCategory": "body"
-      }
+      "taskCategory": "body",
+      "color": "#3D998A",
+      "complete": false
+      },
+    {
+      "taskName": "Tester task #3",
+      "taskDuration": "daily",
+      "taskFreq": 7,
+      "currCount": 2,
+      "totalCount": 14,
+      "taskCategory": "body",
+      "color": "#A9E3EB",
+      "complete": true
+    },
     ]
+
+    const { user } = useContext(Context);
+  const [tasks, setTasks] = useState(taskTest)
+
+  const toggleComplete = (taskName) => {
+    let updatedArray = tasks.map((aTask) => {
+      let taskCopy = {...aTask}
+      if (taskCopy.taskName == taskName) {
+        // update the data when marked as complete (toggle complete and increment completion count)
+        taskCopy.complete = !taskCopy.complete;
+        if (taskCopy.complete === true) {
+          taskCopy.currCount = taskCopy.currCount + 1;
+          taskCopy.totalCount = taskCopy.totalCount + 1;
+        } else {
+          taskCopy.currCount = taskCopy.currCount - 1;
+          taskCopy.totalCount = taskCopy.totalCount - 1;
+        }
+      }
+      return taskCopy;
+    })
+    setTasks(updatedArray)
+  }
 
   return (
     <main>
@@ -43,11 +78,11 @@ const HomePage = () => {
         </div>
         :
         <button onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>Sign in</button>}
-     <img className="background" src={background}></img>
-  <div className="content-containers">
-        <TaskList tasks={taskTest}></TaskList>
-       <XPBar level="4" currXP="45" totalXP="100"></XPBar>
-     </div>
+      <img className="background" src={background}></img>
+      <div className="content-containers">
+        <TaskList tasks={tasks} whenClicked={toggleComplete}></TaskList>
+        <XPBar level="4" currXP="45" totalXP="100"></XPBar>
+      </div>
 
     </main>
   );
