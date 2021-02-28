@@ -6,11 +6,13 @@ import './XPBar.css'
 
 function XPBar(props) {
     return (
-        <div>
-        <p>{props.level}</p>
-        <p>{props.currXP}/{props.totalXP}</p>
+        <div className="xpBar">
+            <div className="level-descrip">
+                <p className="level">LEVEL {props.level}</p>
+                <p className="level">{props.currXP}/{props.totalXP}</p>
+            </div>
         <div id="progress-bar">
-            <ProgressBar variant="success" now={props.currXP} animated={true} max={props.totalXP} />
+            <ProgressBar variant="success" now={props.currXP} animated={false} max={props.totalXP} />
         </div>
         </div>
     )
