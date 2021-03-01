@@ -19,13 +19,13 @@ function Task(props) {
         props.whenClicked(props.taskName)
     }
 
-    return (<div className="task-container">
+    return (<div className="task-container" onClick={handleClick}>
         <div className="curr-progress" style={progressStyle}>
             &nbsp;
         </div>
         <div id="padding-div">
             <div className="container-one">
-                <p style={{textDecoration: decor}} onClick={handleClick}>{props.taskName}</p>
+                <p style={{textDecoration: decor}}>{props.taskName}</p>
                 <p id="dot-dot-dot">dot</p>
             </div>
             <div className="container-two">
