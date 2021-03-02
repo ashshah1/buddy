@@ -6,6 +6,8 @@ import Task from './Task.js';
 import TaskList from './TaskList.js';
 import ProgressBar from './XPBar.js';
 import HomePage from './HomePage.js'
+import Shop from './Shop.js'
+import ProfileView from './ProfileView.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import firebase from './firebase.js';
@@ -33,15 +35,15 @@ export default function App() {
       <div>
      
         <nav>
-          <ul>
+          <ul className="nav-container">
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/profile">Profile</Link>
             </li>
           </ul>
         </nav>
@@ -49,31 +51,13 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          <Route path="/shop" component={Shop} />          
+          <Route path="/profile" component={ProfileView}/>          
+          <Route path="/" component={HomePage} />
         </Switch>
       </div>
     </Router>
     </ContextProvider>
   );
-}
-
-function Home() {
-  return <HomePage></HomePage>;
-}
-
-function About() {
-  return <h2>About</h2>;
-}
-
-function Users() {
-  return <h2>Users</h2>;
 }
 
