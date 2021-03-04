@@ -1,7 +1,9 @@
 .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
-    position: absolute;
-    height: auto;
     z-index: -1;
 } 
 
@@ -11,3 +13,9 @@
     margin-right: 2rem;
 }
 
+.sign-in {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 1rem;
+}

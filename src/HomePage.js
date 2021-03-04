@@ -69,16 +69,15 @@ function HomePage() {
 
   return (
     <main>
-      <h1>Buddy</h1>
+      <img className="background" src={background}></img>
       {user ?
         <div>
-          <button onClick={() => fireauth.signOut()}>Hello {user.displayName}</button>
-          <p>User exp: {user.exp}</p>
-          <p>User level: {user.level}</p>
+          <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Hello {user.displayName}</button>
+          {/* <p>User exp: {user.exp}</p>
+          <p>User level: {user.level}</p> */}
         </div>
         :
         <button onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>Sign in</button>}
-      <img className="background" src={background}></img>
       <div className="content-containers">
         <TaskList tasks={tasks} whenClicked={toggleComplete}></TaskList>
         <XPBar level="4" currXP="45" totalXP="100"></XPBar>
