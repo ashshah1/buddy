@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 import HomePage from './HomePage.js';
 import Shop from './Shop.js';
 import ProfileView from './ProfileView.js';
-import SignIn from './SignIn.js';
+import LogInPage from './LogInPage.js';
 import LandingPage from './LandingPage.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -37,8 +37,8 @@ export default function App() {
           <Route path="/shop" component={Shop} />          
           <Route path="/profile" component={ProfileView}/>     
           <Route path="/home" component={HomePage}/>
-          <Route exact path="/signin" component={SignIn} />          
-          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/login" component={LogInPage} />          
+          <Route exact path="/landing" component={LandingPage} />
         </Switch>
       </div>
     </Router>

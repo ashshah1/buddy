@@ -36,8 +36,7 @@
 
 .landing-1 button {
     background: #094C59;
-    border: 1px solid #000000;
-    box-sizing: border-box;
+    border-style: none;
     border-radius: 10px;
     padding: 7px 17px 7px 17px;
 }
