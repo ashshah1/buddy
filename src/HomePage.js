@@ -1,7 +1,7 @@
 import { Context } from "./Context";
 import React, { useState, useContext } from "react";
 import { firebase, fireauth } from "./firebase";
-import background from "./backgrounds/bg-one.png";
+import background from "./images/bg-one.png";
 
 import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
