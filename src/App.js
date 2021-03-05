@@ -1,14 +1,12 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 
 import HomePage from './HomePage.js'
+import LogInPage from './LogInPage.js'
 import NavBar from './NavBar.js'
 import Shop from './Shop.js'
 import ProfileView from './ProfileView.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import firebase from './firebase.js';
 
 import { ContextProvider } from "./Context";
 
@@ -20,7 +18,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 
@@ -37,9 +34,18 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/shop" component={Shop} />          
-          <Route path="/profile" component={ProfileView}/>          
-          <Route exact path="/" component={HomePage} />
+          <Route path="/shop">
+            <Shop />
+          </Route>        
+          <Route path="/profile">
+            <ProfileView />
+          </Route>  
+          <Route path="/login">
+            <LogInPage />
+          </Route>      
+          <Route exact path="/">
+            <HomePage />
+          </Route>
         </Switch>
       </div>
     </Router>
