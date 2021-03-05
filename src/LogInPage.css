@@ -1,0 +1,26 @@
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+} 
+
+
+.buddy-header {
+    font-family: "Montserrat";
+    text-align: center;
+    color: #094C59;
+    font-weight: 700;
+    font-size: 4rem;
+    margin-top: 5rem;
+}
+
+.buddy-subheader {
+    font-family: "Montserrat";
+    text-align: center;
+    letter-spacing: 0.03em;
+    color: #4F4F4F; 
+    font-size: 2rem;
+}

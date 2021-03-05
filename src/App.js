@@ -2,18 +2,11 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 
-<<<<<<< Updated upstream
-import Task from './Task.js';
-import TaskList from './TaskList.js';
-import ProgressBar from './XPBar.js';
-import HomePage from './HomePage.js'
-=======
 import HomePage from './HomePage.js';
 import Shop from './Shop.js';
 import ProfileView from './ProfileView.js';
 import SignIn from './SignIn.js';
 import LandingPage from './LandingPage.js';
->>>>>>> Stashed changes
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import firebase from './firebase.js';
@@ -38,35 +31,6 @@ export default function App() {
     <ContextProvider>
     <Router>
       <div>
-<<<<<<< Updated upstream
-     
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Switch>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/users">
-            <Users />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
-=======
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
@@ -75,7 +39,6 @@ export default function App() {
           <Route path="/home" component={HomePage}/>
           <Route exact path="/signin" component={SignIn} />          
           <Route exact path="/" component={LandingPage} />
->>>>>>> Stashed changes
         </Switch>
       </div>
     </Router>
