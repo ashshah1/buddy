@@ -5,6 +5,7 @@ import background from "./backgrounds/bg-one.png";
 
 import TaskList from "./TaskList.js";
 import XPBar from "./XPBar.js";
+import NavBar from './NavBar.js';
 
 import "./HomePage.css";
 
@@ -34,7 +35,12 @@ const HomePage = () => {
 
   return (
     <main>
+<<<<<<< Updated upstream
       <h1>Buddy</h1>
+=======
+      <NavBar />
+      <img className="background" src={background}></img>
+>>>>>>> Stashed changes
       {user ?
         <div>
           <button onClick={() => fireauth.signOut()}>Hello {user.displayName}</button>
