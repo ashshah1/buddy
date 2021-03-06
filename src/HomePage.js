@@ -1,7 +1,7 @@
 import { Context } from "./Context";
 import React, { useState, useContext } from "react";
 import { firebase, fireauth } from "./firebase";
-import background from "./backgrounds/bg-one.png";
+import background from "./images/bg-one.png";
 
 import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
@@ -73,7 +73,7 @@ function HomePage() {
   if (user) {
     return (
       <main>
-        <img className="background" src={background}></img>
+        <img className="background" src={background} alt="scenary of blue sky and trees"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
         <TaskList tasks={tasks} whenClicked={toggleComplete}></TaskList>
