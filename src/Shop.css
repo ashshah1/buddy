@@ -9,10 +9,33 @@
     padding: 2rem 0rem 2rem 0rem;
 }
 
+.button-container {
+    padding-left: 5rem;
+    padding-top: 5rem;
+}
+
+.bg-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem 0rem 2rem 0rem;
+}
+
 .avatar-img {
     width: 8rem;
     height: auto;
     margin-bottom: 1rem;
+}
+
+.bg-img {
+    width: 30rem;
+    border-radius: 10px;
+    height: auto;
+    z-index: 0;
 }
 
 .selected {
@@ -29,4 +52,9 @@
 
 .still-locked {
     background-color: grey;
+}
+
+.bg-selected {
+    position: relative;
+    z-index: 1;
 }
