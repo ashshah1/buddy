@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import tester from './images/tester-avatar.png';
-import background from './backgrounds/bg-one.png'
+import background from './images/bg-one.png'
 
 import './Shop.css';
 
