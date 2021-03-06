@@ -1,0 +1,32 @@
+.an-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #A9E3EB;
+    border-radius: 10px;
+    margin: 2rem;
+    padding: 2rem 0rem 2rem 0rem;
+}
+
+.avatar-img {
+    width: 8rem;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.selected {
+    width: 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+.locked {
+    visibility: hidden;
+}
+
+.still-locked {
+    background-color: grey;
+}
