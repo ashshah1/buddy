@@ -1,17 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
-import tester from './images/tester-avatar.png';
+import tester from './images/a1.png';
 import background from './images/bg-one.png'
+import { Context } from "./Context";
+import { avatars } from './Vectors.js'
+
 
 import './Shop.css';
 
 // depending on how data is fetched, could use a for loop here to create individual avatar and background elements to render, would be more efficient and less tedious in the return. would also give us the flexibility to keep adding new customizations without changing code
 
 function Shop() {
+    const { user } = useContext(Context);
+
     const [isActive, setActive] = useState(false); // when false, show avatars. when true, show backgrounds
 
     const toggleViews = () => {
         setActive(!isActive);
+    }
+
+    let currAvatars = user.own; // array of currently owned avatars
+    let currSelected = user.selected; // the current avatar that the user has selected
+
+    let avatarArray = []
+    for (let i = 0; i < avatars.length; i++) {
+        let newAvatar;
+        if (currSelected === i) {
+            newAvatar = <AvatarElem src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
+            // populate in preview somehow
+        } else if (currAvatars.includes(i)) {
+            newAvatar = <AvatarElem src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
+        } else {
+            newAvatar = <AvatarElem src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+        }
+        avatarArray.push(newAvatar)
     }
 
     if (!isActive) {
@@ -24,48 +46,7 @@ function Shop() {
             <div className="avatar-view">
                 <div className="container">
                     <div className="row">
-                        <div className="col-md-4 col-lg-4">
-                            <div className="an-avatar">
-                                <p>avatar name</p>
-                                <img className="avatar-img" src={tester}></img>
-                                <button className="selected btn btn-light">selected</button>
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-lg-4">
-                            <div className="an-avatar">
-                                <p>avatar name</p>
-                                <img className="avatar-img" src={tester}></img>
-                                <button className="selected btn btn-warning">select</button>
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-lg-4">
-                            <div className="an-avatar">
-                                <p>avatar name</p>
-                                <img className="avatar-img" src={tester}></img>
-                                <button className="selected btn btn-warning">select</button>
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-lg-4">
-                            <div className="an-avatar">
-                                <p>avatar name</p>
-                                <img className="avatar-img" src={tester}></img>
-                                <button className="selected btn btn-light">300 coins</button>
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-lg-4">
-                            <div className="an-avatar still-locked">
-                                <p className="locked">avatar name</p>
-                                <img className="avatar-img locked" src={tester}></img>
-                                <button className="selected btn btn-light locked">selected</button>
-                            </div>
-                        </div>
-                        <div className="col-md-4 col-lg-4">
-                            <div className="an-avatar still-locked">
-                                <p className="locked">avatar name</p>
-                                <img className="avatar-img locked" src={tester}></img>
-                                <button className="selected btn btn-light locked">selected</button>
-                            </div>
-                        </div>
+                        {avatarArray}
                     </div>
                 </div>
             </div>
@@ -111,6 +92,18 @@ function Shop() {
             </div>
         )
     }
+}
+
+function AvatarElem(props) {
+    return (
+        <div className="col-md-4 col-lg-4">
+            <div className="an-avatar">
+                <p>avatar name</p>
+                <img className="avatar-img" src={props.src}></img>
+                <button className={props.class}>{props.status}</button>
+            </div>
+        </div>
+    )
 }
 
 
