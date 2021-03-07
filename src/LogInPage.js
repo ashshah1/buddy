@@ -1,4 +1,4 @@
-import background from "./images/bg-two.png";
+import background from "./images/bg-login.png";
 import './LogInPage.css';
 import { firebase, fireauth } from "./firebase";
 
