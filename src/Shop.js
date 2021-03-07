@@ -37,16 +37,11 @@ function Shop() {
             newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
         }
 
-        if (i > avatars.length) {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
-        }
+        // if (i > avatars.length) {
+        //     newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
+        // }
         avatarArray.push(newAvatar)
     }
-
-    let bgArray = [];
-
-
-
 
     if (!isActive) {
     return (
@@ -113,6 +108,17 @@ function AvatarElem(props) {
                 <p>avatar name</p>
                 <img className="avatar-img" src={props.src}></img>
                 <button className={props.class}>{props.status}</button>
+            </div>
+        </div>
+    )
+}
+
+function BackgroundElem(props) {
+    return (
+        <div className="col-md-6 col-lg-6">
+            <div className="bg-box">
+                <img className="bg-img" src={props.src}></img>
+                <button className="bg-selected btn btn-light">selected</button>
             </div>
         </div>
     )
