@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
-import tester from './images/a1.png';
-import background from './images/bg-one.png'
 import { Context } from "./Context";
 import { avatars, backgrounds } from './Vectors.js'
 
@@ -26,21 +24,39 @@ function Shop() {
     let bgSelected = user.bgSelected;
 
     let avatarArray = [];
-    for (let i = 0; i < avatars.length; i++) {
+    for (let i = 0; i < 6; i++) {
         let newAvatar;
         if (currSelected === i) {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
             // populate in preview somehow
         } else if (currAvatars.includes(i)) {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
         }
 
-        // if (i > avatars.length) {
-        //     newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
-        // }
+        if (i >= avatars.length) {
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
+        }
         avatarArray.push(newAvatar)
+    }
+
+    let bgArray = [];
+    for (let i = 0; i < 4; i++) {
+        let newBg;
+        if (bgSelected === i) {
+            newBg = <BackgroundElem src={backgrounds[i]} locked="bg-box" class="selected btn btn-light"></BackgroundElem>
+        } else if (currBg.includes[i]) {
+            newBg = <BackgroundElem src={backgrounds[i]} locked="bg-box" class="selected btn btn-warning"></BackgroundElem>
+        } else {
+            newBg = <BackgroundElem src={backgrounds[i]} locked="bg-box" class="selected btn btn-success"></BackgroundElem>
+        }
+        if (i >= backgrounds.length) {
+            newBg = <BackgroundElem key={backgrounds[i]} locked="bg-box still-locked" src={backgrounds[i]} class="btn btn-success" status="insert price"></BackgroundElem>
+        }
+
+
+        bgArray.push(newBg);
     }
 
     if (!isActive) {
@@ -69,30 +85,7 @@ function Shop() {
                 <div className="background-view">
                     <div className="container">
                         <div className="row">
-                            <div className="col-md-6 col-lg-6">
-                                <div className="bg-box">
-                                    <img className="bg-img" src={background}></img>
-                                    <button className="bg-selected btn btn-light">selected</button>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6">
-                                <div className="bg-box">
-                                    <img className="bg-img" src={background}></img>
-                                    <button className="bg-selected btn btn-warning">select</button>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6">
-                                <div className="bg-box">
-                                    <img className="bg-img" src={background}></img>
-                                    <button className="bg-selected btn btn-warning">select</button>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6">
-                                <div className="bg-box still-locked">
-                                    <img className="bg-img locked" src={background}></img>
-                                    <button className="bg-selected btn btn-light hidden">selected</button>
-                                </div>
-                            </div>
+                            {bgArray}
                         </div>
                     </div>
                 </div>
@@ -101,10 +94,11 @@ function Shop() {
     }
 }
 
+// creates an avatar element, setting it up with bootstrap grid classnames and well as styling button based off of user data
 function AvatarElem(props) {
     return (
         <div className="col-md-4 col-lg-4">
-            <div className="an-avatar">
+            <div className={props.locked}>
                 <p>avatar name</p>
                 <img className="avatar-img" src={props.src}></img>
                 <button className={props.class}>{props.status}</button>
@@ -116,9 +110,9 @@ function AvatarElem(props) {
 function BackgroundElem(props) {
     return (
         <div className="col-md-6 col-lg-6">
-            <div className="bg-box">
+            <div className={props.locked}>
                 <img className="bg-img" src={props.src}></img>
-                <button className="bg-selected btn btn-light">selected</button>
+                <button className={props.class}>selected</button>
             </div>
         </div>
     )
