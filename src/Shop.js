@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import tester from './images/a1.png';
 import background from './images/bg-one.png'
 import { Context } from "./Context";
-import { avatars } from './Vectors.js'
+import { avatars, backgrounds } from './Vectors.js'
 
 
 import './Shop.css';
@@ -19,22 +19,34 @@ function Shop() {
         setActive(!isActive);
     }
 
-    let currAvatars = user.own; // array of currently owned avatars
-    let currSelected = user.selected; // the current avatar that the user has selected
+    let currAvatars = user.avatarOwn; // array of currently owned avatars
+    let currSelected = user.avatarSelected; // the current avatar that the user has selected
 
-    let avatarArray = []
+    let currBg = user.bgOwn;
+    let bgSelected = user.bgSelected;
+
+    let avatarArray = [];
     for (let i = 0; i < avatars.length; i++) {
         let newAvatar;
         if (currSelected === i) {
-            newAvatar = <AvatarElem src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
             // populate in preview somehow
         } else if (currAvatars.includes(i)) {
-            newAvatar = <AvatarElem src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+        }
+
+        if (i > avatars.length) {
+            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
         }
         avatarArray.push(newAvatar)
     }
+
+    let bgArray = [];
+
+
+
 
     if (!isActive) {
     return (
