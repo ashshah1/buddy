@@ -52,8 +52,8 @@ function Shop() {
     return (
         <div>
             <div className="button-container">
-                <Button variant="info">AVATARS</Button>
-                <Button variant="outline-info" onClick={toggleViews}>BACKGROUNDS</Button>
+                <Button variant="info" className="active">AVATARS</Button>
+                <Button variant="outline-info" onClick={toggleViews} className="not-active">BACKGROUNDS</Button>
             </div>
             <div className="avatar-view">
                 <div className="container">
@@ -68,33 +68,30 @@ function Shop() {
         return (
             <div>
                 <div className="button-container">
-                    <Button variant="outline-info" onClick={toggleViews}>AVATARS</Button>
-                    <Button variant="info">BACKGROUNDS</Button>
+                    <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
+                    <Button variant="info" className="active">BACKGROUNDS</Button>
                 </div>
                 <div className="background-view">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-6 col-lg-6">
-                                <div className="bg-box">
-                                    <img className="bg-img" src={background}></img>
+                                <div className="bg-box" style={{ backgroundImage: `url(${background})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+                                    {/* <img className="bg-img" src={background}></img> */}
                                     <button className="bg-selected btn btn-light">selected</button>
                                 </div>
                             </div>
                             <div className="col-md-6 col-lg-6">
-                                <div className="bg-box">
-                                    <img className="bg-img" src={background}></img>
+                            <div className="bg-box" style={{ backgroundImage: `url(${background})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
                                     <button className="bg-selected btn btn-warning">select</button>
                                 </div>
                             </div>
                             <div className="col-md-6 col-lg-6">
-                                <div className="bg-box">
-                                    <img className="bg-img" src={background}></img>
+                            <div className="bg-box" style={{ backgroundImage: `url(${background})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
                                     <button className="bg-selected btn btn-warning">select</button>
                                 </div>
                             </div>
                             <div className="col-md-6 col-lg-6">
                                 <div className="bg-box still-locked">
-                                    <img className="bg-img locked" src={background}></img>
                                     <button className="bg-selected btn btn-light hidden">selected</button>
                                 </div>
                             </div>
@@ -110,7 +107,7 @@ function AvatarElem(props) {
     return (
         <div className="col-md-4 col-lg-4">
             <div className="an-avatar">
-                <p>avatar name</p>
+                <p>AVATAR NAME</p>
                 <img className="avatar-img" src={props.src}></img>
                 <button className={props.class}>{props.status}</button>
             </div>
