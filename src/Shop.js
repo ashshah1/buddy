@@ -63,8 +63,8 @@ function Shop() {
     return (
         <div>
             <div className="button-container">
-                <Button variant="info">AVATARS</Button>
-                <Button variant="outline-info" onClick={toggleViews}>BACKGROUNDS</Button>
+                <Button variant="info" className="active">AVATARS</Button>
+                <Button variant="outline-info" onClick={toggleViews} className="not-active">BACKGROUNDS</Button>
             </div>
             <div className="avatar-view">
                 <div className="container">
@@ -78,18 +78,18 @@ function Shop() {
     } else {
         return (
             <div>
-                <div className="button-container">
-                    <Button variant="outline-info" onClick={toggleViews}>AVATARS</Button>
-                    <Button variant="info">BACKGROUNDS</Button>
-                </div>
-                <div className="background-view">
-                    <div className="container">
-                        <div className="row">
-                            {bgArray}
-                        </div>
-                    </div>
-                </div>
-            </div>
+             <div className="button-container">
+                 <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
+                 <Button variant="info" className="active">BACKGROUNDS</Button>
+             </div>
+             <div className="background-view">
+                 <div className="container">
+                     <div className="row">
+                         {bgArray}
+                     </div>
+                 </div>
+             </div>
+         </div>
         )
     }
 }
@@ -98,8 +98,8 @@ function Shop() {
 function AvatarElem(props) {
     return (
         <div className="col-md-4 col-lg-4">
-            <div className={props.locked}>
-                <p>avatar name</p>
+            <div className="an-avatar">
+                <p>AVATAR NAME</p>
                 <img className="avatar-img" src={props.src}></img>
                 <button className={props.class}>{props.status}</button>
             </div>
@@ -110,13 +110,12 @@ function AvatarElem(props) {
 function BackgroundElem(props) {
     return (
         <div className="col-md-6 col-lg-6">
-            <div className={props.locked}>
-                <img className="bg-img" src={props.src}></img>
+            <div className={props.locked} style={{ backgroundImage: `url(${props.src})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+                {/* <img className="bg-img" src={props.src}></img> */}
                 <button className={props.class}>selected</button>
             </div>
         </div>
     )
 }
-
 
 export default Shop;
