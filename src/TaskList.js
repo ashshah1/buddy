@@ -1,11 +1,15 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import Task from './Task';
 import './TaskList.css'
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 
+function TaskList(props) {
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-function TaskList (props) {
     let tasks = props.tasks;
     let taskArray = [];
 
@@ -21,8 +25,15 @@ function TaskList (props) {
                 <p className="task-header">—</p>
             </div>
             {taskArray}
-            <button className="add-habit-btn">add a new task</button>
+            <button className="add-habit-btn" onClick={handleShow}>add a new task</button>
 
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>ADD HABIT</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><p>help</p></Modal.Body>
+            </Modal>
         </div>
     )
 }

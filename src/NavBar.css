@@ -25,33 +25,9 @@
     height: auto;
   }
 
-  .modal-header {
-    align-items: center;
-  }
-  
-  .modal-title {
-    margin-left: auto;
-    margin-right: auto;
-    font-weight: 600;
-    font-size: 36px;
-    letter-spacing: 0.03em;
-    color: #4F4F4F;
-  }
-  
-  .modal-header .close {
-    margin: 0;
-  }
-  
   .content-container {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   
-  
-  @media (min-width: 576px) {
-  .modal-dialog {
-      max-width: 70%;
-      margin: 1.75rem auto;
-  }
-  }

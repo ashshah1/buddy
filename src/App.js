@@ -1,4 +1,3 @@
-import './App.css';
 import React, { Component } from 'react';
 
 import HomePage from './HomePage.js'
@@ -8,6 +7,7 @@ import Shop from './Shop.js'
 import ProfileView from './ProfileView.js'
 import LandingPage from './LandingPage.js'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
 
 import { ContextProvider } from "./Context";
 
