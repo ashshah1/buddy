@@ -4,6 +4,7 @@ import Task from './Task';
 import './TaskList.css'
 
 
+
 function TaskList (props) {
     let tasks = props.tasks;
     let taskArray = [];
@@ -20,6 +21,8 @@ function TaskList (props) {
                 <p className="task-header">—</p>
             </div>
             {taskArray}
+            <button className="add-habit-btn">add a new task</button>
+
         </div>
     )
 }
