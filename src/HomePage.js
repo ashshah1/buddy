@@ -27,7 +27,7 @@ function HomePage() {
     {
       "taskName": "Tester task #2",
       "taskDuration": "daily",
-      "taskFreq": 3,
+      "taskFreq": 10,
       "currCount": 1,
       "totalCount": 12,
       "taskCategory": "body",
@@ -53,19 +53,26 @@ function HomePage() {
     let updatedArray = tasks.map((aTask) => {
       let taskCopy = {...aTask}
       if (taskCopy.taskName == taskName) {
-        // updates the data when marked as complete (toggle complete and increment completion count)
-        taskCopy.complete = !taskCopy.complete;
-        if (taskCopy.complete === true) {
+          // todo: update current and total count in the backend, it currently updates sample array
           taskCopy.currCount = taskCopy.currCount + 1;
           taskCopy.totalCount = taskCopy.totalCount + 1;
-        } else {
-          taskCopy.currCount = taskCopy.currCount - 1;
-          taskCopy.totalCount = taskCopy.totalCount - 1;
-        }
       }
       return taskCopy;
     })
     setTasks(updatedArray)
+  }
+
+  const undoComplete = (taskName) => {
+    let updatedArray = tasks.map ((aTask) => {
+      let taskCopy = {...aTask}
+      if (taskCopy.taskName == taskName) {
+        // todo: update current and total count in the backend, it currently updates sample array
+          taskCopy.currCount = taskCopy.currCount - 1;
+          taskCopy.totalCount = taskCopy.totalCount - 1;
+      }
+      return taskCopy;
+    })
+    setTasks(updatedArray);
   }
 
 
@@ -76,7 +83,7 @@ function HomePage() {
         <img className="background" src={background} alt="scenary of blue sky and trees"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
-        <TaskList tasks={tasks} whenClicked={toggleComplete}></TaskList>
+        <TaskList tasks={tasks} whenClicked={toggleComplete} onUndo={undoComplete}></TaskList>
         <XPBar level="4" currXP="45" totalXP="100"></XPBar>
       </div>
       </main>

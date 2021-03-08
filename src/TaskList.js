@@ -10,7 +10,7 @@ function TaskList (props) {
     let taskArray = [];
 
     for (let i = 0; i < tasks.length; i++) {
-        let newTask = <Task key={tasks[i].taskName} taskName={tasks[i].taskName} taskDuration={tasks[i].taskDuration} taskFreq={tasks[i].taskFreq} currCount={tasks[i].currCount} totalCount={tasks[i].totalCount} taskCategory={tasks[i].taskCategory} color={tasks[i].color} complete={tasks[i].complete} whenClicked={props.whenClicked}></Task>
+        let newTask = <Task key={tasks[i].taskName} taskName={tasks[i].taskName} taskDuration={tasks[i].taskDuration} taskFreq={tasks[i].taskFreq} currCount={tasks[i].currCount} totalCount={tasks[i].totalCount} taskCategory={tasks[i].taskCategory} color={tasks[i].color} complete={tasks[i].complete} whenClicked={props.whenClicked} onUndo={props.onUndo}></Task>
         taskArray.push(newTask);
     }
 
