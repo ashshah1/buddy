@@ -44,9 +44,22 @@ function Shop() {
     }
 
     let bgArray = [];
+    for (let i = 0; i < 4; i++) {
+        let newBg;
+        if (bgSelected === i) {
+            newBg = <BackgroundElem src={backgrounds[i]} locked="bg-box" class="selected btn btn-light"></BackgroundElem>
+        } else if (currBg.includes[i]) {
+            newBg = <BackgroundElem src={backgrounds[i]} locked="bg-box" class="selected btn btn-warning"></BackgroundElem>
+        } else {
+            newBg = <BackgroundElem src={backgrounds[i]} locked="bg-box" class="selected btn btn-success"></BackgroundElem>
+        }
+        if (i >= backgrounds.length) {
+            newBg = <BackgroundElem key={backgrounds[i]} locked="bg-box still-locked" src={backgrounds[i]} class="btn btn-success" status="insert price"></BackgroundElem>
+        }
 
 
-
+        bgArray.push(newBg);
+    }
 
     if (!isActive) {
     return (
@@ -67,38 +80,18 @@ function Shop() {
     } else {
         return (
             <div>
-                <div className="button-container">
-                    <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
-                    <Button variant="info" className="active">BACKGROUNDS</Button>
-                </div>
-                <div className="background-view">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-6 col-lg-6">
-                                <div className="bg-box" style={{ backgroundImage: `url(${background})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-                                    {/* <img className="bg-img" src={background}></img> */}
-                                    <button className="bg-selected btn btn-light">selected</button>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6">
-                            <div className="bg-box" style={{ backgroundImage: `url(${background})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-                                    <button className="bg-selected btn btn-warning">select</button>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6">
-                            <div className="bg-box" style={{ backgroundImage: `url(${background})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-                                    <button className="bg-selected btn btn-warning">select</button>
-                                </div>
-                            </div>
-                            <div className="col-md-6 col-lg-6">
-                                <div className="bg-box still-locked">
-                                    <button className="bg-selected btn btn-light hidden">selected</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+             <div className="button-container">
+                 <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
+                 <Button variant="info" className="active">BACKGROUNDS</Button>
+             </div>
+             <div className="background-view">
+                 <div className="container">
+                     <div className="row">
+                         {bgArray}
+                     </div>
+                 </div>
+             </div>
+         </div>
         )
     }
 }
@@ -115,5 +108,15 @@ function AvatarElem(props) {
     )
 }
 
+function BackgroundElem(props) {
+    return (
+        <div className="col-md-6 col-lg-6">
+            <div className={props.locked} style={{ backgroundImage: `url(${props.src})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
+                {/* <img className="bg-img" src={props.src}></img> */}
+                <button className={props.class}>selected</button>
+            </div>
+        </div>
+    )
+}
 
 export default Shop;
