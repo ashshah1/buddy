@@ -1,7 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
-import tester from './images/a1.png';
-import background from './images/bg-one.png'
 import { Context } from "./Context";
 import { avatars, backgrounds } from './Vectors.js'
 
@@ -26,19 +24,19 @@ function Shop() {
     let bgSelected = user.bgSelected;
 
     let avatarArray = [];
-    for (let i = 0; i < avatars.length; i++) {
+    for (let i = 0; i < 6; i++) {
         let newAvatar;
         if (currSelected === i) {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
             // populate in preview somehow
         } else if (currAvatars.includes(i)) {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
         }
 
-        if (i > avatars.length) {
-            newAvatar = <AvatarElem key={avatars[i]} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
+        if (i >= avatars.length) {
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
         }
         avatarArray.push(newAvatar)
     }
@@ -96,6 +94,7 @@ function Shop() {
     }
 }
 
+// creates an avatar element, setting it up with bootstrap grid classnames and well as styling button based off of user data
 function AvatarElem(props) {
     return (
         <div className="col-md-4 col-lg-4">
