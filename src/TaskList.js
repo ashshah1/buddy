@@ -2,48 +2,20 @@ import React from 'react';
 
 import Task from './Task';
 import './TaskList.css'
-import { firestore } from "./firebase"
 import { Context } from './Context.js';
 
-import { useState, useEffect, useContext } from "react"
-
-const useHabits = userID => {
-    const [habits, setHabits] = useState([]);
-
-    useEffect(() => {
-        let query = firestore.collection("Habits")
-
-        if (userID) {
-            query = query.where(
-                "user",
-                "==",
-                firestore.collection("users").doc(userID)
-            )
-        }
-
-        const unsubscribe = query
-            .onSnapshot(snapshot => {
-                let newHabits = [];
-                snapshot.forEach(habit => {
-                    newHabits.push({ id: habit.id, ...habit.data() })
-                })
-                setHabits(newHabits);
-            })
-        return unsubscribe;
-    }, [userID]);
-    return habits;
-}
+import useHabits from './useHabits.js';
+import { useContext } from "react"
 
 function TaskList (props) {
     const { user } = useContext(Context);
+    
 
     const habits = useHabits(user.uid)
-    console.log(habits);
-    console.log(habits[1].name);
-
 
     let taskArray = [];
     let taskDuration = "";
+
 
     if (habits.weekly) {
         taskDuration = "weekly";
@@ -56,11 +28,6 @@ function TaskList (props) {
         taskArray.push(newTask);
     }
 
-
-    // for (let i = 0; i < tasks.length; i++) {
-    //     let newTask = <Task key={tasks[i].taskName} taskName={tasks[i].taskName} taskDuration={tasks[i].taskDuration} taskFreq={tasks[i].taskFreq} currCount={tasks[i].currCount} totalCount={tasks[i].totalCount} taskCategory={tasks[i].taskCategory} color={tasks[i].color} complete={tasks[i].complete} whenClicked={props.whenClicked} onUndo={props.onUndo}></Task>
-    //     taskArray.push(newTask);
-    // }
 
     return (
         <div className="tasklist-container">

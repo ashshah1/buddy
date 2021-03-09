@@ -7,9 +7,13 @@ import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
 
+import useHabits from './useHabits.js';
+
+
 import "./HomePage.css";
 
 function HomePage() {
+
 
 
   // tester tasks, should be replaced with data from the user once they log in
@@ -46,34 +50,44 @@ function HomePage() {
     },
     ]
 
-  const { user } = useContext(Context);
-  const [tasks, setTasks] = useState(taskTest)
+  const { user } = useContext(Context);  
 
   const toggleComplete = (taskName) => {
-    let updatedArray = tasks.map((aTask) => {
-      let taskCopy = {...aTask}
-      if (taskCopy.taskName == taskName) {
-          // todo: update current and total count in the backend, it currently updates sample array
-          taskCopy.currCount = taskCopy.currCount + 1;
-          taskCopy.totalCount = taskCopy.totalCount + 1;
-      }
-      return taskCopy;
-    })
-    setTasks(updatedArray)
+    console.log(taskName)
   }
 
   const undoComplete = (taskName) => {
-    let updatedArray = tasks.map ((aTask) => {
-      let taskCopy = {...aTask}
-      if (taskCopy.taskName == taskName) {
-        // todo: update current and total count in the backend, it currently updates sample array
-          taskCopy.currCount = taskCopy.currCount - 1;
-          taskCopy.totalCount = taskCopy.totalCount - 1;
-      }
-      return taskCopy;
-    })
-    setTasks(updatedArray);
+    console.log(taskName)
   }
+
+
+  // const [tasks, setTasks] = useState(taskTest)
+
+  // const toggleComplete = (taskName) => {
+  //   let updatedArray = tasks.map((aTask) => {
+  //     let taskCopy = {...aTask}
+  //     if (taskCopy.taskName == taskName) {
+  //         // todo: update current and total count in the backend, it currently updates sample array
+  //         taskCopy.currCount = taskCopy.currCount + 1;
+  //         taskCopy.totalCount = taskCopy.totalCount + 1;
+  //     }
+  //     return taskCopy;
+  //   })
+  //   setTasks(updatedArray)
+  // }
+
+  // const undoComplete = (taskName) => {
+  //   let updatedArray = tasks.map ((aTask) => {
+  //     let taskCopy = {...aTask}
+  //     if (taskCopy.taskName == taskName) {
+  //       // todo: update current and total count in the backend, it currently updates sample array
+  //         taskCopy.currCount = taskCopy.currCount - 1;
+  //         taskCopy.totalCount = taskCopy.totalCount - 1;
+  //     }
+  //     return taskCopy;
+  //   })
+  //   setTasks(updatedArray);
+  // }
 
 
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
@@ -83,7 +97,7 @@ function HomePage() {
         <img className="background" src={background} alt="scenary of blue sky and trees"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
-        <TaskList tasks={tasks} whenClicked={toggleComplete} onUndo={undoComplete}></TaskList>
+        <TaskList whenClicked={toggleComplete} onUndo={undoComplete}></TaskList>
         <XPBar level="4" currXP="45" totalXP="100"></XPBar>
       </div>
       </main>

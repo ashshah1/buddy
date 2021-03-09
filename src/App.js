@@ -7,6 +7,7 @@ import NavBar from './NavBar.js'
 import Shop from './Shop.js'
 import ProfileView from './ProfileView.js'
 import LandingPage from './LandingPage.js'
+import AddHabit from "./AddHabit.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { ContextProvider } from "./Context";
@@ -43,7 +44,10 @@ export default function App() {
           </Route>  
           <Route path="/login">
             <LogInPage />
-          </Route>     
+          </Route> 
+          <Route path="/add">
+            <AddHabit />
+          </Route>      
           <Route exact path="/landing">
             <LandingPage />
           </Route> 
