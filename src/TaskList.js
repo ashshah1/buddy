@@ -42,7 +42,7 @@ function TaskList (props) {
                 <p className="task-header">—</p>
             </div>
             {taskArray}
-            <button className="add-habit-btn" onClick={handleShow}>add a new task</button>
+            <button className="add-habit-btn" onClick={handleShow}>+ add a new task</button>
 
 
             <Modal show={show} onHide={handleClose}>
