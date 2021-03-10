@@ -6,8 +6,6 @@ import { avatars, backgrounds } from './Vectors.js'
 
 import './Shop.css';
 
-// depending on how data is fetched, could use a for loop here to create individual avatar and background elements to render, would be more efficient and less tedious in the return. would also give us the flexibility to keep adding new customizations without changing code
-
 function Shop() {
     const { user } = useContext(Context);
 

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-
-
+import { Button } from "react-bootstrap";
 import './Task.css';
 
 function Task(props) {
+
+    const [isShown, setIsShown] = useState(false); // keeps track of wehther complete buttons are visible
+
     let currProgress = (props.currCount/props.taskFreq) * 100 + "%";
     const progressStyle = {
         width: currProgress,
@@ -15,23 +17,49 @@ function Task(props) {
         decor = "line-through";
     }
 
+    // sets default view, tasks are visible and mark as complete buttons are hidden
+    let taskView = "";
+    let markBtn = "hidden";
+
     const handleClick = (event) => {
         props.whenClicked(props.taskName)
     }
 
-    return (<div className="task-container" onClick={handleClick}>
+    const handleUndo = (event) => {
+        props.onUndo(props.taskName);
+    }
+
+    // on hover markBtn should be visible and taskView should be hidden
+    const toggleView = () => {
+        setIsShown(true);
+    }
+
+    const toggleBack = () => {
+        setIsShown(false);
+    }
+
+    // on hover, set classNames to show mark complete buttons
+    if (isShown) {
+        taskView = "hidden";
+        markBtn = "";
+    }
+
+
+    return (<div className="task-container" onMouseEnter={toggleView} onMouseLeave={toggleBack}>
         <div className="curr-progress" style={progressStyle}>
             &nbsp;
         </div>
         <div id="padding-div">
             <div className="container-one">
-                <p style={{textDecoration: decor}}>{props.taskName}</p>
+                <p className={taskView} style={{textDecoration: decor}}>{props.taskName}</p>
+                <Button onClick={handleClick} className={"btn btn-info " + markBtn}>mark complete</Button>
+                <Button onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
                 <p id="dot-dot-dot">dot</p>
             </div>
             <div className="container-two">
                 <p>
-                    <a>{props.taskDuration}  &nbsp;</a>
-                    <a>{props.currCount} {" / "}</a><a>{props.taskFreq}</a>
+                    <a className={taskView}>{props.taskDuration}  &nbsp;</a>
+                    <a className={taskView}>{props.currCount} {" / "}</a><a className={taskView}>{props.taskFreq}</a>
                 </p>
                 <p>{props.totalCount}</p>
             </div>
