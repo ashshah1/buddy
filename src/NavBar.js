@@ -28,6 +28,9 @@ function NavBar() {
             <Link to="/shop">Shop</Link>
           </li>
           <li>
+            <Link to="/add">Add</Link>
+          </li>
+          <li>
             <Link to="/profile">Profile</Link>
           </li>
         </ul>
