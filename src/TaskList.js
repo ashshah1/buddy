@@ -1,18 +1,24 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import Task from './Task';
 import './TaskList.css'
+
 import { Context } from './Context.js';
 
 import useHabits from './useHabits.js';
 import { useContext } from "react"
 
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
+
 function TaskList (props) {
     const { user } = useContext(Context);
-    
-
     const habits = useHabits(user.uid)
+    
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
+    let tasks = props.tasks;
     let taskArray = [];
     let taskDuration = "";
 
@@ -36,8 +42,15 @@ function TaskList (props) {
                 <p className="task-header">—</p>
             </div>
             {taskArray}
-            <button className="add-habit-btn">add a new task</button>
+            <button className="add-habit-btn" onClick={handleShow}>add a new task</button>
 
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>ADD HABIT</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><p>help</p></Modal.Body>
+            </Modal>
         </div>
     )
 }
