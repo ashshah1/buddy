@@ -2,7 +2,101 @@
     font-size: 0;
 }
 
+.add-habit-form {
+    width: 90%;
+    padding: 1rem;
+}
+
+button.btn.mt-4.add-btn {
+    align-self: flex-end;
+    float: right;
+    background: #094C59;
+    border-style: none;
+    border-radius: 10px;
+    padding: 7px 17px 7px 17px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1rem;
+    line-height: 29px;
+    letter-spacing: 0.085em;
+}
+
+.add-habit-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input.form-control.habit-name{
+    border: none;
+    border-bottom: .1rem solid #c4c4c4;
+    color: #094C59;
+}
+
+.category-type button, .frequency button {
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 2px 30px 2px 30px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 37px;
+    letter-spacing: 0.03em;
+    margin: 0 1rem 0 1rem;
+}
+
+.category-type {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+
+.category-type button {
+    border: 1px solid #338077;
+}
+
+.filled {
+    color: #FFFFFF;
+    background-color: #338077;
+}
+
+.not-filled {
+    color: #338077;
+    background-color: #FFFFFF;
+}
+
+.frequency button {
+    border: 1px solid #1A8199;
+}
+
+.daily-btn {
+    color: #FFFFFF;
+    background-color: #1A8199;
+}
+
+.weekly-btn {
+    color: #1A8199;
+    background-color: #FFFFFF;
+}
+
+.modal-content {
+    max-width: 60rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .color-btn {
     height: 2rem;
     width: 2rem;
+    border-radius: 100%;
+    border: none;
+}
+
+.color-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    padding: 0 1rem 0 1rem;
 }

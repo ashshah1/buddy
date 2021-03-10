@@ -3,6 +3,7 @@
 html, body, #root, .modal {
   height: 100%;
   font-family: 'Montserrat', sans-serif;
+  color: #4f4f4f;
 }
 
 .App {

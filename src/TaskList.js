@@ -9,6 +9,7 @@ import { useContext } from "react"
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import AddHabit from './AddHabit';
 
 function TaskList (props) {
     const { user } = useContext(Context);
@@ -49,7 +50,7 @@ function TaskList (props) {
                 <Modal.Header closeButton>
                     <Modal.Title>ADD HABIT</Modal.Title>
                 </Modal.Header>
-                <Modal.Body><p>help</p></Modal.Body>
+                <Modal.Body><AddHabit></AddHabit></Modal.Body>
             </Modal>
         </div>
     )
