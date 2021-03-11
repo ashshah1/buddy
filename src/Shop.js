@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Context } from "./Context";
-import { avatars, backgrounds } from './Vectors.js'
+import { avatars, backgrounds, overlays } from './Vectors.js'
 import { firestore, firebase } from './firebase'
 
 

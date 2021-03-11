@@ -7,7 +7,7 @@ import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
 
-import { avatars, backgrounds } from './Vectors.js';
+import { avatars, backgrounds, overlays } from './Vectors.js';
 
 import "./HomePage.css";
 
@@ -20,6 +20,8 @@ function HomePage() {
     return (
       <main>
         <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
+        <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
+        <img className="background animations bounce-1" src={overlays[3]}></img>
         <div className="coin-div">{user.points} coins</div>
         <img className="curr-avatar" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
