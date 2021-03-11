@@ -25,7 +25,7 @@ function HomePage() {
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
         <TaskList></TaskList>
-        <XPBar level="4" currXP="45" totalXP="100"></XPBar>
+        <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
       </div>
       </main>
     )

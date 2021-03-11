@@ -7,7 +7,7 @@ import { firebase, firestore } from './firebase';
 import Modal from 'react-bootstrap/Modal';
 import AddHabit from './AddHabit';
 
-function TaskList (props) {
+function TaskList () {
     const { user } = useContext(Context);
     const habits = useHabits(user.uid)
     
@@ -35,8 +35,14 @@ function TaskList (props) {
         const userRef = firestore.collection("users").doc(user.local.uid);
         if (habit.currCounter == habit.frequency) {
             await habitRef.update({
-                currCounter: 1, // if progress bar is full, resets to 1
+                currCounter: 1, // if task progress bar is full, resets to 1
                 overallCounter: firebase.firestore.FieldValue.increment(1)
+            });
+        } else if (user.exp >= 100) {
+            console.log(user.exp);
+            await userRef.update({
+                exp: 1, // if task progress bar is full, resets to 1
+                level: firebase.firestore.FieldValue.increment(1)
             });
         } else {
             await habitRef.update({
