@@ -22,8 +22,8 @@ function HomePage() {
   if (user) {
     return (
       <main>
-        <img className="background" src={backgrounds[bgSelected]} alt="scenary of blue sky and trees"></img>
-        <img className="curr-avatar" src={avatars[currSelected]}></img>
+        <img className="background" src={backgrounds[bgSelected]} alt="trees and blue skies"></img>
+        <img className="curr-avatar" src={avatars[currSelected]} alt="animated personal avatar"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
         <TaskList></TaskList>
