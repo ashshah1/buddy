@@ -121,7 +121,7 @@ function AvatarElem(props) {
                     <button onClick={() => { changeStatus(user) }} className={props.class}>{props.status}</button>
                 </div>
             </div>
-        )
+        ) 
     }
 
 

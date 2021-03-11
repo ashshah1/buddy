@@ -65,8 +65,8 @@ function AddHabit() {
     // somehow save the text value of that button for both frequency and category and set their states
 
 
-
     const handleCategory = (event) => {
+        console.log(event.target.innerText);
         setCategory(event.target.innerText);
     }
 
@@ -84,11 +84,19 @@ function AddHabit() {
                         />
                     </div>
                     <div className="form-group pb-2">
-                        <label>Repeat</label>
-                        <div className="frequency">
-                            <button onClick={event => {setRepeat("daily")}} className="daily-btn" type="button">daily</button>
-                            <button onClick={event => {setRepeat("weekly")}} className="weekly-btn" type="button">weekly</button>
+                        <label className="repeat-label">Repeat</label>
+                        <div className="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline1" name="customRadio" className="custom-control-input radio-btn" onChange={() => {setRepeat("daily")}} />
+                            <label className="custom-control-label" for="customRadioInline1">daily</label>
                         </div>
+                        <div className="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="customRadioInline2" name="customRadio" className="custom-control-input" onChange={() => {setRepeat("weekly")}} />
+                            <label className="custom-control-label" for="customRadioInline2">weekly</label>
+                        </div>
+                        {/* <div className="frequency">
+                            <button onClick={() => {setRepeat("daily")}} className="daily-btn" type="button">daily</button>
+                            <button onClick={() => {setRepeat("weekly")}} className="weekly-btn" type="button">weekly</button>
+                        </div> */}
                     </div>
                     <div className="form-group pb-2">
                         <label>Goal</label>
@@ -100,18 +108,36 @@ function AddHabit() {
                     <div className="form-group pb-2">
                         <label>Select a category</label>
                         <div className="category-type">
-                            <button onClick={handleCategory} className="not-filled" type="button">mind</button>
+                            <BuddyButtons handleCategory={handleCategory} category="mind"></BuddyButtons>
+                            <BuddyButtons handleCategory={handleCategory} category="body"></BuddyButtons>
+                            <BuddyButtons handleCategory={handleCategory} category="life"></BuddyButtons>
+                            <BuddyButtons handleCategory={handleCategory} category="other"></BuddyButtons>
+
+                            {/* <button onClick={handleCategory} className="not-filled" type="button">mind</button>
                             <button onClick={handleCategory} className="not-filled" type="button">body</button>
                             <button onClick={handleCategory} className="not-filled" type="button">life</button>
-                            <button onClick={handleCategory} className="not-filled" type="button">other</button>
+                            <button onClick={handleCategory} className="not-filled" type="button">other</button> */}
                         </div>
                     </div>
                     <div className="form-group pb-2">
                         <label>Select a color</label>
                         <div>
                              {colors.map(circleColor => (
-                                <button className="color-btn no-font m-4" onClick={event => setColor(event.target.innerText)} style={{backgroundColor : circleColor}} type="button">{circleColor}</button>
-                            ))}
+                                 <button className="color-btn no-font m-4" onClick={event => setColor(event.target.innerText)} style={{ backgroundColor: circleColor }} type="button">{circleColor}</button>
+                             ))}
+                        </div>
+                    </div>
+                    <div>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                            <label className="btn btn-secondary active">
+                                <input onClick={() => {console.log("clicked here")}} type="radio" name="options" id="option1" autocomplete="off" checked /> Active
+                            </label>
+                            <label className="btn btn-secondary">
+                                <input onClick={() => {console.log("clicked here")}} type="radio" name="options" id="option2" autocomplete="off" /> Radio
+                            </label>
+                            <label className="btn btn-secondary">
+                                <input type="radio" name="options" id="option3" autocomplete="off" /> Radio
+                            </label>
                         </div>
                     </div>
                     <button
@@ -129,25 +155,22 @@ function AddHabit() {
 function BuddyButtons(props) {
     const [buttonFill, setButtonFill] = useState(false);
 
-    let buttonstyle = "";
     
 
-    const handleCategory = () => {
+    const handleFill = (event) => {
         setButtonFill(!buttonFill);
+        props.handleCategory(event);
     }
+
      
+    let buttonstyle = "not-filled";
     if (buttonFill) {
         buttonstyle = "filled";
-    } else {
-        buttonstyle = "not-filled"
     }
 
     // send props of w
     return (
-        <button onClick={handleCategory} className={buttonstyle} type="button">{props.category}</button>
-        /* <button className="not-filled" type="button">body</button>
-        <button className="not-filled" type="button">life</button>
-        <button className="not-filled" type="button">other</button> */
+        <button onClick={handleFill} className={buttonstyle} type="button">{props.category}</button>
     )
 
 }
