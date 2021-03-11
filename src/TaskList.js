@@ -1,23 +1,17 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import Task from './Task';
 import './TaskList.css'
-
 import { Context } from './Context.js';
-
 import useHabits from './useHabits.js';
-import { useContext } from "react"
-
 import { firebase, firestore } from './firebase';
-
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import AddHabit from './AddHabit';
 
 function TaskList (props) {
     const { user } = useContext(Context);
     const habits = useHabits(user.uid)
     
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(false); // keeps track of addhabit modal visibility
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
@@ -25,31 +19,53 @@ function TaskList (props) {
     let taskDuration = "";
 
 
+    // turning boolean into a displayable sring
     if (habits.weekly) {
         taskDuration = "weekly";
     } else {
         taskDuration = "daily";
     }
 
-    const toggleComplete = async (habit) => {
+
+    // updates data in the backend when users marks a habit as complete
+    // queries both the user and habit information, increment their current counter and total count
+    // also adds both points and exp which are instantly reflected
+    const toggleComplete = async (user, habit) => {
         const habitRef = firestore.collection("Habits").doc(habit.id);
-        await habitRef.update({
-            currCounter: firebase.firestore.FieldValue.increment(1),
-            overallCounter: firebase.firestore.FieldValue.increment(1) 
-        }); 
+        const userRef = firestore.collection("users").doc(user.local.uid);
+        if (habit.currCounter == habit.frequency) {
+            await habitRef.update({
+                currCounter: 1, // if progress bar is full, resets to 1
+                overallCounter: firebase.firestore.FieldValue.increment(1)
+            });
+        } else {
+            await habitRef.update({
+                currCounter: firebase.firestore.FieldValue.increment(1),
+                overallCounter: firebase.firestore.FieldValue.increment(1),
+                points: firebase.firestore.FieldValue.increment(20),
+                exp: firebase.firestore.FieldValue.increment(2)
+            });
+        }
+        await userRef.update({
+            points: firebase.firestore.FieldValue.increment(20),
+            exp: firebase.firestore.FieldValue.increment(2)
+        })
     }
 
+    // similarly, updates backend when users undoes a task, decrementing both counters and points
     const toggleUndo = async (habit) => {
         const habitRef = firestore.collection("Habits").doc(habit.id);
         await habitRef.update({
             currCounter: firebase.firestore.FieldValue.increment(-1),
-            overallCounter: firebase.firestore.FieldValue.increment(-1) 
+            overallCounter: firebase.firestore.FieldValue.increment(-1),
+            points: firebase.firestore.FieldValue.increment(-20),
+            exp: firebase.firestore.FieldValue.increment(-2)
         }); 
     }
 
 
     for (let i = 0; i < habits.length; i++) {
-        let newTask = <Task key={habits[i].name} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={() => toggleComplete(habits[i])} onUndo={() => toggleUndo(habits[i])}></Task>
+        let newTask = <Task key={habits[i].name} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={() => toggleComplete(user, habits[i])} onUndo={() => toggleUndo(user, habits[i])}></Task>
         taskArray.push(newTask);
     }
 

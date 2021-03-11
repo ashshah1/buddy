@@ -27,7 +27,6 @@ function Shop() {
         let newAvatar;
         if (currSelected === i) {
             newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
-            // populate in preview somehow
         } else if (currAvatars.includes(i)) {
             newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
@@ -44,11 +43,11 @@ function Shop() {
     for (let i = 0; i < 4; i++) {
         let newBg;
         if (bgSelected === i) {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-light"></BackgroundElem>
-        } else if (currBg.includes[i]) {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-warning"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-light" status="selected"></BackgroundElem>
+        } else if (currBg.includes(i)) {
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-warning" status="select"></BackgroundElem>
         } else {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-success"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-success" status="insert price"></BackgroundElem>
         }
         if (i >= backgrounds.length) {
             newBg = <BackgroundElem key={backgrounds[i]} index={i} locked="bg-box still-locked" src={backgrounds[i]} class="btn btn-success" status="insert price"></BackgroundElem>
@@ -97,13 +96,15 @@ function Shop() {
 function AvatarElem(props) {
     const { user } = useContext(Context);
 
+    let locked = (props.locked).includes("still-locked")
+    
     const changeStatus = async (user) => {
         const userRef = firestore.collection("users").doc(user.local.uid);
         if (props.status == "select") {
             await userRef.update({
                 avatarSelected: props.index
             })
-        } else if (props.status == "insert price" && user.points > 100) { // replace 100 with actual price
+        } else if (props.status == "insert price" && user.points > 100 && !locked) { // replace 100 with actual price
             await userRef.update({
                 avatarSelected: props.index,
                 points: firebase.firestore.FieldValue.increment(-100),
@@ -111,6 +112,7 @@ function AvatarElem(props) {
             })
         }
     }
+
         return (
             <div className="col-md-4 col-lg-4">
                 <div className="an-avatar">
@@ -125,6 +127,8 @@ function AvatarElem(props) {
 
 function BackgroundElem(props) {
     const { user } = useContext(Context);
+    
+
 
     const changeStatus = async (user) => {
         const userRef = firestore.collection("users").doc(user.local.uid);
@@ -144,7 +148,7 @@ function BackgroundElem(props) {
         <div className="col-md-6 col-lg-6">
             <div className={props.locked} style={{ backgroundImage: `url(${props.src})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
                 {/* <img className="bg-img" src={props.src}></img> */}
-                <button onClick={() => {changeStatus(user)}} className={props.class}>selected</button>
+                <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>
             </div>
         </div>
     )

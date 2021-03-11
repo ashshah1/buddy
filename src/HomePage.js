@@ -14,16 +14,14 @@ import "./HomePage.css";
 function HomePage() {
 
   const { user } = useContext(Context);
-  let currSelected = user.avatarSelected;
-  let bgSelected = user.bgSelected;
-
 
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
   if (user) {
     return (
       <main>
-        <img className="background" src={backgrounds[bgSelected]} alt="trees and blue skies"></img>
-        <img className="curr-avatar" src={avatars[currSelected]} alt="animated personal avatar"></img>
+        <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
+        <div className="coin-div">{user.points} coins</div>
+        <img className="curr-avatar" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
         <TaskList></TaskList>
