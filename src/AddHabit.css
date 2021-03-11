@@ -56,20 +56,20 @@ input.form-control.habit-name{
     border: 1px solid #338077;
 }
 
-/* .filled {
+.filled {
     color: #FFFFFF;
     background-color: #338077;
-} */
+} 
 
 .not-filled {
     color: #338077;
     background-color: #FFFFFF;
 }
 
-.not-filled:focus {
+/* .not-filled:focus {
     color: #FFFFFF;
     background-color: #338077;
-}
+} */
 
 .frequency button {
     border: 1px solid #1A8199;
@@ -119,3 +119,8 @@ input.form-control.habit-name{
     width: 70%;
     padding: 0 1rem 0 1rem;
 }
+
+.repeat-label {
+    margin-right: 2rem;
+}
+

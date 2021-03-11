@@ -59,14 +59,18 @@ function TaskList () {
     }
 
     // similarly, updates backend when users undoes a task, decrementing both counters and points
-    const toggleUndo = async (habit) => {
+    const toggleUndo = async (user, habit) => {
+        console.log("undo");
         const habitRef = firestore.collection("Habits").doc(habit.id);
+        const userRef = firestore.collection("users").doc(user.local.uid);
         await habitRef.update({
             currCounter: firebase.firestore.FieldValue.increment(-1),
-            overallCounter: firebase.firestore.FieldValue.increment(-1),
+            overallCounter: firebase.firestore.FieldValue.increment(-1)
+        }); 
+        await userRef.update({
             points: firebase.firestore.FieldValue.increment(-20),
             exp: firebase.firestore.FieldValue.increment(-2)
-        }); 
+        })
     }
 
 
