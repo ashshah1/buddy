@@ -115,7 +115,7 @@ function AvatarElem(props) {
 
         return (
             <div className="col-md-4 col-lg-4">
-                <div className="an-avatar">
+                <div className={props.locked}>
                     <p>AVATAR NAME</p>
                     <img className="avatar-img" src={props.src}></img>
                     <button onClick={() => { changeStatus(user) }} className={props.class}>{props.status}</button>
@@ -136,7 +136,7 @@ function BackgroundElem(props) {
             await userRef.update({
                 bgSelected: props.index
             })
-        } else if (props.status == "insert price" && user.points > 100) { // replace 100 with actual price
+        } else if (props.status == "insert price" && user.points >= 100) { // replace 100 with actual price
             await userRef.update({
                 bgSelected: props.index,
                 points: firebase.firestore.FieldValue.increment(-100),
