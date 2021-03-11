@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Context } from "./Context";
 import { avatars, backgrounds } from './Vectors.js'
-import { firestore } from './firebase'
+import { firestore, firebase } from './firebase'
 
 
 import './Shop.css';
@@ -99,31 +99,46 @@ function AvatarElem(props) {
 
     const changeStatus = async (user) => {
         const userRef = firestore.collection("users").doc(user.local.uid);
-        await userRef.update({
-            avatarSelected: props.index
-        })
-
+        if (props.status == "select") {
+            await userRef.update({
+                avatarSelected: props.index
+            })
+        } else if (props.status == "insert price" && user.points > 100) { // replace 100 with actual price
+            await userRef.update({
+                avatarSelected: props.index,
+                points: firebase.firestore.FieldValue.increment(-100),
+                avatarOwn: firebase.firestore.FieldValue.arrayUnion(props.index)
+            })
+        }
     }
-    return (
-        <div className="col-md-4 col-lg-4">
-            <div className="an-avatar">
-                <p>AVATAR NAME</p>
-                <img className="avatar-img" src={props.src}></img>
-                <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>
+        return (
+            <div className="col-md-4 col-lg-4">
+                <div className="an-avatar">
+                    <p>AVATAR NAME</p>
+                    <img className="avatar-img" src={props.src}></img>
+                    <button onClick={() => { changeStatus(user) }} className={props.class}>{props.status}</button>
+                </div>
             </div>
-        </div>
-    )
-}
+        )
+    }
+
 
 function BackgroundElem(props) {
     const { user } = useContext(Context);
 
     const changeStatus = async (user) => {
         const userRef = firestore.collection("users").doc(user.local.uid);
-        await userRef.update({
-            bgSelected: props.index
-        })
-
+        if (props.status == "select") {
+            await userRef.update({
+                bgSelected: props.index
+            })
+        } else if (props.status == "insert price" && user.points > 100) { // replace 100 with actual price
+            await userRef.update({
+                bgSelected: props.index,
+                points: firebase.firestore.FieldValue.increment(-100),
+                bgOwn: firebase.firestore.FieldValue.arrayUnion(props.index)
+            })
+        }
     }
     return (
         <div className="col-md-6 col-lg-6">
