@@ -17,48 +17,48 @@ function HomePage() {
 
 
   // tester tasks, should be replaced with data from the user once they log in
-  const taskTest = [
-    {
-    "taskName": "Tester task #1",
-    "taskDuration": "weekly",
-    "taskFreq": 4,
-    "currCount": 1,
-    "totalCount": 12,
-    "taskCategory": "mind",
-    "color": "#ACE6A1",
-    "complete": false
-    },
-    {
-      "taskName": "Tester task #2",
-      "taskDuration": "daily",
-      "taskFreq": 10,
-      "currCount": 1,
-      "totalCount": 12,
-      "taskCategory": "body",
-      "color": "#3D998A",
-      "complete": false
-      },
-    {
-      "taskName": "Tester task #3",
-      "taskDuration": "daily",
-      "taskFreq": 7,
-      "currCount": 2,
-      "totalCount": 14,
-      "taskCategory": "body",
-      "color": "#A9E3EB",
-      "complete": true
-    },
-    ]
+  // const taskTest = [
+  //   {
+  //   "taskName": "Tester task #1",
+  //   "taskDuration": "weekly",
+  //   "taskFreq": 4,
+  //   "currCount": 1,
+  //   "totalCount": 12,
+  //   "taskCategory": "mind",
+  //   "color": "#ACE6A1",
+  //   "complete": false
+  //   },
+  //   {
+  //     "taskName": "Tester task #2",
+  //     "taskDuration": "daily",
+  //     "taskFreq": 10,
+  //     "currCount": 1,
+  //     "totalCount": 12,
+  //     "taskCategory": "body",
+  //     "color": "#3D998A",
+  //     "complete": false
+  //     },
+  //   {
+  //     "taskName": "Tester task #3",
+  //     "taskDuration": "daily",
+  //     "taskFreq": 7,
+  //     "currCount": 2,
+  //     "totalCount": 14,
+  //     "taskCategory": "body",
+  //     "color": "#A9E3EB",
+  //     "complete": true
+  //   },
+  //   ]
 
   const { user } = useContext(Context);  
 
-  const toggleComplete = (taskName) => {
-    console.log(taskName)
-  }
+  // const toggleComplete = (taskName) => {
+  //   console.log(taskName)
+  // }
 
-  const undoComplete = (taskName) => {
-    console.log(taskName)
-  }
+  // const undoComplete = (taskName) => {
+  //   console.log(taskName)
+  // }
 
 
   // const [tasks, setTasks] = useState(taskTest)
@@ -97,7 +97,7 @@ function HomePage() {
         <img className="background" src={background} alt="scenary of blue sky and trees"></img>
         <button className="sign-in btn btn-outline-dark" onClick={() => fireauth.signOut()}>Log Out</button>
         <div className="content-containers">
-        <TaskList whenClicked={toggleComplete} onUndo={undoComplete}></TaskList>
+        <TaskList></TaskList>
         <XPBar level="4" currXP="45" totalXP="100"></XPBar>
       </div>
       </main>

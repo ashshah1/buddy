@@ -7,6 +7,8 @@ import { Context } from './Context.js';
 import useHabits from './useHabits.js';
 import { useContext } from "react"
 
+import { firebase, firestore } from './firebase';
+
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import AddHabit from './AddHabit';
@@ -19,7 +21,6 @@ function TaskList (props) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    let tasks = props.tasks;
     let taskArray = [];
     let taskDuration = "";
 
@@ -30,11 +31,27 @@ function TaskList (props) {
         taskDuration = "daily";
     }
 
-    for (let i = 0; i < habits.length; i++) {
-        let newTask = <Task key={habits[i].name} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={props.whenClicked} onUndo={props.onUndo}></Task>
-        taskArray.push(newTask);
+    const toggleComplete = async (habit) => {
+        const habitRef = firestore.collection("Habits").doc(habit.id);
+        await habitRef.update({
+            currCounter: firebase.firestore.FieldValue.increment(1),
+            overallCounter: firebase.firestore.FieldValue.increment(1) 
+        }); 
     }
 
+    const toggleUndo = async (habit) => {
+        const habitRef = firestore.collection("Habits").doc(habit.id);
+        await habitRef.update({
+            currCounter: firebase.firestore.FieldValue.increment(-1),
+            overallCounter: firebase.firestore.FieldValue.increment(-1) 
+        }); 
+    }
+
+
+    for (let i = 0; i < habits.length; i++) {
+        let newTask = <Task key={habits[i].name} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={() => toggleComplete(habits[i])} onUndo={() => toggleUndo(habits[i])}></Task>
+        taskArray.push(newTask);
+    }
 
     return (
         <div className="tasklist-container">
