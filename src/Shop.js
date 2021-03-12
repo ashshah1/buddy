@@ -30,11 +30,11 @@ function Shop() {
         } else if (currAvatars.includes(i)) {
             newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-success" status="200 coins"></AvatarElem>
         }
 
         if (i >= avatars.length) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" index={i} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" index={i} src={avatars[i]} class="btn btn-success" status="200 coins"></AvatarElem>
         }
         avatarArray.push(newAvatar)
     }

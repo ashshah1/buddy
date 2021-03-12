@@ -133,7 +133,7 @@ function AddHabit() {
                     </div>
                     <button
                         type="submit" className="btn mt-4 add-btn" disabled={!user}>
-                        Create Your Post!
+                        Create Habit!
                     </button>
                 </form>
             </div>
