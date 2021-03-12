@@ -6,7 +6,7 @@ import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
 
-import { avatars, backgrounds } from './Vectors.js';
+import { avatars, backgrounds, overlays } from './Vectors.js';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -38,6 +38,8 @@ function HomePage() {
     return (
       <main>
         <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
+        <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
+        <img className="background animations bounce-1" src={overlays[3]}></img>
         <div className="nav-bar">
           <div className="nav-part1">
             <img src={shopIcon} className="icon" onClick={showShop}></img>
