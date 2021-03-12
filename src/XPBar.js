@@ -11,10 +11,10 @@ function XPBar(props) {
         <div className="xpBar">
             <div className="level-descrip">
                 <p className="level">LEVEL {props.level}</p>
-                <p className="level">{props.currXP}/{props.totalXP}</p>
+                <p className="level">{props.currXP}/{props.totalXP} XP</p>
             </div>
         <div id="progress-bar">
-            <ProgressBar variant="success" now={props.currXP} animated={false} max={props.totalXP} />
+            <ProgressBar className="pain" variant="success" now={props.currXP} animated={false} max={props.totalXP} />
         </div>
         </div>
     )

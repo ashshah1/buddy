@@ -63,6 +63,11 @@ html, body, #root, .modal {
   margin: 0;
 }
 
+.modal-body {
+  display: flex;
+  justify-content: center;
+}
+
 @media (min-width: 576px) {
   .modal-dialog {
       max-width: 70%;

@@ -22,8 +22,6 @@ import {
   Route,
 } from "react-router-dom";
 
-
-
 export default function App() {
 
   return (
@@ -31,7 +29,7 @@ export default function App() {
     <Router>
       <div>
      
-        <NavBar />
+        {/* <NavBar /> */}
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
