@@ -82,7 +82,7 @@ function TaskList () {
     return (
         <div className="tasklist-container">
             <div className="header-container">
-                <p className="task-header">TASKS</p>
+                <p className="task-header">HABITS</p>
                 <p className="task-header">—</p>
             </div>
             {taskArray}

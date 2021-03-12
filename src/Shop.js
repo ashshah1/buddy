@@ -127,8 +127,6 @@ function AvatarElem(props) {
 
 function BackgroundElem(props) {
     const { user } = useContext(Context);
-    
-
 
     const changeStatus = async (user) => {
         const userRef = firestore.collection("users").doc(user.local.uid);
@@ -146,8 +144,8 @@ function BackgroundElem(props) {
     }
     return (
         <div className="col-md-6 col-lg-6">
-            <div className={props.locked} style={{ backgroundImage: `url(${props.src})`, backgroundSize: '100% auto', backgroundRepeat: 'no-repeat', backgroundPosition: 'center'}}>
-                {/* <img className="bg-img" src={props.src}></img> */}
+            <div className={props.locked}>
+                <img className="bg-img" src={props.src}></img>
                 <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>
             </div>
         </div>

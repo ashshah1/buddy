@@ -50,18 +50,18 @@ function Task(props) {
             &nbsp;
         </div>
         <div id="padding-div">
-            <div className="container-one">
+            <div className="container-one pt">
                 <p className={taskView} style={{textDecoration: decor}}>{props.taskName}</p>
                 <Button onClick={handleClick} className={"btn btn-info " + markBtn}>mark complete</Button>
                 <Button onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
-                <p id="dot-dot-dot">dot</p>
+                <p id="dot-dot-dot" className={markBtn}>dot</p>
             </div>
             <div className="container-two">
                 <p>
-                    <a className={taskView}>{props.taskDuration}  &nbsp;</a>
-                    <a className={taskView}>{props.currCount} {" / "}</a><a className={taskView}>{props.taskFreq}</a>
+                    <span className={taskView}>{props.taskDuration} &nbsp;</span>
+                    <span className={taskView}>{props.currCount} {" / "}</span><span className={taskView}>{props.taskFreq}</span>
                 </p>
-                <p>{props.totalCount}</p>
+                <p>{props.totalCount} total</p>
             </div>
         </div>
     </div>);

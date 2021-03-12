@@ -4,7 +4,7 @@
     border-radius: 10px;
     position: relative;
     margin: 0rem 1rem 1rem 1rem;
-    height: auto;
+    height: 5.5rem;
 }
 
 .curr-progress {
@@ -15,7 +15,7 @@
 }
 
 #padding-div {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
 }
 
 .container-one, .container-two {

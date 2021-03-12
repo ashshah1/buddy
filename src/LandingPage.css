@@ -15,36 +15,38 @@
 
 .landing-1 div {
     width: 55%;
-    padding-bottom: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .landing-1 h1 {
     font-weight: bold;
-    font-size: 5rem;
+    font-size: 90px;
     line-height: 117px;
     letter-spacing: 0.05em;
     color: #094C59;
+    margin-bottom: 2.5rem;
 }
 
 .landing-1 p {
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 45px;
     line-height: 44px;
     letter-spacing: 0.03em;
     color: #4F4F4F;
+    margin-bottom: 3rem;
 }
 
 .landing-1 button {
     background: #094C59;
     border-style: none;
     border-radius: 10px;
-    padding: 7px 17px 7px 17px;
+    padding: 10px 50px;
 }
 
 .landing-1 button a {
     color: #FFFFFF;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 20px;
     line-height: 29px;
     letter-spacing: 0.085em;
 }
@@ -120,7 +122,7 @@
 .landing-3 .landing-container {
     display: flex;
     justify-content: center;
-    padding: 3rem;
+    padding: 5rem;
 }
 
 .landing-3 .landing-container img {

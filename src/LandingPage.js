@@ -5,6 +5,7 @@ import icon1 from './images/landingicon-1.png';
 import icon2 from './images/landingicon-2.png';
 import icon3 from './images/landingicon-3.png';
 import icon4 from './images/landingicon-4.png';
+import arrow from './images/arrow.png';
 
 import './LandingPage.css';
 
@@ -16,9 +17,9 @@ function LandingPage() {
                 <div>
                     <h1>buddy</h1>
                     <p className="pb-3">Set meaningful goals, stay motivated with a buddy, build long-lasting healthy habits, and improve your well-being</p>
-                    <button><Link to="/LogIn">BUILD YOUR HABITS</Link></button>
+                    <button><Link to="/">BUILD YOUR HABITS</Link></button>
                 </div>
-                <img className="bounce" src="https://www.flaticon.com/svg/vstatic/svg/318/318426.svg?token=exp=1614973326~hmac=a69d3fafddddb0270a3332fe684d3b70" alt="down arrow"></img>
+                <img className="bounce" src={arrow} alt="down arrow"></img>
             </div>
 
             <div className="landing landing-2">
@@ -67,7 +68,7 @@ function LandingPage() {
                     </div>
                 </div>
                 <div className="button">
-                    <Link to="/LogIn">MEET YOUR BUDDY <span role="img" aria-label="right arrow">→</span></Link> 
+                    <Link to="/">MEET YOUR BUDDY <span role="img" aria-label="right arrow">→</span></Link> 
                 </div>
             </div>
 
