@@ -7,3 +7,8 @@ This is a capstone project that aims to build a system that helps users build lo
 * Kayla Chea - Frontend Dev + UX Design
 * David Mai - Backend Dev
 * Winnie Ma - Backend Dev + PM
+
+
+## created using
+
+Built using React, data storage and hosting on Firebase.
