@@ -70,6 +70,7 @@ align-self: flex-start;
 
 .nav-part1 {
     display: flex;
+    justify-content: space-between;
     align-items: center;
 }
 
