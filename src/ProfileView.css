@@ -21,3 +21,7 @@
 .buddy-text, .dev-note {
     color: #094C59;
 }
+
+.delete-btn {
+    width: 30%;
+}
