@@ -15,7 +15,6 @@ function ProfileView() {
     const deleteAccount = () => {
         for (let i = 0; i < habits.length; i++) {
             let currID = habits[i].id;
-            console.log(currID);
             const habitRef = firestore.collection("Habits").doc(currID).delete().then(() => {
                 console.log("delete successful");
             })
