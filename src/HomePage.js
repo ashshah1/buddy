@@ -5,6 +5,7 @@ import { firebase, fireauth } from "./firebase";
 import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
+import LandingPage from "./LandingPage.js";
 
 import { avatars, backgrounds, overlays } from './Vectors.js';
 
@@ -18,6 +19,8 @@ import shopIcon from "./images/icon-shop.png";
 import avatarIcon from "./images/icon-avatar.png";
 import Shop from './Shop.js';
 import {Navbar, Nav} from 'react-bootstrap';
+
+import ProfileView from './ProfileView.js'
 
 import "./HomePage.css";
 
@@ -85,8 +88,8 @@ function HomePage() {
           <Modal.Header closeButton>
             <Modal.Title>PROFILE</Modal.Title>
           </Modal.Header>
-          <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button>
-        </Modal.Body>
+          {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
+          <Modal.Body><ProfileView></ProfileView></Modal.Body>
         </Modal>
       </main>
     )
@@ -94,8 +97,6 @@ function HomePage() {
     return (
       <div>
         <LogInPage>
-          {/* <p>User exp: {user.exp}</p>
-            <p>User level: {user.level}</p> */}
         </LogInPage>
       </div>
     )
