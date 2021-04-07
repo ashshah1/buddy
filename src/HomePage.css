@@ -89,6 +89,10 @@ align-self: flex-start;
     margin: 2rem;
 }
 
+.icon:hover {
+    border: solid 3px grey;
+}
+
 img.vert-move {
     -webkit-animation: mover 1s infinite  alternate;
     animation: mover 1s infinite  alternate;
@@ -108,4 +112,18 @@ img.vert-move {
 
 .tasklist-container {
     margin-top: 5rem; 
+}
+
+.nav-item:hover {
+    /* border: solid 5px thistle; */
+    background-color: white;
+    opacity: 0.7;
+}
+
+@media(max-width: 768px) {
+    .icon {
+        height: 2rem;
+        margin: 1rem;
+        
+    }
 }
