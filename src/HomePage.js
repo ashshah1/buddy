@@ -52,20 +52,20 @@ function HomePage() {
                 <div>{user.points} coins</div>
               </div>
             </Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="ml-auto">
-                <li className="nav-item">
+              <Nav className="ml-auto"> */}
+                {/* <li className="nav-item">  no stats or cal icon for now
                   <img src={calIcon} className="icon"></img>
                 </li>
                 <li className="nav-item">
                   <img src={statsIcon} className="icon"></img>
-                </li>
-                <li className="nav-item">
-                  <img src={avatarIcon} className="icon" onClick={showProfile}></img>
-                </li>
-              </Nav>
-            </Navbar.Collapse>
+                </li> */}
+                <div className="nav-part2 ml-auto">
+                    <img src={avatarIcon} className="icon" onClick={showProfile}></img>
+                </div>
+              {/* </Nav>
+            </Navbar.Collapse> */}
         </Navbar>
         
 

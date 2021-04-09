@@ -1,10 +1,12 @@
 .background {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
     z-index: -1;
+    background-size: cover;
+
 } 
 
 .content-containers {
@@ -76,12 +78,13 @@ align-self: flex-start;
 
 .nav-part2 {
     display: flex;
-    align-items: center;
+    float: right;
 }
 
 .nav-part2 button {
     height: 3rem;
 }
+
 
 .icon {
     width: auto;
@@ -89,9 +92,11 @@ align-self: flex-start;
     margin: 2rem;
 }
 
+/*
 .icon:hover {
     border: solid 3px grey;
 }
+*/
 
 img.vert-move {
     -webkit-animation: mover 1s infinite  alternate;
@@ -113,17 +118,21 @@ img.vert-move {
 .tasklist-container {
     margin-top: 5rem; 
 }
-
+/*
 .nav-item:hover {
-    /* border: solid 5px thistle; */
     background-color: white;
     opacity: 0.7;
 }
+*/
 
 @media(max-width: 768px) {
     .icon {
         height: 2rem;
         margin: 1rem;
-        
     }
+
+    .background {
+        width: 768px;
+        background-size: cover;
+    } 
 }
