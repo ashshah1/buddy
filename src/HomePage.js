@@ -43,7 +43,7 @@ function HomePage() {
       <main>
         <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
         <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
-        <img className="background animations bounce-1" src={overlays[3]}></img>
+        <img className="background animations bounce-1" src={overlays[4]}></img>
         <Navbar expand="lg">
             <Navbar.Brand className="nav-part1">
               <img src={shopIcon} className="icon" onClick={showShop}></img>
