@@ -11,6 +11,7 @@ function TaskList () {
     const { user } = useContext(Context);
     const habits = useHabits(user.uid)
     
+    const [hidden, setHidden] = useState("");
     const [show, setShow] = useState(false); // keeps track of addhabit modal visibility
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -74,6 +75,14 @@ function TaskList () {
     }
 
 
+    const toggleHidden = () => {
+        if (hidden == "") {
+         setHidden("hidden");
+        } else {
+            setHidden("")
+        }
+    }
+
     for (let i = 0; i < habits.length; i++) {
         let newTask = <Task key={habits[i].name} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={() => toggleComplete(user, habits[i])} onUndo={() => toggleUndo(user, habits[i])}></Task>
         taskArray.push(newTask);
@@ -83,8 +92,9 @@ function TaskList () {
         <div className="tasklist-container">
             <div className="header-container">
                 <p className="task-header">HABITS</p>
-                <p className="task-header">—</p>
+                <p className="task-header" style={{ cursor: 'pointer'}} onClick={toggleHidden}>—</p>
             </div>
+            <div className={hidden}>
             {taskArray}
             <button className="add-habit-btn" onClick={handleShow}>+ add a new task</button>
 
@@ -95,6 +105,7 @@ function TaskList () {
                 </Modal.Header>
                 <Modal.Body><AddHabit></AddHabit></Modal.Body>
             </Modal>
+            </div>
         </div>
     )
 }
