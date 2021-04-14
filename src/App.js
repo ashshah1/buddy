@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import HomePage from './HomePage.js'
 import LogInPage from './LogInPage.js'
 import NavBar from './NavBar.js'
+import EditHabit from './EditHabit.js'
 import Shop from './Shop.js'
 import ProfileView from './ProfileView.js'
 import LandingPage from './LandingPage.js'
@@ -43,6 +44,9 @@ export default function App() {
           <Route path="/login">
             <LogInPage />
           </Route> 
+          <Route path="/edit">
+            <EditHabit />
+          </Route>
           <Route path="/add">
             <AddHabit />
           </Route>      
