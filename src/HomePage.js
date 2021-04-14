@@ -35,7 +35,11 @@ function HomePage() {
   const closeProfile = () => setProfile(false);
   const showProfile = () => setProfile(true);
 
+
+  
+
   const { user } = useContext(Context);
+
 
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
   if (user) {

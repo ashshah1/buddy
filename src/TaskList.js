@@ -84,7 +84,7 @@ function TaskList () {
     }
 
     for (let i = 0; i < habits.length; i++) {
-        let newTask = <Task key={habits[i].name} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={() => toggleComplete(user, habits[i])} onUndo={() => toggleUndo(user, habits[i])}></Task>
+        let newTask = <Task key={habits[i].name} id={habits[i].id} taskName={habits[i].name} taskDuration={taskDuration} taskFreq={habits[i].frequency} currCount={habits[i].currCounter} totalCount={habits[i].overallCounter} taskCategory={habits[i].category} color={habits[i].color}  whenClicked={() => toggleComplete(user, habits[i])} onUndo={() => toggleUndo(user, habits[i])}></Task>
         taskArray.push(newTask);
     }
 

@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 import { Button } from "react-bootstrap";
 import './Task.css';
+import EditHabit from './EditHabit.js';
+import dots from './images/three-dots-vertical.svg';
+import Modal from 'react-bootstrap/Modal';
 
 function Task(props) {
 
     const [isShown, setIsShown] = useState(false); // keeps track of wehther complete buttons are visible
+
+    // modal for edit
+    const [edit, setEdit] = useState(false);
+    const closeEdit = () => setEdit(false);
+    const showEdit = () => setEdit(true);
 
     let currProgress = (props.currCount/props.taskFreq) * 100 + "%";
     const progressStyle = {
@@ -44,7 +52,6 @@ function Task(props) {
         markBtn = "";
     }
 
-
     return (<div className="task-container" onMouseEnter={toggleView} onMouseLeave={toggleBack}>
         <div className="curr-progress" style={progressStyle}>
             &nbsp;
@@ -54,7 +61,16 @@ function Task(props) {
                 <p className={taskView} style={{textDecoration: decor}}>{props.taskName}</p>
                 <Button onClick={handleClick} className={"btn btn-info " + markBtn}>mark complete</Button>
                 <Button onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
-                <p id="dot-dot-dot" className={markBtn}>dot</p>
+                {/* <p id="dot-dot-dot" className={markBtn}>dot</p> */}
+                <img id="dot-dot-dot" style={{ height:"20px", cursor:"pointer" }} src={dots} onClick={showEdit}/>
+
+                <Modal show={edit} onHide={closeEdit}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>EDIT HABIT</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body><EditHabit close={ () => closeEdit} id={props.id} task={props}></EditHabit></Modal.Body>
+                </Modal>
+
             </div>
             <div className="container-two">
                 <p>
