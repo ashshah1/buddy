@@ -22,7 +22,7 @@ function LandingPage() {
                 <img className="bounce" src={arrow} alt="down arrow"></img>
             </div>
 
-            <div className="landing landing-2">
+            {/* <div className="landing landing-2">
                 <div>
                     <h1>Our Goal</h1>
                     <p>Habits play a large role in our lives. Around <strong>40%</strong> of our everyday behavior is repeated in the form of habits.</p>
@@ -74,7 +74,7 @@ function LandingPage() {
 
             <div className="landing landing-4">
                 <p>copyright © 2021 buddy all rights reserved</p>
-            </div>
+            </div> */}
         </React.Fragment>
     );
 }
