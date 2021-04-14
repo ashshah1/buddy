@@ -30,11 +30,11 @@ function Shop() {
         } else if (currAvatars.includes(i)) {
             newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-success" status="200 coins"></AvatarElem>
         }
 
         if (i >= avatars.length) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" index={i} src={avatars[i]} class="btn btn-success" status="insert price"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" index={i} src={avatars[i]} class="btn btn-success" status="200 coins"></AvatarElem>
         }
         avatarArray.push(newAvatar)
     }
@@ -47,10 +47,10 @@ function Shop() {
         } else if (currBg.includes(i)) {
             newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-warning" status="select"></BackgroundElem>
         } else {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-success" status="insert price"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-success" status="200 coins"></BackgroundElem>
         }
         if (i >= backgrounds.length) {
-            newBg = <BackgroundElem key={backgrounds[i]} index={i} locked="bg-box still-locked" src={backgrounds[i]} class="btn btn-success" status="insert price"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} index={i} locked="bg-box still-locked" src={backgrounds[i]} class="btn btn-success" status="200 coins"></BackgroundElem>
         }
 
 
@@ -104,7 +104,7 @@ function AvatarElem(props) {
             await userRef.update({
                 avatarSelected: props.index
             })
-        } else if (props.status == "insert price" && user.points > 100 && !locked) { // replace 100 with actual price
+        } else if (props.status == "200 coins" && user.points >= 200 && !locked) { // replace 100 with actual price
             await userRef.update({
                 avatarSelected: props.index,
                 points: firebase.firestore.FieldValue.increment(-100),
@@ -134,7 +134,7 @@ function BackgroundElem(props) {
             await userRef.update({
                 bgSelected: props.index
             })
-        } else if (props.status == "insert price" && user.points >= 100) { // replace 100 with actual price
+        } else if (props.status == "200 coins" && user.points >= 200) { // replace 100 with actual price
             await userRef.update({
                 bgSelected: props.index,
                 points: firebase.firestore.FieldValue.increment(-100),

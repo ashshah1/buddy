@@ -5,16 +5,19 @@ import { Context } from "./Context.js";
 import './AddHabit.css'
 import { ToggleButton, ButtonGroup } from 'react-bootstrap';
 
-function AddHabit() {
+function EditHabit(props) {
+    console.log(props.task);
     const { user } = useContext(Context);
 
+    // props is the current habit id
+
     // keep track of all the values being added to the new habit
-    const [name, setName] = useState("");
-    const [color, setColor] = useState("");
-    const [category, setCategory] = useState("mind");
-    const [frequency, setFrequency] = useState(0);
+    const [name, setName] = useState(props.task.taskName);
+    const [color, setColor] = useState(props.task.color);
+    const [category, setCategory] = useState(props.task.category);
+    const [frequency, setFrequency] = useState(props.task.taskFreq);
     const [state, setState] = useState("SELECT");
-    const [repeat, setRepeat] = useState("");
+    const [repeat, setRepeat] = useState(props.task.taskDuration);
 
     const [radioValue, setRadioValue] = useState('mind');
 
@@ -35,37 +38,26 @@ function AddHabit() {
 
     // clears the content on the page once a habit is added
     const resetModal = () => {
-        setName("");
-        setState("");
-        setColor("");
-        setCategory("mind");
-        setFrequency(0);
+        props.close();
     }
 
-    
-
     useEffect(() => {
+        const habitRef = firestore.collection("Habits").doc(props.id);
 
         // creates a new habit object which is then added to the firestore
-        const createHabit = async () => {
-            const newHabitObj = {
+        const updateHabit = async () => {
+            await habitRef.update({
                 category: category,
                 color: color,
-                currCounter: 0,
                 daily: (repeat === "daily"), // todo: update somehow with the buttons
                 exp: 10,
                 frequency: frequency,
                 name: name,
-                notes: "",
-                overallCounter: 0,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                user: firestore.collection("users").doc(user.local.uid),
                 weekly: (repeat === "weekly")
-            };
-            await firestore.collection("Habits").add(newHabitObj)
+            })   
         };
         if (state === "FINISH") {
-            createHabit();
+            updateHabit();
             resetModal();
         }
     }, [state, name]);
@@ -76,7 +68,7 @@ function AddHabit() {
                 <form className="add-habit-form" onSubmit={submitHabit}>
                     <div className="form-group pb-2">
                         <label htmlFor="title">Name</label>
-                        <input type="text" className="form-control habit-name" placeholder="name your habit" value={name} onChange={event => {
+                        <input type="text" className="form-control habit-name" placeholder={props.task.taskName} value={name} onChange={event => {
                             setName(event.target.value);
                         }}
                         />
@@ -133,7 +125,7 @@ function AddHabit() {
                     </div>
                     <button
                         type="submit" className="btn mt-4 add-btn" disabled={!user}>
-                        Create Habit!
+                        Save Habit!
                     </button>
                 </form>
             </div>
@@ -142,5 +134,4 @@ function AddHabit() {
     )
 }
 
-
-export default AddHabit;
+export default EditHabit;

@@ -5,6 +5,7 @@ import { firebase, fireauth } from "./firebase";
 import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
+import LandingPage from "./LandingPage.js";
 
 import { avatars, backgrounds, overlays } from './Vectors.js';
 
@@ -17,6 +18,9 @@ import statsIcon from "./images/icon-stats.png";
 import shopIcon from "./images/icon-shop.png";
 import avatarIcon from "./images/icon-avatar.png";
 import Shop from './Shop.js';
+import {Navbar, Nav} from 'react-bootstrap';
+
+import ProfileView from './ProfileView.js'
 
 import "./HomePage.css";
 
@@ -31,7 +35,11 @@ function HomePage() {
   const closeProfile = () => setProfile(false);
   const showProfile = () => setProfile(true);
 
+
+  
+
   const { user } = useContext(Context);
+
 
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
   if (user) {
@@ -39,21 +47,31 @@ function HomePage() {
       <main>
         <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
         <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
-        <img className="background animations bounce-1" src={overlays[3]}></img>
-        <div className="nav-bar">
-          <div className="nav-part1">
-            <img src={shopIcon} className="icon" onClick={showShop}></img>
-            <div className="coin-div">
-              <img className="coin mr-3" src={coin}></img>
-              <div>{user.points} coins</div>
-            </div>
-          </div>
-          <div className="nav-part2">
-            <img src={calIcon} className="icon"></img>
-            <img src={statsIcon} className="icon"></img>
-            <img src={avatarIcon} className="icon" onClick={showProfile}></img>
-          </div>
-        </div>
+        <img className="background animations bounce-1" src={overlays[4]}></img>
+        <Navbar expand="lg">
+            <Navbar.Brand className="nav-part1">
+              <img src={shopIcon} className="icon" onClick={showShop}></img>
+              <div className="coin-div">
+                <img className="coin mr-3" src={coin}></img>
+                <div>{user.points} coins</div>
+              </div>
+            </Navbar.Brand>
+            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ml-auto"> */}
+                {/* <li className="nav-item">  no stats or cal icon for now
+                  <img src={calIcon} className="icon"></img>
+                </li>
+                <li className="nav-item">
+                  <img src={statsIcon} className="icon"></img>
+                </li> */}
+                <div className="nav-part2 ml-auto">
+                    <img src={avatarIcon} className="icon" onClick={showProfile}></img>
+                </div>
+              {/* </Nav>
+            </Navbar.Collapse> */}
+        </Navbar>
+        
 
         <div className="img-container">
           <img className="curr-avatar vert-move" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
@@ -74,8 +92,8 @@ function HomePage() {
           <Modal.Header closeButton>
             <Modal.Title>PROFILE</Modal.Title>
           </Modal.Header>
-          <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button>
-        </Modal.Body>
+          {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
+          <Modal.Body><ProfileView></ProfileView></Modal.Body>
         </Modal>
       </main>
     )
@@ -83,8 +101,6 @@ function HomePage() {
     return (
       <div>
         <LogInPage>
-          {/* <p>User exp: {user.exp}</p>
-            <p>User level: {user.level}</p> */}
         </LogInPage>
       </div>
     )
