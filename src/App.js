@@ -22,6 +22,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import CheckInModal from './CheckInModal.js';
 
 export default function App() {
 
@@ -49,7 +50,10 @@ export default function App() {
           </Route>
           <Route path="/add">
             <AddHabit />
-          </Route>      
+          </Route>    
+          <Route path="/check">
+            <CheckInModal />
+          </Route>  
           <Route exact path="/landing">
             <LandingPage />
           </Route> 

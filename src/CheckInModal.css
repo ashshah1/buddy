@@ -1,0 +1,50 @@
+.emoji {
+    font-size: 3vw;
+    margin: 0.5vw 1vw 1vw 1vw;
+}
+
+.moods {
+    display: flex;
+}
+
+.emoji-name {
+    margin: 0vw 1.5vw 1vw 1.5vw;
+}
+
+.one-mood {
+    display: flex;
+    flex-direction: column;
+}
+
+.check-in-q{
+    text-align: center;
+    font-weight: 600;
+    font-size: 1vw;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+}
+
+.finish-btn {
+    display: flex;
+    justify-content: center;
+}
+
+.skip-btn {
+    color: #094C59;
+    text-decoration: underline;
+    margin: 1vw;
+    margin-left: 80%;
+    cursor: pointer;
+}
+
+.one-mood:hover {
+    /* border: 1px solid red; */
+    background-color: #E2E2E2;
+    border-radius: 10px;
+}
+
+.one-mood:focus {
+    /* border: 1px solid red; */
+    background-color: #E2E2E2;
+    border-radius: 10px;
+}

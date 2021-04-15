@@ -23,6 +23,7 @@ import {Navbar, Nav} from 'react-bootstrap';
 import ProfileView from './ProfileView.js'
 
 import "./HomePage.css";
+import CheckInModal from "./CheckInModal";
 
 function HomePage() {
   // modal for shop
@@ -34,6 +35,11 @@ function HomePage() {
   const [profile, setProfile] = useState(false);
   const closeProfile = () => setProfile(false);
   const showProfile = () => setProfile(true);
+
+  // modal for check-in
+  const [mood, setMood] = useState(false);
+  const closeMood = () => setMood(false);
+  const showMood = () => setMood(true);
 
 
   
@@ -56,6 +62,7 @@ function HomePage() {
                 <div>{user.points} coins</div>
               </div>
             </Navbar.Brand>
+            <div onClick={showMood} style= {{ cursor:"pointer"}}>check-in</div>
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto"> */}
@@ -86,6 +93,13 @@ function HomePage() {
             <Modal.Title>SHOP</Modal.Title>
           </Modal.Header>
           <Modal.Body><Shop></Shop></Modal.Body>
+        </Modal>
+
+        <Modal show={mood} onHide={closeMood}>
+          <Modal.Header closeButton>
+            <Modal.Title>DAILY CHECK IN</Modal.Title>
+          </Modal.Header>
+          <Modal.Body><CheckInModal></CheckInModal></Modal.Body>
         </Modal>
 
         <Modal show={profile} onHide={closeProfile}>
