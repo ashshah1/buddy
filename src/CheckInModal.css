@@ -5,6 +5,7 @@
 
 .moods {
     display: flex;
+    justify-content: center;
 }
 
 .emoji-name {

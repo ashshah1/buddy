@@ -86,6 +86,18 @@ function CheckInModal() {
     }
   };
 
+  useEffect(() => {
+    const skipCheck = async () => {
+      const userRef = firestore.collection("users").doc(user.local.uid);
+      await userRef.update({
+        lastStamp: currDate,
+      });
+    };
+    if (state === "FINISH") {
+      skipCheck();
+    }
+  }, [state]);
+
   let moodElements = moods.map((mood) => {
     return (
       <div
@@ -108,11 +120,14 @@ function CheckInModal() {
       <div className={showCheck}>
         <div className="check-in-q">How are you feeling today?</div>
         <div className="moods">{moodElements}</div>
-        <p className="skip-btn">Skip</p>
+        <p className="skip-btn" onClick={() => { 
+          toggleHidden() 
+          setState("FINISH")
+        }}>Skip</p>
       </div>
       <div className={showFin}>
         <p className="check-in-q">
-          Hi! You've already checked in with buddy today. Come back tomorrow!
+          Hi! Thanks for checking in with <span>buddy</span> today. Come back tomorrow!
         </p>
       </div>
     </div>
