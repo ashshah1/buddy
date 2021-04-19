@@ -11,15 +11,21 @@
     margin: 0vw 1.5vw 1vw 1.5vw;
 }
 
-.one-mood {
+.mood {
     display: flex;
     flex-direction: column;
 }
 
-.check-in-q{
+.mood:hover {
+    background-color: #C4C4C4;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.check-in-q {
     text-align: center;
     font-weight: 600;
-    font-size: 1vw;
+    font-size: 3vw;
     margin-top: 1vw;
     margin-bottom: 1vw;
 }
@@ -37,14 +43,6 @@
     cursor: pointer;
 }
 
-.one-mood:hover {
-    /* border: 1px solid red; */
-    background-color: #E2E2E2;
-    border-radius: 10px;
-}
-
-.one-mood:focus {
-    /* border: 1px solid red; */
-    background-color: #E2E2E2;
-    border-radius: 10px;
+.hidden {
+    display: none;
 }

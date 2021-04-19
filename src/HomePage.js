@@ -42,6 +42,8 @@ function HomePage() {
   const showMood = () => setMood(true);
 
 
+  // when was last check in, and what's today? and did they check in today
+  // if no, show modal 
   
 
   const { user } = useContext(Context);
@@ -99,7 +101,7 @@ function HomePage() {
           <Modal.Header closeButton>
             <Modal.Title>DAILY CHECK IN</Modal.Title>
           </Modal.Header>
-          <Modal.Body><CheckInModal></CheckInModal></Modal.Body>
+          <Modal.Body><CheckInModal close={ () => closeMood}></CheckInModal></Modal.Body>
         </Modal>
 
         <Modal show={profile} onHide={closeProfile}>
@@ -109,6 +111,8 @@ function HomePage() {
           {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
           <Modal.Body><ProfileView></ProfileView></Modal.Body>
         </Modal>
+
+       
       </main>
     )
   } else {
