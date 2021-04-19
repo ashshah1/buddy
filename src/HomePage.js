@@ -1,6 +1,6 @@
 import { Context } from "./Context";
 import React, { useState, useContext } from "react";
-import { firebase, fireauth } from "./firebase";
+import { phrases } from './constants.js';
 
 import TaskList from "./TaskList.js";
 import LogInPage from "./LogInPage.js";
@@ -47,6 +47,7 @@ function HomePage() {
   
 
   const { user } = useContext(Context);
+  let currDate = new Date().getDate();
 
 
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
@@ -82,9 +83,14 @@ function HomePage() {
         </Navbar>
         
 
+        
+        <div className="p-contain">
+        <p className="speech-bubble">{phrases[currDate].value}</p>
+        </div>
         <div className="img-container">
           <img className="curr-avatar vert-move" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
         </div>
+        
         <div className="content-containers">
           <TaskList></TaskList>
           <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
