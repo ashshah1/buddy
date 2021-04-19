@@ -24,7 +24,10 @@ const ContextProvider = props => {
                     bgOwn: [0],
                     bgSelected: 0,
                     avatarOwn: [0],
-                    avatarSelected: 0
+                    avatarSelected: 0,
+                    badges: [],
+                    timeStamps: [],
+                    allMoods: []
                 });
 
                 unsubscribe = userRef.onSnapshot(snapshot => {
