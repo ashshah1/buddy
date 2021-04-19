@@ -35,9 +35,6 @@ function HomePage() {
   const closeProfile = () => setProfile(false);
   const showProfile = () => setProfile(true);
 
-
-  
-
   const { user } = useContext(Context);
 
 
@@ -66,7 +63,8 @@ function HomePage() {
                   <img src={statsIcon} className="icon"></img>
                 </li> */}
                 <div className="nav-part2 ml-auto">
-                    <img src={avatarIcon} className="icon" onClick={showProfile}></img>
+                      <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
+                      <img src={avatarIcon} className="icon" onClick={showProfile}></img>
                 </div>
               {/* </Nav>
             </Navbar.Collapse> */}
@@ -78,7 +76,6 @@ function HomePage() {
         </div>
         <div className="content-containers">
           <TaskList></TaskList>
-          <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
         </div>
 
         <Modal show={shop} onHide={closeShop}>

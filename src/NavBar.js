@@ -5,7 +5,7 @@ import './NavBar.css';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import shopIcon from "./images/icon-shop.png";
-
+import XPBar from "./XPBar.js"
 import Shop from './Shop.js';
 
 function NavBar() {
@@ -29,6 +29,9 @@ function NavBar() {
           <li>
             <Link to="/add">Add</Link>
           </li>
+          <div>
+            <XPBar></XPBar>
+          </div>
           <li>
             <Link to="/profile">Profile</Link>
           </li>
