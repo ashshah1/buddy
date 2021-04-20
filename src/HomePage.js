@@ -7,7 +7,7 @@ import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
 import LandingPage from "./LandingPage.js";
 
-import { avatars, backgrounds, overlays } from './Vectors.js';
+import { avatars, backgrounds, overlays, defaultIcons, lightIcons } from './Vectors.js';
 
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
@@ -19,6 +19,8 @@ import shopIcon from "./images/icon-shop.png";
 import shopIconLight from './images/icon-shop-lg.png'
 import avatarIcon from "./images/icon-avatar.png";
 import avatarIconLight from './images/icon-avatar-lg.png';
+import checkInIcon from './images/icon-check.png';
+import checkInIconLight from './images/icon-check-lg.png';
 import Shop from './Shop.js';
 import {Navbar, Nav} from 'react-bootstrap';
 
@@ -55,16 +57,19 @@ function HomePage() {
     let currShop;
     let profileIcon;
     let coinDiv;
+    let checkIcon;
   
     // set dark mode icons
     if (user.bgSelected === 1) {
       currShop = shopIconLight
       profileIcon = avatarIconLight
       coinDiv = "coin-div light-div"
+      checkIcon = checkInIconLight;
     } else {
       currShop = shopIcon
       profileIcon = avatarIcon
       coinDiv = "coin-div"
+      checkIcon = checkInIcon;
     }
     
     return (
@@ -79,8 +84,10 @@ function HomePage() {
                 <img className="coin mr-3" src={coin}></img>
                 <div>{user.points} coins</div>
               </div>
+              
             </Navbar.Brand>
-            <div onClick={showMood} style= {{ cursor:"pointer"}}>check-in</div>
+            <img src={checkIcon} onClick={showMood} style= {{ cursor:"pointer"}}></img>
+            
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto"> */}
@@ -92,7 +99,7 @@ function HomePage() {
                 </li> */}
                 <div className="nav-part2 ml-auto">
                       <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-                      <img src={profileIcon} className="icon" onClick={showProfile}></img>
+                      <img src={defaultIcons[user.currentIcon]} className="icon" onClick={showProfile}></img>
                 </div>
               {/* </Nav>
             </Navbar.Collapse> */}
