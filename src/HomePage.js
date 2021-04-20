@@ -16,7 +16,9 @@ import coin from "./images/coin.png";
 import calIcon from "./images/icon-calendar.png";
 import statsIcon from "./images/icon-stats.png";
 import shopIcon from "./images/icon-shop.png";
+import shopIconLight from './images/icon-shop-lg.png'
 import avatarIcon from "./images/icon-avatar.png";
+import avatarIconLight from './images/icon-avatar-lg.png';
 import Shop from './Shop.js';
 import {Navbar, Nav} from 'react-bootstrap';
 
@@ -44,9 +46,27 @@ function HomePage() {
   const { user } = useContext(Context);
   let currDate = new Date().getDate();
 
+  
+
 
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
   if (user) {
+
+    let currShop;
+    let profileIcon;
+    let coinDiv;
+  
+    // set dark mode icons
+    if (user.bgSelected === 1) {
+      currShop = shopIconLight
+      profileIcon = avatarIconLight
+      coinDiv = "coin-div light-div"
+    } else {
+      currShop = shopIcon
+      profileIcon = avatarIcon
+      coinDiv = "coin-div"
+    }
+    
     return (
       <main>
         <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
@@ -54,8 +74,8 @@ function HomePage() {
         <img className="background animations bounce-1" src={overlays[4]}></img>
         <Navbar expand="lg">
             <Navbar.Brand className="nav-part1">
-              <img src={shopIcon} className="icon" onClick={showShop}></img>
-              <div className="coin-div">
+              <img src={currShop} className="icon" onClick={showShop}></img>
+              <div className={coinDiv}>
                 <img className="coin mr-3" src={coin}></img>
                 <div>{user.points} coins</div>
               </div>
@@ -72,7 +92,7 @@ function HomePage() {
                 </li> */}
                 <div className="nav-part2 ml-auto">
                       <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-                      <img src={avatarIcon} className="icon" onClick={showProfile}></img>
+                      <img src={profileIcon} className="icon" onClick={showProfile}></img>
                 </div>
               {/* </Nav>
             </Navbar.Collapse> */}
