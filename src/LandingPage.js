@@ -7,6 +7,10 @@ import icon3 from './images/landingicon-3.png';
 import icon4 from './images/landingicon-4.png';
 import arrow from './images/arrow.png';
 
+import { firebase, fireauth } from "./firebase";
+import googleLogo from "./images/google.png";
+
+
 import './LandingPage.css';
 
 function LandingPage() {
@@ -14,10 +18,15 @@ function LandingPage() {
     return (
         <React.Fragment>
             <div className="landing landing-1" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '100vh' }}>
-                <div>
-                    <h1>buddy</h1>
-                    <p className="pb-3">Set meaningful goals, stay motivated with a buddy, build long-lasting healthy habits, and improve your well-being</p>
-                    <button><Link to="/">BUILD YOUR HABITS</Link></button>
+                <div className="mid-div">
+                    <h1 className="top-header">buddy</h1>
+                    <p className="pb-3 subhead">Set meaningful goals, stay motivated with a buddy, build long-lasting healthy habits, and improve your well-being</p>
+                    <button className="google-button" onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>
+                    <img className="ml-3" src={googleLogo}></img>
+                    <p className="mr-4">Continue with Google</p>
+                    </button>
+
+                    {/* <button><Link to="/">BUILD YOUR HABITS</Link></button> */}
                 </div>
                 <img className="bounce" src={arrow} alt="down arrow"></img>
             </div>
@@ -67,9 +76,9 @@ function LandingPage() {
                         <img src={icon4} alt="calendar"></img>
                     </div>
                 </div>
-                <div className="button">
+                {/* <div className="button">
                     <Link to="/">MEET YOUR BUDDY <span role="img" aria-label="right arrow">→</span></Link> 
-                </div>
+                </div> */}
             </div>
 
             <div className="landing landing-4">
