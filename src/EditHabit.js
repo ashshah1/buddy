@@ -9,8 +9,6 @@ function EditHabit(props) {
     console.log(props.task);
     const { user } = useContext(Context);
 
-    // props is the current habit id
-
     // keep track of all the values being added to the new habit
     const [name, setName] = useState(props.task.taskName);
     const [color, setColor] = useState(props.task.color);
