@@ -139,8 +139,11 @@ function HomePage() {
   } else {
     return (
       <div>
-        <LogInPage>
-        </LogInPage>
+        <LandingPage>
+
+        </LandingPage>
+        {/* <LogInPage>
+        </LogInPage> */}
       </div>
     )
   }
