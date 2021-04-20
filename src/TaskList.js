@@ -19,10 +19,6 @@ function TaskList () {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-  const [hidden, setHidden] = useState("");
-  const [show, setShow] = useState(false); // keeps track of addhabit modal visibility
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   let taskArray = [];
   let taskDuration = "";
@@ -107,8 +103,9 @@ function TaskList () {
     taskArray.push(newTask);
   }
 
-    return (
-        <div className="tasklist-container">
+
+  return (
+    <div className="tasklist-container">
             <div className="header-container">
                 <p className="task-header">HABITS</p>
                 <p className="task-header" style={{ cursor: 'pointer'}} onClick={toggleHidden}>—</p>
@@ -116,25 +113,6 @@ function TaskList () {
             <div className={hidden} id="taskArrayContainer">
             {taskArray}
             <button className="add-habit-btn" onClick={handleShow}>+ add a new task</button>
-
-
-  return (
-    <div className="tasklist-container">
-      <div className="header-container">
-        <p className="task-header">HABITS</p>
-        <p
-          className="task-header"
-          style={{ cursor: "pointer" }}
-          onClick={toggleHidden}
-        >
-          —
-        </p>
-      </div>
-      <div className={hidden}>
-        {taskArray}
-        <button className="add-habit-btn" onClick={handleShow}>
-          + add a new task
-        </button>
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
