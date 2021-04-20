@@ -1,15 +1,23 @@
-import React, { useState, useContext } from "react";
-import Task from "./Task";
-import "./TaskList.css";
-import { Context } from "./Context.js";
-import useHabits from "./useHabits.js";
-import { firebase, firestore } from "./firebase";
-import Modal from "react-bootstrap/Modal";
-import AddHabit from "./AddHabit";
+import React, { useState, useContext } from 'react';
+import Task from './Task';
+import './TaskList.css'
+import { Context } from './Context.js';
+import useHabits from './useHabits.js';
+import { firebase, firestore } from './firebase';
+import Modal from 'react-bootstrap/Modal';
+import AddHabit from './AddHabit';
+import useWindowDimensions from './windowDimensions.js';
 
-function TaskList() {
-  const { user } = useContext(Context);
-  const habits = useHabits(user.uid);
+function TaskList () {
+    const { user } = useContext(Context);
+    const habits = useHabits(user.uid)
+
+    const { height, width } = useWindowDimensions();
+    
+    const [hidden, setHidden] = useState( width > 768 ? "": "hidden");
+    const [show, setShow] = useState(false); // keeps track of addhabit modal visibility
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
   const [hidden, setHidden] = useState("");
   const [show, setShow] = useState(false); // keeps track of addhabit modal visibility
@@ -98,6 +106,17 @@ function TaskList() {
     );
     taskArray.push(newTask);
   }
+
+    return (
+        <div className="tasklist-container">
+            <div className="header-container">
+                <p className="task-header">HABITS</p>
+                <p className="task-header" style={{ cursor: 'pointer'}} onClick={toggleHidden}>—</p>
+            </div>
+            <div className={hidden} id="taskArrayContainer">
+            {taskArray}
+            <button className="add-habit-btn" onClick={handleShow}>+ add a new task</button>
+
 
   return (
     <div className="tasklist-container">
