@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
 import { fireauth, firebase, firestore } from "./firebase";
-import Modal from "react-bootstrap/Modal";
 import { defaultIcons } from "./Vectors.js";
 import blankSquare from './images/no-image.png';
 import { Context } from "./Context";
@@ -11,7 +10,6 @@ import useHabits from "./useHabits.js";
 import "./ProfileView.css";
 
 function ProfileView() {
-	const [deleteShow, setDeleteShow] = useState(false);
 	var currUser = firebase.auth().currentUser;
 	console.log(currUser);
 	const { user } = useContext(Context);
