@@ -17,6 +17,7 @@ import anim3 from './images/anim-four.png';
 import anim5 from './images/anim-five.png'
 
 export const avatars  = [a1, a2, a3, a4, a5, a6];
+export const names = ["BUDDY", "CITRA", "PLUTO", "CLOVE", "BO", "KIA"]
 export const backgrounds = [b1, b2, b3, b4];
 export const overlays = [anim1, anim2, anim3, anim5, clouds]
 

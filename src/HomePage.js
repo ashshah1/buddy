@@ -41,11 +41,6 @@ function HomePage() {
   const closeMood = () => setMood(false);
   const showMood = () => setMood(true);
 
-
-  // when was last check in, and what's today? and did they check in today
-  // if no, show modal 
-  
-
   const { user } = useContext(Context);
   let currDate = new Date().getDate();
 

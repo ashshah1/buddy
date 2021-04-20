@@ -52,10 +52,6 @@ function Task(props) {
         markBtn = "";
     }
 
-    console.log(props.taskDuration);
-
-
-
     // if the current count is 0 (task bar is empty), users cannot undo
     let disabled = false;
     if (props.currCount === 0 || props.totalCount === 0) {

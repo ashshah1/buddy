@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Button } from "react-bootstrap";
 import { Context } from "./Context";
-import { avatars, backgrounds, overlays } from './Vectors.js'
+import { avatars, backgrounds, names } from './Vectors.js'
 import { firestore, firebase } from './firebase'
 
 
@@ -26,15 +26,15 @@ function Shop() {
     for (let i = 0; i < 6; i++) {
         let newAvatar;
         if (currSelected === i) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
         } else if (currAvatars.includes(i)) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" index={i} src={avatars[i]} class="selected btn btn-success" status="200 coins"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="selected btn btn-success" status="200 coins"></AvatarElem>
         }
 
         if (i >= avatars.length) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" index={i} src={avatars[i]} class="btn btn-success" status="200 coins"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar still-locked" name={names[i]} index={i} src={avatars[i]} class="btn btn-success" status="200 coins"></AvatarElem>
         }
         avatarArray.push(newAvatar)
     }
@@ -104,7 +104,7 @@ function AvatarElem(props) {
             await userRef.update({
                 avatarSelected: props.index
             })
-        } else if (props.status == "200 coins" && user.points >= 200 && !locked) { // replace 100 with actual price
+        } else if (props.status == "200 coins" && user.points >= 200 && !locked) { // replace 200 with actual price
             await userRef.update({
                 avatarSelected: props.index,
                 points: firebase.firestore.FieldValue.increment(-100),
@@ -116,7 +116,7 @@ function AvatarElem(props) {
         return (
             <div className="col-md-4 col-lg-4">
                 <div className={props.locked}>
-                    <p>AVATAR NAME</p>
+                    <p>{props.name}</p>
                     <img className="avatar-img" src={props.src}></img>
                     <button onClick={() => { changeStatus(user) }} className={props.class}>{props.status}</button>
                 </div>
