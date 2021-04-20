@@ -1,44 +1,100 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { fireauth, firebase, firestore } from "./firebase";
-import Modal from 'react-bootstrap/Modal';
+import Modal from "react-bootstrap/Modal";
+import { defaultIcons } from "./Vectors.js";
+import blankSquare from './images/no-image.png';
+import { Context } from "./Context";
 
-import useHabits from './useHabits.js';
 
-import './ProfileView.css';
-import ModalHeader from "react-bootstrap/esm/ModalHeader";
+import useHabits from "./useHabits.js";
+
+import "./ProfileView.css";
 
 function ProfileView() {
+	const [deleteShow, setDeleteShow] = useState(false);
+	var user = firebase.auth().currentUser;
+	const habits = useHabits(user.uid);
+	const [isActive, setActive] = useState(false);
 
-    const [deleteShow, setDeleteShow] = useState(false);
-    var user = firebase.auth().currentUser;
-    const habits = useHabits(user.uid)
 
+	// ** careful with this chunk of code, deletes data directly **
 
-    // ** careful with this chunk of code, deletes data directly **
-    const deleteAccount = () => {
-        for (let i = 0; i < habits.length; i++) {
-            let currID = habits[i].id;
-            const habitRef = firestore.collection("Habits").doc(currID).delete().then(() => {
-                console.log("delete successful");
-            })
-        }
+	const deleteAccount = () => {
+		for (let i = 0; i < habits.length; i++) {
+			let currID = habits[i].id;
+			const habitRef = firestore
+				.collection("Habits")
+				.doc(currID)
+				.delete()
+				.then(() => {
+					console.log("delete successful");
+				});
+		}
 
-        user.delete().then(function () {
-            console.log("user deleted");
-        }).catch(function (error) {
-        });
+		user.delete()
+			.then(function () {
+				console.log("user deleted");
+			})
+			.catch(function (error) { });
+	};
+	
+	const toggleViews = () => {
+		setActive(!isActive);
+	}
+	let emptyBadges = [];
 
-    }
+	for (let i = 0; i < 12; i++) {
+		emptyBadges.push(
+			<div className="col-md-3">
+			<img className="badge-icon" src={blankSquare}></img>
+			</div>
+		)
+	}
 
-    return (
-        <div className="profile-modal">
-            <p className="lead profile-descrip"><span className="dev-note">note from the developers</span>: if you see any bugs or notice something isn't working great, please <a href="https://forms.gle/Bu38WEu7gBQNgcAx8">let us know</a>. we want to fix it.</p>
-            <p className="lead profile-follow"><span className="font-weight-bold buddy-text">buddy</span> is a brand new application and we're constantly adding new features and bug fixes to make it the best it can be. Help us :)</p>
-            <button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>LOG OUT</button>
+	let currIcon = 0; // normally this would be user.currentIcon
+	let allIcons = [];
+	for (let i = 0; i < 6; i++) {
+		if (i === currIcon) {
+			allIcons.push(<ChangeIcon index={i} status="selected" src={defaultIcons[i]}></ChangeIcon>)
+		} else {
+			allIcons.push(<ChangeIcon index={i} status="select" src={defaultIcons[i]}></ChangeIcon>)
+		}
 
-            <button className="delete-btn btn btn-danger m-3" onClick={deleteAccount}>DELETE ACCOUNT</button>
+	}
 
-            {/* <Modal show={deleteShow} onHide={() => setDeleteShow(false)} size="sm">
+	// TODO: enable delete button after dev
+
+	// change profile img source to pull from databse defaultIcon[user.currentIcon]
+	if (!isActive) {
+	return (
+		<div className="profile-modal">
+			<div className="top-level-container">
+				<div className="user-info-div">
+					<img className="profile-icon" src={defaultIcons[0]}></img>
+					<button className="change-icon" onClick={toggleViews}>change icon</button>
+					<p className="first-name">{(user.displayName).split(' ')[0]}</p>
+					<button className="sign-out" onClick={() => fireauth.signOut()}>LOG OUT</button>
+				</div>
+				<div className="achievements-div">
+					<p className="achievements-header">Achievements</p>
+					{/* <div className="badges-container">
+						{emptyBadges}
+					</div> */}
+					<div className="container">
+						<div className="row">
+						{emptyBadges}
+						</div>
+					</div>
+				</div>
+				{/* <p className="lead profile-descrip"><span className="dev-note">note from the developers</span>: if you see any bugs or notice something isn't working great, please <a href="https://forms.gle/Bu38WEu7gBQNgcAx8">let us know</a>. we want to fix it.</p>
+            <p className="lead profile-follow"><span className="font-weight-bold buddy-text">buddy</span> is a brand new application and we're constantly adding new features and bug fixes to make it the best it can be. Help us :)</p> */}
+			</div>
+			<div className="bottom-level-container">
+				<a href="https://forms.gle/Bu38WEu7gBQNgcAx8" className="feedback-form">Send Feedback</a>
+				<span className="delete-btn m-3" onClick={deleteAccount}>DELETE ACCOUNT</span>
+			</div>
+
+			{/* <Modal show={deleteShow} onHide={() => setDeleteShow(false)} size="sm">
                 <ModalHeader>
                     <Modal.Title>ARE YOU SURE?</Modal.Title>
                 </ModalHeader>
@@ -49,9 +105,39 @@ function ProfileView() {
                 </Modal.Body>
 
             </Modal> */}
-        </div>
-    );
+		</div>
+	);
+		} else {
+			return(
+				<div>
+					<div className="all-icons">
+					{allIcons}
+					</div>
+				</div>
+			)
+		}
 }
 
+function ChangeIcon(props) {
+	const { user } = useContext(Context);
+
+	const changeStatus = async (user) => {
+		const userRef = firestore.collection("users").doc(user.local.uid);
+		if (props.status == "select") {
+			await userRef.update({
+				currentIcon: props.index
+			})
+		}
+
+	}
+
+	let buttonClass = "icon-select " + (props.status)
+	return (
+		<div className="icon-div">
+			<img className="icon-image" src={props.src}></img>
+			<button onClick={() => { changeStatus(user) }} className={buttonClass}>{props.status}</button>
+		</div>
+	)
+}
 
 export default ProfileView;
