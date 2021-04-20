@@ -50,9 +50,13 @@ function CheckInModal() {
   let currDate = new Date(); // returns current date on users local machine
 
   let currOnlyDate = currDate.setHours(0, 0, 0, 0);
-  let lastStamp = user.lastStamp.toDate(); // converts most recent timestamp stored in firestore to JS-understandable Date object
-  let lastStampDate = lastStamp.setHours(0, 0, 0, 0);
 
+  let lastStamp;
+  let lastStampDate;
+  if (user.lastStamp) {
+    lastStamp = user.lastStamp.toDate(); // converts most recent timestamp stored in firestore to JS-understandable Date object
+    lastStampDate = lastStamp.setHours(0, 0, 0, 0);
+  }
   // if the last stamp date is the same as today, the modal should be hidden. otherwise by default it shows
   useEffect(() => {
     if (currOnlyDate <= lastStampDate && stamp === 0) {
@@ -63,6 +67,7 @@ function CheckInModal() {
       setStamp(0);
     }
   });
+
 
   useEffect(() => {
     const updateMood = async () => {
