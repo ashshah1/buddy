@@ -6,13 +6,12 @@ import './AddHabit.css'
 import { ToggleButton, ButtonGroup } from 'react-bootstrap';
 
 function EditHabit(props) {
-    console.log(props.task);
     const { user } = useContext(Context);
 
     // keep track of all the values being added to the new habit
     const [name, setName] = useState(props.task.taskName);
     const [color, setColor] = useState(props.task.color);
-    const [category, setCategory] = useState(props.task.category);
+    const [category, setCategory] = useState(props.task.taskCategory);
     const [frequency, setFrequency] = useState(props.task.taskFreq);
     const [state, setState] = useState("SELECT");
     const [repeat, setRepeat] = useState(props.task.taskDuration);
@@ -28,6 +27,60 @@ function EditHabit(props) {
         { name: 'other', value: 'other'},
       ];
 
+      let dailyInput;
+      let weeklyInput;
+      if (props.task.taskDuration === "weekly") {
+        dailyInput = (
+          <input
+            type="radio"
+            id="customRadioInline1"
+            name="customRadio"
+            className="custom-control-input radio-btn"
+            onChange={() => {
+              setRepeat("daily");
+            }}
+          />
+        );
+        weeklyInput = (
+          <input
+            type="radio"
+            id="customRadioInline2"
+            name="customRadio"
+            className="custom-control-input"
+            onChange={() => {
+              setRepeat("weekly");
+            }}
+            checked
+          />
+        );
+      } else {
+        dailyInput = (
+          <input
+            type="radio"
+            id="customRadioInline1"
+            name="customRadio"
+            className="custom-control-input radio-btn"
+            onChange={() => {
+              setRepeat("daily");
+            }}
+            checked
+          />
+        );
+
+        weeklyInput = (
+          <input
+            type="radio"
+            id="customRadioInline2"
+            name="customRadio"
+            className="custom-control-input"
+            onChange={() => {
+              setRepeat("weekly");
+            }}
+          />
+        );
+      }
+    
+
     // on submit, the state of the process is updates which will trigger further changes in the effect hook
     const submitHabit = (event) => {
         event.preventDefault();
@@ -38,6 +91,7 @@ function EditHabit(props) {
     const resetModal = () => {
         props.close();
     }
+
 
     useEffect(() => {
         const habitRef = firestore.collection("Habits").doc(props.id);
@@ -74,12 +128,17 @@ function EditHabit(props) {
                     <div className="form-group pb-2">
                         <label className="repeat-label">Repeat</label>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline1" name="customRadio" className="custom-control-input radio-btn" onChange={() => {setRepeat("daily")}} />
+                            {/* <input type="radio" id="customRadioInline1" name="customRadio" className="custom-control-input radio-btn" onChange={() => {setRepeat("daily")}} /> */}
+                            {dailyInput}
                             <label className="custom-control-label" for="customRadioInline1">daily</label>
+                            {/* {dailyLabel} */}
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadio" className="custom-control-input" onChange={() => {setRepeat("weekly")}} />
+                            {/* <input type="radio" id="customRadioInline2" name="customRadio" className="custom-control-input" onChange={() => {setRepeat("weekly")}} /> */}
+                            {weeklyInput}
                             <label className="custom-control-label" for="customRadioInline2">weekly</label>
+                            {/* {weeklyLabel} */}
+            
                         </div>
                     </div>
                     <div className="form-group pb-2">

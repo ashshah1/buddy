@@ -52,6 +52,13 @@ function Task(props) {
         markBtn = "";
     }
 
+    // if the current count is 0 (task bar is empty), users cannot undo
+    let disabled = false;
+    if (props.currCount === 0 || props.totalCount === 0) {
+        disabled = true;
+    }
+
+
     return (<div className="task-container" onMouseEnter={toggleView} onMouseLeave={toggleBack}>
         <div className="curr-progress" style={progressStyle}>
             &nbsp;
@@ -60,7 +67,7 @@ function Task(props) {
             <div className="container-one pt">
                 <p className={taskView} style={{textDecoration: decor}}>{props.taskName}</p>
                 <Button onClick={handleClick} className={"btn btn-info " + markBtn}>mark complete</Button>
-                <Button onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
+                <Button disabled={disabled} onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
                 {/* <p id="dot-dot-dot" className={markBtn}>dot</p> */}
                 <img id="dot-dot-dot" style={{ height:"20px", cursor:"pointer" }} src={dots} onClick={showEdit}/>
 
