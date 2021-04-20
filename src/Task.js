@@ -25,7 +25,7 @@ function Task(props) {
         decor = "line-through";
     }
 
-    // sets default view, tasks are visible and mark as complete buttons are hidden
+    // sets default view, tasks are visible and "mark as complete" buttons are hidden
     let taskView = "";
     let markBtn = "hidden";
 

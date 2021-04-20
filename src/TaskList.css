@@ -40,6 +40,14 @@
     padding-left: 2rem;
 }
 
-.hidden {
+
+
+/* .hidden {
     display: none;
-}
+} */
+
+/*@media(max-width: 768px) {
+    #taskArrayContainer {
+        display: none;
+    }
+}*/
