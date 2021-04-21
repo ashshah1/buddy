@@ -1,21 +1,56 @@
-.profile-descrip {
-    margin: 2rem 0rem 2rem 2rem;
+.top-level-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
-.profile-follow {
-    margin: 0rem 2rem 2rem 2rem;
-}
-
-.profile-modal {
+.user-info-div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.sign-in {
-    padding: 0.5rem;
-    width: 30%;
+.achievements-header {
+    font-size: 1.5vw;
+    padding-left: 1vw;
+    font-weight: 600;
+}
+
+.badge-icon {
+    border-radius: 10px;
+    height: 5.5vw;
+    width: 5.5vw;
+    margin: 0.5vw 1vw 1vw 1vw;
+}
+
+.badges-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.change-icon {
+    background-color: #c4c4c4;
+    border: none;
+    border-radius: 8px;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-style: italic;
+}
+
+
+.first-name {
+    font-size: 2vw;
+}
+
+.sign-out {
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    border: 2px solid #094C59;
+    border-radius: 10px;
+    background-color: white;
+    color: #094C59;
+    font-weight: 600;
 }
 
 .buddy-text, .dev-note {
@@ -23,5 +58,59 @@
 }
 
 .delete-btn {
-    width: 30%;
+    font-size: 0.8vw;
+    font-weight: 600;
+    color: red;
+    padding-bottom: 3px;
+    border-bottom: 1px solid red;
+    cursor: pointer;
+}
+
+.feedback-form {
+    margin: 1rem;
+}
+
+.profile-icon {
+    margin: 3rem 3rem 0rem 3rem;
+    height: 9vw;
+    width: auto;
+}
+
+.bottom-level-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.all-icons {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.icon-div {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+
+.icon-image {
+    height: 6vw;
+    width: auto;
+}
+
+.icon-select {
+    border: none;
+    border-radius: 8px;
+}
+
+.select {
+    background-color: #F0DC22;
+    color: #4F4F4F;
+    font-weight: 600;
+}
+
+.selected {
+    background-color: #094C59;
+    color: white;
+    font-weight: 600;
 }

@@ -85,11 +85,11 @@ function AddHabit() {
                         <label className="repeat-label">Repeat</label>
                         <div className="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline1" name="customRadio" className="custom-control-input radio-btn" onChange={() => {setRepeat("daily")}} />
-                            <label className="custom-control-label" for="customRadioInline1">daily</label>
+                            <label className="custom-control-label" htmlFor="customRadioInline1">daily</label>
                         </div>
                         <div className="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="customRadioInline2" name="customRadio" className="custom-control-input" onChange={() => {setRepeat("weekly")}} />
-                            <label className="custom-control-label" for="customRadioInline2">weekly</label>
+                            <label className="custom-control-label" htmlFor="customRadioInline2">weekly</label>
                         </div>
                     </div>
                     <div className="form-group pb-2">
@@ -105,7 +105,7 @@ function AddHabit() {
                         <ButtonGroup toggle>
                             {radios.map((radio, idx) => (
                                 <ToggleButton
-                                    key={idx}
+                                    key={radio.value}
                                     type="radio"
                                     variant="light"
                                     name="radio"
@@ -127,7 +127,7 @@ function AddHabit() {
                         <label>Select a color</label>
                         <div>
                              {colors.map(circleColor => (
-                                 <button className="color-btn no-font m-4" onClick={event => setColor(event.target.innerText)} style={{ backgroundColor: circleColor }} type="button">{circleColor}</button>
+                                 <button className="color-btn no-font m-4" key={circleColor} onClick={event => setColor(event.target.innerText)} style={{ backgroundColor: circleColor }} type="button">{circleColor}</button>
                              ))}
                         </div>
                     </div>

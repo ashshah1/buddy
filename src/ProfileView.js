@@ -1,42 +1,128 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { fireauth, firebase, firestore } from "./firebase";
+import { defaultIcons } from "./Vectors.js";
+import blankSquare from './images/no-image.png';
+import { Context } from "./Context";
+import HomePage from './HomePage.js';
 
-import useHabits from './useHabits.js';
+import useHabits from "./useHabits.js";
 
-import './ProfileView.css';
+import "./ProfileView.css";
+import LandingPage from "./LandingPage";
 
 function ProfileView() {
+	var currUser = firebase.auth().currentUser;
+	const { user } = useContext(Context);
 
-    var user = firebase.auth().currentUser;
-    const habits = useHabits(user.uid)
+	const habits = useHabits(currUser.uid);
+	const [isActive, setActive] = useState(false);
 
 
-    // ** careful with this chunk of code, deletes data directly **
-    const deleteAccount = () => {
-        for (let i = 0; i < habits.length; i++) {
-            let currID = habits[i].id;
-            const habitRef = firestore.collection("Habits").doc(currID).delete().then(() => {
-                console.log("delete successful");
-            })
-        }
 
-        user.delete().then(function () {
-            console.log("user deleted");
-        }).catch(function (error) {
-        });
+	// ** careful with this chunk of code, deletes data directly **
 
-    }
+	const deleteAccount = () => {
+		for (let i = 0; i < habits.length; i++) {
+			let currID = habits[i].id;
+			const habitRef = firestore
+				.collection("Habits")
+				.doc(currID)
+				.delete()
+				.then(() => {
+					console.log("delete successful");
+				});
+		}
 
-    return (
-        <div className="profile-modal">
-            <p className="lead profile-descrip"><span className="dev-note">note from the developers</span>: if you see any bugs or notice something isn't working great, please <a href="https://forms.gle/Bu38WEu7gBQNgcAx8">let us know</a>. we want to fix it.</p>
-            <p className="lead profile-follow"><span className="font-weight-bold buddy-text">buddy</span> is a brand new application and we're constantly adding new features and bug fixes to make it the best it can be. Help us :)</p>
-            <button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>LOG OUT</button>
+		currUser.delete().then(function () {
+			console.log("user deleted");
+		})
+			.catch(function (error) {
+			console.log(error)
+		});
 
-            <button className="delete-btn btn btn-danger m-3" onClick={deleteAccount}>DELETE ACCOUNT</button>
-        </div>
-    );
+	}
+
+	
+	
+	const toggleViews = () => {
+		setActive(!isActive);
+	}
+
+	let emptyBadges = [];
+
+	for (let i = 0; i < 12; i++) {
+		emptyBadges.push(
+			<div className="col-md-3">
+			<img className="badge-icon" src={blankSquare}></img>
+			</div>
+		)
+	}
+
+	let allIcons = [];
+	for (let i = 0; i < 6; i++) {
+		if (user.currentIcon === i) {
+			allIcons.push(<ChangeIcon key={i} index={i} status="selected" src={defaultIcons[i]}></ChangeIcon>)
+		} else {
+			allIcons.push(<ChangeIcon key={i} index={i} status="select" src={defaultIcons[i]}></ChangeIcon>)
+		}
+
+	}
+
+	if (!isActive) {
+	return (
+		<div className="profile-modal">
+			<div className="top-level-container">
+				<div className="user-info-div">
+					<img className="profile-icon" src={defaultIcons[user.currentIcon]}></img>
+					<button className="change-icon" onClick={toggleViews}>change icon</button>
+					<p className="first-name">{(user.displayName).split(' ')[0]}</p>
+					<button className="sign-out" onClick={() => fireauth.signOut()}>LOG OUT</button>
+				</div>
+				<div className="achievements-div">
+					<p className="achievements-header">Achievements</p>
+					<div className="container">
+						<div className="row">
+						{emptyBadges}
+						</div>
+					</div>
+				</div>
+			</div>
+			<div className="bottom-level-container">
+				<a href="https://forms.gle/Bu38WEu7gBQNgcAx8" className="feedback-form">Send Feedback</a>
+				<span className="delete-btn m-3" onClick={deleteAccount}>DELETE ACCOUNT</span>
+			</div>
+		</div>
+	);
+		} else {
+			return(
+				<div>
+					<div className="all-icons">
+					{allIcons}
+					</div>
+				</div>
+			)
+		}
 }
 
+function ChangeIcon(props) {
+	const { user } = useContext(Context);
+
+		const changeStatus = async (user) => {
+			const userRef = firestore.collection("users").doc(user.local.uid);
+			if (props.status == "select") {
+				await userRef.update({
+					currentIcon: props.index
+				})
+			}
+		}
+
+	let buttonClass = "icon-select " + (props.status)
+	return (
+		<div className="icon-div">
+			<img className="icon-image" src={props.src}></img>
+			<button onClick={() => changeStatus(user)} className={buttonClass}>{props.status}</button>
+		</div>
+	)
+}
 
 export default ProfileView;
