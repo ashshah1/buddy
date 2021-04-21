@@ -19,19 +19,20 @@ function LandingPage() {
         <React.Fragment>
             <div className="landing landing-1" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '100vh' }}>
                 <div className="mid-div">
-                    <h1 className="top-header">buddy</h1>
-                    <p className="pb-3 subhead">Set meaningful goals, stay motivated with a buddy, build long-lasting healthy habits, and improve your well-being</p>
-                    <button className="google-button" onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>
-                    <img className="ml-3" src={googleLogo}></img>
-                    <p className="mr-4">Continue with Google</p>
+                    <h1>buddy</h1>
+                    <p>Set meaningful goals, stay motivated with a buddy, build long-lasting healthy habits, and improve your well-being</p>
+                    <button onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>
+                        {/* <img className="ml-3" src={googleLogo}></img>
+                    <p className="mr-4">Continue with Google</p> */}
+                    BUILD YOUR HABITS
                     </button>
 
                     {/* <button><Link to="/">BUILD YOUR HABITS</Link></button> */}
                 </div>
-                <img className="bounce" src={arrow} alt="down arrow"></img>
+                <img className="bounce pt-5" src={arrow} alt="down arrow"></img>
             </div>
 
-            {/* <div className="landing landing-2">
+            <div className="landing landing-2">
                 <div>
                     <h1>Our Goal</h1>
                     <p>Habits play a large role in our lives. Around <strong>40%</strong> of our everyday behavior is repeated in the form of habits.</p>
@@ -51,7 +52,7 @@ function LandingPage() {
                             <p>Choose from our list of recommended habits or customize your own.</p>
                         </div>
                     </div>
-                    <div className="landing-container">
+                    <div className="landing-container landing-order">
                         <div>
                             <h2>2.</h2>
                             <h2>Earn Rewards</h2>
@@ -67,7 +68,7 @@ function LandingPage() {
                             <p>Unlock new shop items as you level up and change up your background or buddy.</p>
                         </div>
                     </div>
-                    <div className="landing-container">
+                    <div className="landing-container landing-order">
                         <div>
                             <h2>4.</h2>
                             <h2>View Charts</h2>
@@ -76,14 +77,15 @@ function LandingPage() {
                         <img src={icon4} alt="calendar"></img>
                     </div>
                 </div>
-                {/* <div className="button">
-                    <Link to="/">MEET YOUR BUDDY <span role="img" aria-label="right arrow">→</span></Link> 
-                </div> */}
+                <button className="button" onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>
+                    MEET YOUR BUDDY <span role="img" aria-label="right arrow">→</span>
+                </button>
+
             </div>
 
             <div className="landing landing-4">
                 <p>copyright © 2021 buddy all rights reserved</p>
-            </div> */}
+            </div>
         </React.Fragment>
     );
 }
