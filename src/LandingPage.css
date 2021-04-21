@@ -25,25 +25,26 @@
     justify-content: center;
 }
 
-.top-header {
+.landing-1 h1 {
     font-weight: bold;
-    font-size: 90px;
+    font-size: 85px;
     line-height: 117px;
     letter-spacing: 0.05em;
     color: #094C59;
-    margin-bottom: 2.5rem;
+    padding-top: 5rem;
+    padding-bottom: .5rem;
 }
 
-.subhead {
+.landing-1 p {
     font-weight: 600;
     font-size: 35px;
     line-height: 44px;
     letter-spacing: 0.03em;
     color: #4F4F4F;
-    margin-bottom: 1.5rem;
+    padding-bottom: 3rem;
 }
 
-
+/* 
 .google-button {
     width: 22rem;
     align-self: center;
@@ -68,6 +69,25 @@
     letter-spacing: 0.03em;
     color: #4F4F4F;
     margin-bottom: 0;
+} */
+
+.landing-1 button {
+    background: #094C59;
+    border-style: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 29px;
+    letter-spacing: 0.085em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.landing-1 img {
+    width: 30px;
+    height: auto;
 }
 
 /* Credit: https://codepen.io/bisaillonyannick/pen/pvZeGg */
@@ -96,8 +116,6 @@
     }
 }
 
-
-
 /* Landing 2 */
 .landing-2 {
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 96%, 0 100%);
@@ -113,7 +131,7 @@
 
 .landing-2 h1 {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 45px;
     line-height: 59px;
     letter-spacing: 0.05em;
     padding-bottom: 1.5rem;
@@ -127,6 +145,10 @@
 }
 
 /* Landing 3 */
+.landing-3 {
+    position: relative;
+}
+
 .landing-3 .content {
     text-align: center;
     padding: 8rem 0;
@@ -146,7 +168,7 @@
 
 .landing-3 h1 {
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 45px;
     line-height: 59px;
     letter-spacing: 0.05em;
     padding-bottom: 2rem;
@@ -155,36 +177,20 @@
 
 .landing-3 h2 {
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 35px;
     line-height: 44px;
     letter-spacing: 0.05em;
     color: #094C59;
 }
 
 .landing-3 p {
-    font-size: 1.5rem;
+    font-size: 22px;
     line-height: 29px;
     letter-spacing: 0.03em;
 }
 
 .landing-container div {
-    max-width: 50%;
-}
-
-.landing-3 .button {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 5rem;
-    padding-right: 6rem;
-}
-
-.landing-3 a {
-    font-weight: bold;
-    font-size: 1.7rem;
-    line-height: 44px;
-    letter-spacing: 0.085em;
-    color: #094C59;
-    align-self: flex-end;
+    max-width: 800px;
 }
 
 .landing-3 img {
@@ -192,15 +198,29 @@
     height: 2rem;
 }
 
+.landing-3 .button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 27px;
+    line-height: 44px;
+    letter-spacing: 0.085em;
+    color: #094C59;
+    position: absolute;
+    right: 40px;
+}
+
 /* Landing 4 */
 .landing-4 {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 6rem;
 }
 
 .landing-4 p {
     padding: 1.5rem;
+    font-size: 16px;
     margin: 0;
 }
 
@@ -211,20 +231,21 @@
     }
 
     .landing-1 h1 {
-        font-size: 60px;
+        font-size: 70px;
         line-height: 117px;
         letter-spacing: 0.05em;
         color: #094C59;
-        margin-bottom: .5rem;
+        padding-bottom: 0rem;
+        padding-top: 2rem;
     }
 
     .landing-1 p {
         font-weight: 600;
-        font-size: 25px;
+        font-size: 30px;
         line-height: 35px;
         letter-spacing: 0.03em;
         color: #4F4F4F;
-        margin-bottom: 1.5rem;
+        padding-bottom: 2.5rem;
     }
 
     .landing-1 button {
@@ -240,6 +261,34 @@
     .landing-1 img {
         display: none;
     }
+
+    .landing-2 h1 {
+        font-size: 40px;
+    }
+
+    .landing-2 p {
+        font-size: 20px;
+    }
+
+    .landing-3 h1 {
+        font-size: 40px;
+    }
+
+    .landing-3 h2 {
+        font-size: 30px;
+    }
+
+    .landing-3 p { 
+        font-size: 18px;
+    }
+
+    .landing-3 .button {
+        font-size: 23px;
+    }
+
+    .landing-4 p {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -252,7 +301,6 @@
         line-height: 110px;
         letter-spacing: 0.05em;
         color: #094C59;
-        margin-bottom: 2px;
     }
 
     .landing-1 p {
@@ -261,7 +309,6 @@
         line-height: 32px;
         letter-spacing: 0.03em;
         color: #4F4F4F;
-        margin-bottom: 1.5rem;
     }
 
     .landing-1 button {
@@ -278,4 +325,57 @@
         display: none;
     }
 
+    .landing-2 h1 {
+        font-size: 35px;
+    }
+
+    .landing-2 p {
+        font-size: 16px;
+    }
+
+    .landing-3 h1 {
+        font-size: 35px;
+    }
+
+    .landing-3 h2 {
+        font-size: 25px;
+        line-height: 35px;
+        margin-top: 1rem;
+    }
+
+    .landing-3 .content {
+        padding: 4rem 0;
+    }
+    
+    .landing-3 .landing-container img {
+        margin-bottom: 1rem;
+    }
+
+    .landing-3 .landing-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .landing-3 .button {
+        font-size: 20px;
+        display: block;
+        position: static;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .landing-order div {
+        order: 1
+    }
+
+    .landing-4 p {
+        font-size: 12px;
+    }
+
+    .landing-4 {
+        margin-top: 3.5rem;
+    }
 }

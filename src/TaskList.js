@@ -112,7 +112,7 @@ function TaskList () {
             </div>
             <div className={hidden} id="taskArrayContainer">
             {taskArray}
-            <button className="add-habit-btn" onClick={handleShow}>+ add a new task</button>
+            <button className="add-habit-btn" onClick={handleShow}>+ add a new habit</button>
 
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
