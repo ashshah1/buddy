@@ -183,5 +183,13 @@ img.vert-move {
         left: 74px;
         top: 453px;
     }
+
+    .speech-bubble {
+        position: absolute;
+        bottom: 65%;
+        left: 46%;
+        width: auto;
+        height: auto;
+    }
 }
 

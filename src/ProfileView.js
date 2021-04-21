@@ -3,15 +3,15 @@ import { fireauth, firebase, firestore } from "./firebase";
 import { defaultIcons } from "./Vectors.js";
 import blankSquare from './images/no-image.png';
 import { Context } from "./Context";
-
+import HomePage from './HomePage.js';
 
 import useHabits from "./useHabits.js";
 
 import "./ProfileView.css";
+import LandingPage from "./LandingPage";
 
 function ProfileView() {
 	var currUser = firebase.auth().currentUser;
-	console.log(currUser);
 	const { user } = useContext(Context);
 
 	const habits = useHabits(currUser.uid);
@@ -37,8 +37,12 @@ function ProfileView() {
 			console.log("user deleted");
 		})
 			.catch(function (error) {
+			console.log(error)
 		});
+
 	}
+
+	
 	
 	const toggleViews = () => {
 		setActive(!isActive);
