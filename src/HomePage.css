@@ -45,7 +45,7 @@
 
 .speech-bubble {
     position: absolute;
-    bottom: 45%;
+    bottom: 60%;
     left: 46%;
     width: auto;
     height: auto;
@@ -55,7 +55,7 @@
     position: absolute;
     bottom: 8%;
     left: 46%;
-    width: 15rem;
+    width: 12rem;
     height: auto;
 }
 
@@ -184,12 +184,25 @@ img.vert-move {
         top: 453px;
     }
 
+}
+
+@media(max-width: 1024px) {
     .speech-bubble {
         position: absolute;
-        bottom: 65%;
+        bottom: 45%;
         left: 46%;
         width: auto;
         height: auto;
     }
+
+    .curr-avatar {
+        position: absolute;
+        bottom: 8%;
+        left: 46%;
+        width: 7rem;
+        height: auto;
+    }
 }
+
+    
 
