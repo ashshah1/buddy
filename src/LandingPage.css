@@ -1,5 +1,6 @@
 /* General Styles */
-.landing-2, .landing-4 {
+.landing-2,
+.landing-4 {
     background-color: #094C59;
     color: white;
 }
@@ -35,12 +36,13 @@
 
 .subhead {
     font-weight: 600;
-    font-size: 45px;
+    font-size: 35px;
     line-height: 44px;
     letter-spacing: 0.03em;
     color: #4F4F4F;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
+
 
 .google-button {
     width: 22rem;
@@ -76,6 +78,7 @@
 }
 
 @keyframes bounce {
+
     0%,
     20%,
     50%,
@@ -124,7 +127,7 @@
 }
 
 /* Landing 3 */
-.landing-3 .content{
+.landing-3 .content {
     text-align: center;
     padding: 8rem 0;
 }
@@ -147,7 +150,7 @@
     line-height: 59px;
     letter-spacing: 0.05em;
     padding-bottom: 2rem;
-    color:#094C59; 
+    color: #094C59;
 }
 
 .landing-3 h2 {
@@ -161,7 +164,7 @@
 .landing-3 p {
     font-size: 1.5rem;
     line-height: 29px;
-    letter-spacing: 0.03em;    
+    letter-spacing: 0.03em;
 }
 
 .landing-container div {
@@ -199,4 +202,80 @@
 .landing-4 p {
     padding: 1.5rem;
     margin: 0;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .landing-1 div {
+        width: 70%;
+    }
+
+    .landing-1 h1 {
+        font-size: 60px;
+        line-height: 117px;
+        letter-spacing: 0.05em;
+        color: #094C59;
+        margin-bottom: .5rem;
+    }
+
+    .landing-1 p {
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 35px;
+        letter-spacing: 0.03em;
+        color: #4F4F4F;
+        margin-bottom: 1.5rem;
+    }
+
+    .landing-1 button {
+        padding: 8px 32px;
+    }
+
+    .landing-1 button a {
+        font-size: 14px;
+        line-height: 29px;
+        letter-spacing: 0.085em;
+    }
+
+    .landing-1 img {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .landing-1 div {
+        width: 80%;
+    }
+
+    .landing-1 h1 {
+        font-size: 55px;
+        line-height: 110px;
+        letter-spacing: 0.05em;
+        color: #094C59;
+        margin-bottom: 2px;
+    }
+
+    .landing-1 p {
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 32px;
+        letter-spacing: 0.03em;
+        color: #4F4F4F;
+        margin-bottom: 1.5rem;
+    }
+
+    .landing-1 button {
+        padding: 6px 24px;
+    }
+
+    .landing-1 button a {
+        font-size: 12px;
+        line-height: 29px;
+        letter-spacing: 0.085em;
+    }
+
+    .landing-1 img {
+        display: none;
+    }
+
 }
