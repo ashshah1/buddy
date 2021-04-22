@@ -89,7 +89,7 @@ function ProfileView() {
 			</div>
 			<div className="bottom-level-container">
 				<a href="https://forms.gle/Bu38WEu7gBQNgcAx8" className="feedback-form">Send Feedback</a>
-				<span className="delete-btn m-3" onClick={deleteAccount}>DELETE ACCOUNT</span>
+				{/* <span className="delete-btn m-3" onClick={deleteAccount} disabled>DELETE ACCOUNT</span> */}
 			</div>
 		</div>
 	);

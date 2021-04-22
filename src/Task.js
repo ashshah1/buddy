@@ -5,6 +5,7 @@ import EditHabit from './EditHabit.js';
 import dots from './images/three-dots-vertical.svg';
 import Modal from 'react-bootstrap/Modal';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { firestore } from './firebase';
 
 function Task(props) {
 
@@ -29,6 +30,13 @@ function Task(props) {
     // sets default view, tasks are visible and "mark as complete" buttons are hidden
     let taskView = "";
     let markBtn = "hidden";
+
+    const deleteHabit = () => {
+        const habitRef = firestore 
+            .collection("Habits")
+            .doc(props.id)
+            .delete()
+    }
 
     const handleClick = (event) => {
         props.whenClicked(props.taskName)
@@ -80,7 +88,7 @@ function Task(props) {
 
                     <Dropdown.Menu>
                         <Dropdown.Item onClick={showEdit}>Edit Habit</Dropdown.Item>
-                        <Dropdown.Item>Delete Habit</Dropdown.Item>
+                        <Dropdown.Item onClick={deleteHabit}>Delete Habit</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
 
