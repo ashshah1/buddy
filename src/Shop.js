@@ -26,11 +26,11 @@ function Shop() {
     for (let i = 0; i < 6; i++) {
         let newAvatar;
         if (currSelected === i) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="selected btn btn-light" status="selected"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="btn btn-light" status="selected"></AvatarElem>
         } else if (currAvatars.includes(i)) {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="selected btn btn-warning" status="select"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="btn btn-warning" status="select"></AvatarElem>
         } else {
-            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="selected btn btn-success" status="200 coins"></AvatarElem>
+            newAvatar = <AvatarElem key={avatars[i]} locked="an-avatar" name={names[i]} index={i} src={avatars[i]} class="btn btn-success" status="200 coins"></AvatarElem>
         }
 
         if (i >= avatars.length) {
@@ -43,11 +43,11 @@ function Shop() {
     for (let i = 0; i < 4; i++) {
         let newBg;
         if (bgSelected === i) {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-light" status="selected"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="btn btn-light" status="selected"></BackgroundElem>
         } else if (currBg.includes(i)) {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-warning" status="select"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="btn btn-warning" status="select"></BackgroundElem>
         } else {
-            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="selected btn btn-success" status="200 coins"></BackgroundElem>
+            newBg = <BackgroundElem key={backgrounds[i]} src={backgrounds[i]} index={i} locked="bg-box" class="btn btn-success" status="200 coins"></BackgroundElem>
         }
         if (i >= backgrounds.length) {
             newBg = <BackgroundElem key={backgrounds[i]} index={i} locked="bg-box still-locked" src={backgrounds[i]} class="btn btn-success" status="200 coins"></BackgroundElem>
