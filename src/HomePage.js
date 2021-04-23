@@ -79,7 +79,7 @@ function HomePage() {
         <img className="background animations bounce-1" src={overlays[4]}></img>
         <Navbar expand="lg">
             <Navbar.Brand className="nav-part1">
-              <img src={currShop} className="icon" onClick={showShop}></img>
+              <img src={currShop} style={{ cursor:"pointer" }} className="icon" onClick={showShop}></img>
               <div className={coinDiv}>
                 <img className="coin mr-3" src={coin}></img>
                 <div>{user.points} coins</div>
@@ -99,7 +99,7 @@ function HomePage() {
                 </li> */}
                 <div className="nav-part2 ml-auto">
                       <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-                      <img src={defaultIcons[user.currentIcon]} className="icon" onClick={showProfile}></img>
+                      <img src={defaultIcons[user.currentIcon]} style={{ cursor:"pointer" }} className="icon" onClick={showProfile}></img>
                 </div>
               {/* </Nav>
             </Navbar.Collapse> */}

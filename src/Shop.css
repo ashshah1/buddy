@@ -46,12 +46,23 @@
 }
 
 .still-locked {
-    background-color: grey;
+    background-color: #c4c4c4;
 }
 
 .bg-selected {
     position: relative;
     z-index: 1;
+}
+
+.lockText, .bgLockText {
+    color: grey;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    text-align: center;
+}
+
+.bgLockText {
+    padding-top: 2rem;
 }
 
 .btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
