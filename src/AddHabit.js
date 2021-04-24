@@ -12,7 +12,7 @@ function AddHabit(props) {
     const [name, setName] = useState("");
     const [color, setColor] = useState("");
     const [category, setCategory] = useState("mind");
-    const [frequency, setFrequency] = useState(0);
+    const [frequency, setFrequency] = useState(1);
     const [state, setState] = useState("SELECT");
     const [repeat, setRepeat] = useState("");
 
@@ -96,7 +96,7 @@ function AddHabit(props) {
                     </div>
                     <div className="form-group pb-2">
                         <label>Goal</label>
-                        <input type="number" className="form-control goal" placeholder="1 time a week" value={frequency} onChange={event => {
+                        <input type="number" className="form-control goal" min="1" placeholder="1 time a week" value={frequency} onChange={event => {
                             setFrequency(event.target.value);
                         }}
                         />

@@ -3,7 +3,6 @@ import React, { useState, useContext } from "react";
 import { phrases } from './constants.js';
 
 import TaskList from "./TaskList.js";
-import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
 import LandingPage from "./LandingPage.js";
 
