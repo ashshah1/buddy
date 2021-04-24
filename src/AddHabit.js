@@ -5,7 +5,7 @@ import { Context } from "./Context.js";
 import './AddHabit.css'
 import { ToggleButton, ButtonGroup } from 'react-bootstrap';
 
-function AddHabit() {
+function AddHabit(props) {
     const { user } = useContext(Context);
 
     // keep track of all the values being added to the new habit
@@ -40,6 +40,8 @@ function AddHabit() {
         setColor("");
         setCategory("mind");
         setFrequency(0);
+
+        props.close();
     }
 
     

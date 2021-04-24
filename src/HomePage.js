@@ -48,9 +48,6 @@ function HomePage() {
   const { user } = useContext(Context);
   let currDate = new Date().getDate();
 
-  
-
-
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
   if (user) {
 
