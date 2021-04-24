@@ -93,7 +93,7 @@ export const phrases = [
     },
     {
         id: 24,
-        value: "You can anything you want!"
+        value: "You can do anything you want!"
     },
     {
         id: 25,
@@ -125,4 +125,56 @@ export const phrases = [
     },
 ]
 
-export default { phrases }
+export const avatarInfo = [
+    {
+        name: "BUDDY",
+        price: 200,
+        levelReq: 1
+    },
+    {
+        name: "CITRA",
+        price: 200,
+        levelReq: 1
+    },
+    {
+        name: "PLUTO",
+        price: 300,
+        levelReq: 1
+    },
+    {
+        name: "CLOVE",
+        price: 350,
+        levelReq: 2
+    },
+    {
+        name: "BO",
+        price: 500,
+        levelReq: 4
+    },
+    {
+        name: "KIA",
+        price: 600,
+        levelReq: 6
+    }
+]
+
+export const bgInfo = [
+    {
+        price: 200,
+        levelReq: 1
+    },
+    {
+        price: 200,
+        levelReq: 1
+    },
+    {
+        price: 300,
+        levelReq: 3
+    },
+    {
+        price: 500,
+        levelReq: 5
+    }
+]
+
+export default { phrases, avatarInfo }

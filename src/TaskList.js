@@ -119,7 +119,7 @@ function TaskList () {
             <Modal.Title>ADD HABIT</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <AddHabit></AddHabit>
+            <AddHabit close={handleClose}></AddHabit>
           </Modal.Body>
         </Modal>
       </div>
