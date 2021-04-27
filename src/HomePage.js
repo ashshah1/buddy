@@ -21,7 +21,7 @@ import avatarIconLight from './images/icon-avatar-lg.png';
 import checkInIcon from './images/icon-check.png';
 import checkInIconLight from './images/icon-check-lg.png';
 import Shop from './Shop.js';
-import {Navbar, Nav} from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 import ProfileView from './ProfileView.js'
 
@@ -54,7 +54,7 @@ function HomePage() {
     let profileIcon;
     let coinDiv;
     let checkIcon;
-  
+
     // set dark mode icons
     if (user.bgSelected === 1) {
       currShop = shopIconLight
@@ -67,49 +67,46 @@ function HomePage() {
       coinDiv = "coin-div"
       checkIcon = checkInIcon;
     }
-    
+
     return (
       <main>
         <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
         <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
         <img className="background animations bounce-1" src={overlays[4]}></img>
-        <Navbar expand="lg">
-            <Navbar.Brand className="nav-part1">
-              <img src={currShop} style={{ cursor:"pointer" }} className="icon" onClick={showShop}></img>
-              <div className={coinDiv}>
-                <img className="coin mr-3" src={coin}></img>
-                <div>{user.points} coins</div>
-              </div>
-              
-            </Navbar.Brand>
-            <img src={checkIcon} onClick={showMood} style= {{ cursor:"pointer"}}></img>
-            
-            {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar expand="lg" className="mt-3">
+          <Navbar.Brand className="nav-part1">
+            <img src={currShop} style={{ cursor: "pointer" }} className="icon" onClick={showShop}></img>
+            <div className={coinDiv}>
+              <img className="coin mr-3" src={coin}></img>
+              <div>{user.points} coins</div>
+            </div>
+
+          </Navbar.Brand>
+
+
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto"> */}
-                {/* <li className="nav-item">  no stats or cal icon for now
+          {/* <li className="nav-item">  no stats or cal icon for now
                   <img src={calIcon} className="icon"></img>
                 </li>
                 <li className="nav-item">
                   <img src={statsIcon} className="icon"></img>
                 </li> */}
-                <div className="nav-part2 ml-auto">
-                      <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-                      <img src={defaultIcons[user.currentIcon]} style={{ cursor:"pointer" }} className="icon" onClick={showProfile}></img>
-                </div>
-              {/* </Nav>
+          <div className="nav-part2 ml-auto">
+            <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
+            <img src={checkIcon} onClick={showMood} style={{ cursor: "pointer" }} className="icon"></img>
+            <img src={defaultIcons[user.currentIcon]} style={{ cursor: "pointer" }} className="icon" onClick={showProfile}></img>
+          </div>
+          {/* </Nav>
             </Navbar.Collapse> */}
         </Navbar>
-        
 
-        
-        <div className="p-contain">
-        <p className="speech-bubble">{phrases[currDate].value}</p>
+        <div className="img-container vert-move">
+          <p className="speech-bubble">{phrases[currDate].value}</p>
+          <img className="curr-avatar mt-4" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
         </div>
-        <div className="img-container">
-          <img className="curr-avatar vert-move" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
-        </div>
-        
+
         <div className="content-containers">
           <TaskList></TaskList>
         </div>
@@ -125,7 +122,7 @@ function HomePage() {
           <Modal.Header closeButton>
             <Modal.Title>DAILY CHECK IN</Modal.Title>
           </Modal.Header>
-          <Modal.Body><CheckInModal close={ () => closeMood}></CheckInModal></Modal.Body>
+          <Modal.Body><CheckInModal close={() => closeMood}></CheckInModal></Modal.Body>
         </Modal>
 
         <Modal show={profile} onHide={closeProfile}>
@@ -136,7 +133,7 @@ function HomePage() {
           <Modal.Body><ProfileView></ProfileView></Modal.Body>
         </Modal>
 
-       
+
       </main>
     )
   } else {

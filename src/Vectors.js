@@ -38,4 +38,4 @@ export const overlays = [anim1, anim2, anim3, anim5, clouds]
 export const defaultIcons = [icon1, icon2, icon3, icon4, icon5, icon6]
 export const lightIcons = [icon1Light, icon2Light, icon3Light, icon4Light, icon5Light, icon6Light]
 
-export default { avatars, backgrounds, overlays, defaultIcons, lightIcons, names }
+export default { avatars, backgrounds, overlays, defaultIcons, names }
