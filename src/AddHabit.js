@@ -5,14 +5,14 @@ import { Context } from "./Context.js";
 import './AddHabit.css'
 import { ToggleButton, ButtonGroup } from 'react-bootstrap';
 
-function AddHabit() {
+function AddHabit(props) {
     const { user } = useContext(Context);
 
     // keep track of all the values being added to the new habit
     const [name, setName] = useState("");
     const [color, setColor] = useState("");
     const [category, setCategory] = useState("mind");
-    const [frequency, setFrequency] = useState(0);
+    const [frequency, setFrequency] = useState(1);
     const [state, setState] = useState("SELECT");
     const [repeat, setRepeat] = useState("");
 
@@ -40,6 +40,8 @@ function AddHabit() {
         setColor("");
         setCategory("mind");
         setFrequency(0);
+
+        props.close();
     }
 
     
@@ -94,7 +96,7 @@ function AddHabit() {
                     </div>
                     <div className="form-group pb-2">
                         <label>Goal</label>
-                        <input type="number" className="form-control goal" placeholder="1 time a week" value={frequency} onChange={event => {
+                        <input type="number" className="form-control goal" min="1" placeholder="1 time a week" value={frequency} onChange={event => {
                             setFrequency(event.target.value);
                         }}
                         />
