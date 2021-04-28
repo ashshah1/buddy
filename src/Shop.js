@@ -114,7 +114,7 @@ function AvatarElem(props) {
     }
 
         return (
-            <div className="col-md-4 col-lg-4">
+            <div className="col-sm-12 col-md-6 col-lg-4">
                 <div className={props.locked}>
                     <p>{props.name}</p>
                     <img className="avatar-img" src={props.src}></img>
@@ -143,7 +143,7 @@ function BackgroundElem(props) {
         }
     }
     return (
-        <div className="col-md-6 col-lg-6">
+        <div className="col-md-12 col-lg-6">
             <div className={props.locked}>
                 <img className="bg-img" src={props.src}></img>
                 <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>

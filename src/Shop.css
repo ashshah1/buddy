@@ -1,6 +1,7 @@
 .an-avatar {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex: 0 1 300px;
     justify-content: center;
     align-items: center;
     background-color: #A9E3EB;
@@ -8,6 +9,9 @@
     margin: 2rem;
     padding: 2rem 0rem;
 }
+
+
+
 
 .an-avatar p {
     font-weight: 500;
@@ -101,3 +105,29 @@
     top: 50px;
     right: 30px;
 }
+
+@media (max-width: 576px) {
+    .an-avatar {
+        /*max-width: 300px;*/
+        flex: 0 1 300px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .an-avatar {
+        flex: 0 1 300px;
+        justify-content: space-evenly;
+    }
+}
+ 
+/*
+small screen 
+min-width: 600px
+
+medium screen
+min-width: 768px
+
+large screen
+min-width: 992px
+*/
