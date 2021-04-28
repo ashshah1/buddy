@@ -3,7 +3,6 @@ import React, { useState, useContext } from "react";
 import { phrases } from './constants.js';
 
 import TaskList from "./TaskList.js";
-import LogInPage from "./LogInPage.js";
 import XPBar from "./XPBar.js";
 import LandingPage from "./LandingPage.js";
 
@@ -48,9 +47,6 @@ function HomePage() {
   const { user } = useContext(Context);
   let currDate = new Date().getDate();
 
-  
-
-
   // if user is logged in, displays their Home Page with tasks and avatar. if user is not logged in, displays log in page
   if (user) {
 
@@ -79,7 +75,7 @@ function HomePage() {
         <img className="background animations bounce-1" src={overlays[4]}></img>
         <Navbar expand="lg">
             <Navbar.Brand className="nav-part1">
-              <img src={currShop} className="icon" onClick={showShop}></img>
+              <img src={currShop} style={{ cursor:"pointer" }} className="icon" onClick={showShop}></img>
               <div className={coinDiv}>
                 <img className="coin mr-3" src={coin}></img>
                 <div>{user.points} coins</div>
@@ -99,7 +95,7 @@ function HomePage() {
                 </li> */}
                 <div className="nav-part2 ml-auto">
                       <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-                      <img src={defaultIcons[user.currentIcon]} className="icon" onClick={showProfile}></img>
+                      <img src={defaultIcons[user.currentIcon]} style={{ cursor:"pointer" }} className="icon" onClick={showProfile}></img>
                 </div>
               {/* </Nav>
             </Navbar.Collapse> */}

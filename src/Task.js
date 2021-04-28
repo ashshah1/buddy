@@ -96,7 +96,7 @@ function Task(props) {
                     <Modal.Header closeButton>
                         <Modal.Title>EDIT HABIT</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body><EditHabit close={() => closeEdit} id={props.id} task={props}></EditHabit></Modal.Body>
+                    <Modal.Body><EditHabit close={closeEdit} id={props.id} task={props}></EditHabit></Modal.Body>
                 </Modal>
 
             </div>
