@@ -85,6 +85,7 @@
 .all-icons {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .icon-div {

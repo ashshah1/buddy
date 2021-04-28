@@ -21,7 +21,7 @@ import avatarIconLight from './images/icon-avatar-lg.png';
 import checkInIcon from './images/icon-check.png';
 import checkInIconLight from './images/icon-check-lg.png';
 import Shop from './Shop.js';
-import {Navbar, Nav} from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 
 import ProfileView from './ProfileView.js'
 
@@ -54,7 +54,7 @@ function HomePage() {
     let profileIcon;
     let coinDiv;
     let checkIcon;
-  
+
     // set dark mode icons
     if (user.bgSelected === 1) {
       currShop = shopIconLight
@@ -67,76 +67,79 @@ function HomePage() {
       coinDiv = "coin-div"
       checkIcon = checkInIcon;
     }
-    
+
     return (
       <main>
-        <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
-        <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
-        <img className="background animations bounce-1" src={overlays[4]}></img>
-        <Navbar expand="lg">
+        <div className="whole-background" style={{ backgroundImage: `url(${backgrounds[user.bgSelected]})` }}></div>
+        <div className="background animations bounce-1" style={{ backgroundImage: `url(${overlays[user.bgSelected]})` }}></div>
+        <div className="background animations bounce-1" style={{ backgroundImage: `url(${overlays[4]})` }}></div>
+        {/* <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img> */}
+        {/* <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img> */}
+        {/* <img className="background animations bounce-1" src={overlays[4]}></img> */}
+
+        <div className="home-content">
+          <Navbar expand="lg">
             <Navbar.Brand className="nav-part1">
-              <img src={currShop} style={{ cursor:"pointer" }} className="icon" onClick={showShop}></img>
+              <img src={currShop} style={{ cursor: "pointer" }} className="icon" onClick={showShop}></img>
               <div className={coinDiv}>
-                <img className="coin mr-3" src={coin}></img>
-                <div>{user.points} coins</div>
+                <img className="coin" src={coin}></img>
+                <div>{user.points} <span className="coin-label">coins</span></div>
               </div>
-              
+
             </Navbar.Brand>
-            <img src={checkIcon} onClick={showMood} style= {{ cursor:"pointer"}}></img>
-            
+
+
             {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto"> */}
-                {/* <li className="nav-item">  no stats or cal icon for now
+            {/* <li className="nav-item">  no stats or cal icon for now
                   <img src={calIcon} className="icon"></img>
                 </li>
                 <li className="nav-item">
                   <img src={statsIcon} className="icon"></img>
                 </li> */}
-                <div className="nav-part2 ml-auto">
-                      <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-                      <img src={defaultIcons[user.currentIcon]} style={{ cursor:"pointer" }} className="icon" onClick={showProfile}></img>
-                </div>
-              {/* </Nav>
+            <div className="nav-part2 ml-auto">
+              <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
+              <div>
+                <img src={checkIcon} onClick={showMood} style={{ cursor: "pointer" }} className="icon"></img>
+                <img src={defaultIcons[user.currentIcon]} style={{ cursor: "pointer" }} className="icon" onClick={showProfile}></img>
+              </div>
+            </div>
+            {/* </Nav>
             </Navbar.Collapse> */}
-        </Navbar>
-        
+          </Navbar>
 
-        
-        <div className="p-contain">
-        <p className="speech-bubble">{phrases[currDate].value}</p>
+          <div className="img-container vert-move">
+            <p className="speech-bubble">{phrases[currDate].value}</p>
+            <img className="curr-avatar mt-4" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
+          </div>
+
+          <div className="content-containers">
+            <TaskList></TaskList>
+          </div>
+
+          <Modal show={shop} onHide={closeShop}>
+            <Modal.Header closeButton>
+              <Modal.Title>SHOP</Modal.Title>
+            </Modal.Header>
+            <Modal.Body><Shop></Shop></Modal.Body>
+          </Modal>
+
+          <Modal show={mood} onHide={closeMood}>
+            <Modal.Header closeButton>
+              <Modal.Title>DAILY CHECK IN</Modal.Title>
+            </Modal.Header>
+            <Modal.Body><CheckInModal close={() => closeMood}></CheckInModal></Modal.Body>
+          </Modal>
+
+          <Modal show={profile} onHide={closeProfile}>
+            <Modal.Header closeButton>
+              <Modal.Title>PROFILE</Modal.Title>
+            </Modal.Header>
+            {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
+            <Modal.Body><ProfileView></ProfileView></Modal.Body>
+          </Modal>
         </div>
-        <div className="img-container">
-          <img className="curr-avatar vert-move" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
-        </div>
-        
-        <div className="content-containers">
-          <TaskList></TaskList>
-        </div>
-
-        <Modal show={shop} onHide={closeShop}>
-          <Modal.Header closeButton>
-            <Modal.Title>SHOP</Modal.Title>
-          </Modal.Header>
-          <Modal.Body><Shop></Shop></Modal.Body>
-        </Modal>
-
-        <Modal show={mood} onHide={closeMood}>
-          <Modal.Header closeButton>
-            <Modal.Title>DAILY CHECK IN</Modal.Title>
-          </Modal.Header>
-          <Modal.Body><CheckInModal close={ () => closeMood}></CheckInModal></Modal.Body>
-        </Modal>
-
-        <Modal show={profile} onHide={closeProfile}>
-          <Modal.Header closeButton>
-            <Modal.Title>PROFILE</Modal.Title>
-          </Modal.Header>
-          {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
-          <Modal.Body><ProfileView></ProfileView></Modal.Body>
-        </Modal>
-
-       
       </main>
     )
   } else {

@@ -45,6 +45,10 @@ html, body, #root, .modal {
   }
 }
 
+.hidden {
+  display: none;
+}
+
 /* Modal */
 .modal-header {
   align-items: center;
