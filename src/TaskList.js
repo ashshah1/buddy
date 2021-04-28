@@ -14,7 +14,7 @@ function TaskList () {
 
     const { height, width } = useWindowDimensions();
     
-    const [hidden, setHidden] = useState( width > 768 ? "": "hidden");
+    const [viewTask, setView] = useState( width > 768 ? "": "view-task");
     const [show, setShow] = useState(false); // keeps track of addhabit modal visibility
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -69,11 +69,11 @@ function TaskList () {
     });
   };
 
-  const toggleHidden = () => {
-    if (hidden == "") {
-      setHidden("hidden");
+  const toggleView = () => {
+    if (viewTask == "") {
+      setView("view-task");
     } else {
-      setHidden("");
+      setView("");
     }
   };
 
@@ -105,12 +105,12 @@ function TaskList () {
 
 
   return (
-    <div className="tasklist-container">
-            <div className="header-container">
+    <div id={viewTask} className="tasklist-container">
+            <div className= " header-container">
                 <p className="task-header">HABITS</p>
-                <p className="task-header" style={{ cursor: 'pointer'}} onClick={toggleHidden}>—</p>
+                <p className="task-header" style={{ cursor: 'pointer'}} onClick={toggleView}>—</p>
             </div>
-            <div className={hidden} id="taskArrayContainer">
+            <div className="tasks" id="taskArrayContainer">
             {taskArray}
             <button className="add-habit-btn" onClick={handleShow}>+ add a new habit</button>
 

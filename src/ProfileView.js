@@ -37,13 +37,13 @@ function ProfileView() {
 			console.log("user deleted");
 		})
 			.catch(function (error) {
-			console.log(error)
-		});
+				console.log(error)
+			});
 
 	}
 
-	
-	
+
+
 	const toggleViews = () => {
 		setActive(!isActive);
 	}
@@ -53,7 +53,7 @@ function ProfileView() {
 	for (let i = 0; i < 12; i++) {
 		emptyBadges.push(
 			<div className="col-md-3">
-			<img className="badge-icon" src={blankSquare}></img>
+				<img className="badge-icon" src={blankSquare}></img>
 			</div>
 		)
 	}
@@ -69,52 +69,50 @@ function ProfileView() {
 	}
 
 	if (!isActive) {
-	return (
-		<div className="profile-modal">
-			<div className="top-level-container">
-				<div className="user-info-div">
-					<img className="profile-icon" src={defaultIcons[user.currentIcon]}></img>
-					<button className="change-icon" onClick={toggleViews}>change icon</button>
-					<p className="first-name">{(user.displayName).split(' ')[0]}</p>
-					<button className="sign-out" onClick={() => fireauth.signOut()}>LOG OUT</button>
-				</div>
-				<div className="achievements-div">
-					<p className="achievements-header">Achievements</p>
-					<div className="container">
-						<div className="row">
-						{emptyBadges}
+		return (
+			<div className="profile-modal">
+				<div className="top-level-container">
+					<div className="user-info-div">
+						<img className="profile-icon" src={defaultIcons[user.currentIcon]}></img>
+						<button className="change-icon" onClick={toggleViews}>change icon</button>
+						<p className="first-name">{(user.displayName).split(' ')[0]}</p>
+						<button className="sign-out" onClick={() => fireauth.signOut()}>LOG OUT</button>
+					</div>
+					<div className="achievements-div">
+						<p className="achievements-header">Achievements</p>
+						<div className="container">
+							<div className="row">
+								{emptyBadges}
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div className="bottom-level-container">
-				<a href="https://forms.gle/Bu38WEu7gBQNgcAx8" className="feedback-form">Send Feedback</a>
-				{/* <span className="delete-btn m-3" onClick={deleteAccount} disabled>DELETE ACCOUNT</span> */}
-			</div>
-		</div>
-	);
-		} else {
-			return(
-				<div>
-					<div className="all-icons">
-					{allIcons}
-					</div>
+				<div className="bottom-level-container">
+					<a href="https://forms.gle/Bu38WEu7gBQNgcAx8" className="feedback-form">Send Feedback</a>
+					{/* <span className="delete-btn m-3" onClick={deleteAccount} disabled>DELETE ACCOUNT</span> */}
 				</div>
-			)
-		}
+			</div>
+		);
+	} else {
+		return (
+			<div className="all-icons">
+				{allIcons}
+			</div>
+		)
+	}
 }
 
 function ChangeIcon(props) {
 	const { user } = useContext(Context);
 
-		const changeStatus = async (user) => {
-			const userRef = firestore.collection("users").doc(user.local.uid);
-			if (props.status == "select") {
-				await userRef.update({
-					currentIcon: props.index
-				})
-			}
+	const changeStatus = async (user) => {
+		const userRef = firestore.collection("users").doc(user.local.uid);
+		if (props.status == "select") {
+			await userRef.update({
+				currentIcon: props.index
+			})
 		}
+	}
 
 	let buttonClass = "icon-select " + (props.status)
 	return (

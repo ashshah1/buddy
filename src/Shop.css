@@ -37,11 +37,9 @@
     border-radius: 10px;
 }
 
-.hidden {
-    display: none;
-}
-
-.still-locked p, .still-locked button, .still-locked img {
+.still-locked p,
+.still-locked button,
+.still-locked img {
     visibility: hidden;
 }
 
@@ -54,7 +52,8 @@
     z-index: 1;
 }
 
-.lockText, .bgLockText {
+.lockText,
+.bgLockText {
     color: grey;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -65,28 +64,32 @@
     padding-top: 2rem;
 }
 
-.btn-info:not(:disabled):not(.disabled).active, .btn-info:not(:disabled):not(.disabled):active, .show>.btn-info.dropdown-toggle {
+
+.button-container .active {
     background-color: #094C59;
-    border-color: white;
+    border-color: #094C59;
+    color: white;
+}
+
+.button-container .not-active {
+    background-color: white;
+    border-color: #094C59;
+    color: #094C59;
+}
+
+.button-container button {
+    border-style: solid;
     border-radius: 10px;
     padding: 7px 17px 7px 17px;
-    color: #FFFFFF;
     font-weight: 600;
     font-size: 1rem;
     line-height: 29px;
     letter-spacing: 0.085em;
 }
 
-.not-active {
-    background-color: white;
-    border-color: #094C59;
-    color: #094C59;
-    border-radius: 10px;
-    padding: 7px 17px 7px 17px;
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 29px;
-    letter-spacing: 0.085em;
+.not-active:hover {
+    background-color: #094C59;
+    color: white;
 }
 
 .button-container {
@@ -98,12 +101,13 @@
     margin: 0rem .3rem;
 }
 
-.an-avatar button, .bg-box button {
+.an-avatar button,
+.bg-box button {
     border-radius: 3px;
     font-weight: bold;
     font-size: .9rem;
     line-height: 12px;
-    letter-spacing: 0.085em;   
+    letter-spacing: 0.085em;
     padding: .7rem .9rem;
 }
 

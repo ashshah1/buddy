@@ -70,70 +70,74 @@ function HomePage() {
 
     return (
       <main>
-        <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img>
-        <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img>
-        <img className="background animations bounce-1" src={overlays[4]}></img>
-        <Navbar expand="lg" className="mt-3">
-          <Navbar.Brand className="nav-part1">
-            <img src={currShop} style={{ cursor: "pointer" }} className="icon" onClick={showShop}></img>
-            <div className={coinDiv}>
-              <img className="coin mr-3" src={coin}></img>
-              <div>{user.points} coins</div>
-            </div>
+        <div className="whole-background" style={{ backgroundImage: `url(${backgrounds[user.bgSelected]})` }}>
+          <div className="background animations bounce-1" style={{ backgroundImage: `url(${overlays[user.bgSelected]})` }}></div>
+            <div className="background animations bounce-1" style={{ backgroundImage: `url(${overlays[4]})` }}></div>
+              {/* <img className="background" src={backgrounds[user.bgSelected]} alt="trees and blue skies"></img> */}
+              {/* <img className="background animations bounce-1" src={overlays[user.bgSelected]}></img> */}
+              {/* <img className="background animations bounce-1" src={overlays[4]}></img> */}
+              <Navbar expand="lg">
+                <Navbar.Brand className="nav-part1">
+                  <img src={currShop} style={{ cursor: "pointer" }} className="icon" onClick={showShop}></img>
+                  <div className={coinDiv}>
+                    <img className="coin" src={coin}></img>
+                    <div>{user.points} <span className="coin-label">coins</span></div>
+                  </div>
 
-          </Navbar.Brand>
+                </Navbar.Brand>
 
 
-          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="ml-auto"> */}
-          {/* <li className="nav-item">  no stats or cal icon for now
+                {/* <li className="nav-item">  no stats or cal icon for now
                   <img src={calIcon} className="icon"></img>
                 </li>
                 <li className="nav-item">
                   <img src={statsIcon} className="icon"></img>
                 </li> */}
-          <div className="nav-part2 ml-auto">
-            <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
-            <img src={checkIcon} onClick={showMood} style={{ cursor: "pointer" }} className="icon"></img>
-            <img src={defaultIcons[user.currentIcon]} style={{ cursor: "pointer" }} className="icon" onClick={showProfile}></img>
-          </div>
-          {/* </Nav>
+                <div className="nav-part2 ml-auto">
+                  <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
+                  <div>
+                    <img src={checkIcon} onClick={showMood} style={{ cursor: "pointer" }} className="icon"></img>
+                    <img src={defaultIcons[user.currentIcon]} style={{ cursor: "pointer" }} className="icon" onClick={showProfile}></img>
+                  </div>
+                </div>
+                {/* </Nav>
             </Navbar.Collapse> */}
-        </Navbar>
+              </Navbar>
 
-        <div className="img-container vert-move">
-          <p className="speech-bubble">{phrases[currDate].value}</p>
-          <img className="curr-avatar mt-4" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
+              <div className="img-container vert-move">
+                <p className="speech-bubble">{phrases[currDate].value}</p>
+                <img className="curr-avatar mt-4" src={avatars[user.avatarSelected]} alt="animated personal avatar"></img>
+              </div>
+
+              <div className="content-containers">
+                <TaskList></TaskList>
+              </div>
+
+              <Modal show={shop} onHide={closeShop}>
+                <Modal.Header closeButton>
+                  <Modal.Title>SHOP</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><Shop></Shop></Modal.Body>
+              </Modal>
+
+              <Modal show={mood} onHide={closeMood}>
+                <Modal.Header closeButton>
+                  <Modal.Title>DAILY CHECK IN</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><CheckInModal close={() => closeMood}></CheckInModal></Modal.Body>
+              </Modal>
+
+              <Modal show={profile} onHide={closeProfile}>
+                <Modal.Header closeButton>
+                  <Modal.Title>PROFILE</Modal.Title>
+                </Modal.Header>
+                {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
+                <Modal.Body><ProfileView></ProfileView></Modal.Body>
+              </Modal>
         </div>
-
-        <div className="content-containers">
-          <TaskList></TaskList>
-        </div>
-
-        <Modal show={shop} onHide={closeShop}>
-          <Modal.Header closeButton>
-            <Modal.Title>SHOP</Modal.Title>
-          </Modal.Header>
-          <Modal.Body><Shop></Shop></Modal.Body>
-        </Modal>
-
-        <Modal show={mood} onHide={closeMood}>
-          <Modal.Header closeButton>
-            <Modal.Title>DAILY CHECK IN</Modal.Title>
-          </Modal.Header>
-          <Modal.Body><CheckInModal close={() => closeMood}></CheckInModal></Modal.Body>
-        </Modal>
-
-        <Modal show={profile} onHide={closeProfile}>
-          <Modal.Header closeButton>
-            <Modal.Title>PROFILE</Modal.Title>
-          </Modal.Header>
-          {/* <Modal.Body><button className="sign-in btn btn-outline-dark m-3" onClick={() => fireauth.signOut()}>Log Out</button> */}
-          <Modal.Body><ProfileView></ProfileView></Modal.Body>
-        </Modal>
-
-
       </main>
     )
   } else {

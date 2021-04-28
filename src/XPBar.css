@@ -47,13 +47,3 @@
 .progress-bar {
     background-color: #6485AC;
 }
-
-@media(max-width: 768px) {
-    .xp-bar-container {
-        width: 150px;
-    }
-
-    #progress-bar {
-        width:150px;
-    }
-}

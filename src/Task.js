@@ -32,7 +32,7 @@ function Task(props) {
     let markBtn = "hidden";
 
     const deleteHabit = () => {
-        const habitRef = firestore 
+        const habitRef = firestore
             .collection("Habits")
             .doc(props.id)
             .delete()
@@ -73,32 +73,8 @@ function Task(props) {
             &nbsp;
         </div>
         <div id="padding-div">
-            <div className="container-one pt">
+            <div className="container-one">
                 <p className={taskView} style={{ textDecoration: decor }}>{props.taskName}</p>
-                <Button onClick={handleClick} className={"btn btn-info " + markBtn}>mark complete</Button>
-                <Button disabled={disabled} onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
-                {/* <p id="dot-dot-dot" className={markBtn}>dot</p> */}
-                {/* <img id="dot-dot-dot" style={{ height:"20px", cursor:"pointer" }} src={dots} onClick={showEdit}/> */}
-
-                <Dropdown className={markBtn}>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    {/* <img id="dot-dot-dot" style={{ height:"20px", cursor:"pointer" }} src={dots}/> */}
-
-                    </Dropdown.Toggle>
-
-                    <Dropdown.Menu>
-                        <Dropdown.Item onClick={showEdit}>Edit Habit</Dropdown.Item>
-                        <Dropdown.Item onClick={deleteHabit}>Delete Habit</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-
-                <Modal show={edit} onHide={closeEdit}>
-                    <Modal.Header closeButton>
-                        <Modal.Title>EDIT HABIT</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body><EditHabit close={closeEdit} id={props.id} task={props}></EditHabit></Modal.Body>
-                </Modal>
-
             </div>
             <div className="container-two">
                 <p>
@@ -106,6 +82,29 @@ function Task(props) {
                     <span className={taskView}>{props.currCount} {" / "}</span><span className={taskView}>{props.taskFreq}</span>
                 </p>
                 <p className={taskView}>{props.totalCount} total</p>
+            </div>
+            <div>
+                <div className="hover-options">
+                    <Button onClick={handleClick} className={"btn btn-info " + markBtn}>mark complete</Button>
+                    <Button disabled={disabled} onClick={handleUndo} className={"btn btn-secondary " + markBtn}>undo</Button>
+
+                    <Dropdown className={markBtn}>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={showEdit}>Edit Habit</Dropdown.Item>
+                            <Dropdown.Item onClick={deleteHabit}>Delete Habit</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+                    <Modal show={edit} onHide={closeEdit}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>EDIT HABIT</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body><EditHabit close={closeEdit} id={props.id} task={props}></EditHabit></Modal.Body>
+                    </Modal>
+                </div>
             </div>
         </div>
     </div>);

@@ -1,13 +1,19 @@
 /* Background */
 .background {
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
     z-index: -1;
-    background-size: cover;
+}
 
+.whole-background {
+    position: relative;
+    z-index: -2;
+}
+
+.background, .whole-background {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-position: bottom;
+    height: 100vh;
 }
 
 /* Navigation */
@@ -37,6 +43,7 @@
 .coin {
     width: 2rem;
     height: 2rem;
+    margin-right: 1rem;
 }
 
 .coin-div {
@@ -72,6 +79,47 @@
 
 .tasklist-container {
     margin-top: 2rem;
+}
+
+#view-task {
+    width: 160px;
+    padding: 0px;
+    margin-top: 0px;
+    border-radius: 0 20px 20px 0px;
+    position: relative;
+    top: 20px;
+}
+
+#view-task .header-container {
+    padding: 10px 23px;
+}
+
+#view-task .task-header {
+    font-size: 20px;
+    padding: 0px;
+}
+
+#view-task p.task-header {
+    margin: 0px;
+}
+
+.tasklist-container {
+    padding: 0px;
+    margin-top: 0px;
+    position: relative;
+    top: 20px;
+}
+
+.task-container, .add-habit-btn {
+    width: 90%;
+}
+
+.header-container {
+    padding-top: 10px;
+}
+
+.tasks {
+    padding-bottom: 18px;
 }
 
 /* Avatar and Speech Bubble */
@@ -160,4 +208,215 @@
     100% {
         transform: translateY(-5px);
     }
+}
+
+/* Media Queries */
+@media screen and (max-width: 838px) {
+    #xp-bar {
+        width: 140px;
+    }
+
+    .level {
+        font-size: 13px;
+    }
+
+    .icon {
+       height: 50px;
+    }
+
+    .coin-div {
+        font-size: 16px
+    }
+
+    .tasklist-container {
+        width: 20rem;
+    }
+
+    .task-header {
+        font-size: 1.3rem
+    }
+
+    .task-container {
+        height: 5rem;
+    }
+
+    .task-container p, .add-habit-btn {
+        font-size: 14px;
+    }
+
+    .hover-options .btn {
+        font-size: 13px;
+        margin: 0px;
+    }
+
+    .dropdown-item {
+        font-size: 13px;
+    }
+
+    #view-task {
+        width: 150px;
+        padding: 0px;
+        margin-top: 0px;
+        border-radius: 0 20px 20px 0px;
+        position: relative;
+        top: 20px;
+    }
+    
+    #view-task .header-container {
+        padding: 10px 20px;
+    }
+
+    #view-task .task-header {
+        font-size: 18px;
+        padding: 0px;
+    }
+
+    #view-task p.task-header {
+        margin: 0px;
+    }
+
+    .tasklist-container {
+        padding: 0px;
+        margin-top: 0px;
+        position: relative;
+        top: 20px;
+    }
+
+    /* .task-container, .add-habit-btn {
+        width: 90%;
+    }
+
+    .header-container {
+        padding-top: 10px;
+    }
+
+    .tasks {
+        padding-bottom: 18px;
+    } */
+}
+
+
+@media screen and (min-width: 1500px) {
+    .img-container {
+        bottom: 8.5%;
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    .img-container {
+        bottom: 9%;
+    }
+}
+
+@media screen and (min-width: 1700px) {
+    .img-container {
+        bottom: 10%;
+    }
+}
+
+@media screen and (max-width: 628px) {
+    #xp-bar {
+        width: 140px;
+    }
+
+    .level {
+        font-size: 13px;
+    }
+
+    .icon {
+       height: 40px;
+    }
+
+    .coin-div {
+        font-size: 13px;
+        padding: 0px 10px;
+    }
+
+    .coin-div div {
+        padding-right: 5px;
+    }
+
+    .coin-div .coin {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+
+    .coin-label {
+        display: none;
+    }
+
+    .icon, .coin-div {
+        margin: 5px;
+    }
+
+    nav {
+        margin-top: 0px;
+    }
+
+    .nav-part2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .nav-part2 .xp-bar-container{
+        order: 1;
+        padding-top: 15px;
+    }
+
+    .navbar {
+        align-items: flex-start;
+    }
+
+    .xp-bar-container {
+        margin: 5px;
+    }
+
+    #view-task {
+        width: 140px;
+        padding: 0px;
+        margin-top: 0px;
+        border-radius: 0 20px 20px 0px;
+        position: relative;
+        top: -52px;
+    }
+    
+    #view-task .header-container {
+        padding: 10px 18px;
+    }
+
+    #view-task .task-header {
+        font-size: 16px;
+        padding: 0px;
+    }
+
+    #view-task p.task-header {
+        margin: 0px;
+    }
+
+    .tasklist-container {
+        width: 100%;
+        padding: 0px;
+        margin-top: 0px;
+        position: relative;
+        top: -52px;
+    }
+
+    .content-containers {
+        margin-right: 0;
+    }
+
+    /* .task-container, .add-habit-btn {
+        width: 90%;
+    }
+
+    .header-container {
+        padding-top: 10px;
+    }
+
+    .tasks {
+        padding-bottom: 18px;
+    } */
 }
