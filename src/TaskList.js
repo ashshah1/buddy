@@ -110,7 +110,7 @@ function TaskList () {
                 <p className="task-header">HABITS</p>
                 <p className="task-header" style={{ cursor: 'pointer'}} onClick={toggleHidden}>—</p>
             </div>
-            <div className={hidden} id="taskArrayContainer">
+            <div className={hidden} className="taskarray-container">
             {taskArray}
             <button className="add-habit-btn" onClick={handleShow}>+ add a new habit</button>
 
