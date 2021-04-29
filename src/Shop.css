@@ -1,7 +1,9 @@
+
 .an-avatar {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 0 1 300px;
+    position: relative;
     justify-content: center;
     align-items: center;
     background-color: #A9E3EB;
@@ -119,10 +121,38 @@
 
 @media (max-width: 576px) {
     .an-avatar {
-        /*max-width: 300px;*/
-        flex: 0 1 300px;
-        justify-content: center;
+      width: 60vw;
+      margin: 16px;  
+      padding: 16px;
     }
+
+    .card {
+        flex: 0 0 auto;
+        width: auto;
+        border-style: none;
+    }
+
+    .scrolling-wrapper {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    .an-avatar p {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .bg-img {
+        width: 20rem;
+    }
+
+    .bg-box {
+        width: auto;
+        margin: 16px;
+    }
+    
 }
 
 @media (max-width: 768px) {
@@ -130,7 +160,7 @@
         flex: 0 1 300px;
         justify-content: space-evenly;
     }
-}
+} 
  
 /*
 small screen 

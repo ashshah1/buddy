@@ -57,39 +57,54 @@ function Shop() {
         bgArray.push(newBg);
     }
 
-    if (!isActive) {
-    return (
-        <div>
-            <div className="button-container">
-                <Button variant="info" className="active">AVATARS</Button>
-                <Button variant="outline-info" onClick={toggleViews} className="not-active">BACKGROUNDS</Button>
+    if (window.innerWidth < 576) {
+        return (
+           <div className="d-flex flex-column">
+                <div className="scrolling-wrapper">
+                    {avatarArray}
+                </div>
+                
+               <div className="scrolling-wrapper">
+                   {bgArray}
+               </div>
             </div>
-            <div className="avatar-view">
-                <div className="container">
-                    <div className="row">
-                        {avatarArray}
+        );
+    } else if (!isActive) {
+            return (
+                <div>
+                    <div className="button-container">
+                        <Button variant="info" className="active">AVATARS</Button>
+                        <Button variant="outline-info" onClick={toggleViews} className="not-active">BACKGROUNDS</Button>
+                    </div>
+                    <div className="avatar-view">
+                        <div className="container">
+                            <div className="row">
+                                {avatarArray}
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    );
-    } else {
-        return (
-            <div>
-             <div className="button-container">
-                 <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
-                 <Button variant="info" className="active">BACKGROUNDS</Button>
-             </div>
-             <div className="background-view">
-                 <div className="container">
-                     <div className="row">
-                         {bgArray}
-                     </div>
-                 </div>
-             </div>
-         </div>
-        )
-    }
+            );
+        } else {
+            return (
+                <div>
+                    <div className="button-container">
+                        <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
+                        <Button variant="info" className="active">BACKGROUNDS</Button>
+                    </div>
+                    <div className="background-view">
+                        <div className="container">
+                            <div className="row">
+                                {bgArray}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+
+    
+    
 }
 
 // creates an avatar element, setting it up with bootstrap grid classnames and well as styling button based off of user data
@@ -119,8 +134,9 @@ function AvatarElem(props) {
         }
     }
 
+    if (window.innerWidth < 576) {
         return (
-            <div className="col-sm-12 col-md-6 col-lg-4">
+            <div className="card">
                 <div className={props.locked}>
                     <p>{props.name}</p>
                     {lockedText}
@@ -128,8 +144,21 @@ function AvatarElem(props) {
                     <button onClick={() => { changeStatus(user) }} className={props.class}>{props.status}</button>
                 </div>
             </div>
-        ) 
+        );
+    } else {
+        return (
+            <div className="col-md-6 col-lg-4">
+                <div className={props.locked}>
+                    <p>{props.name}</p>
+                    {lockedText}
+                    <img className="avatar-img" src={props.src}></img>
+                    <button onClick={() => { changeStatus(user) }} className={props.class}>{props.status}</button>
+                </div>
+            </div>
+        ); 
     }
+
+}
 
 
 function BackgroundElem(props) {
@@ -158,15 +187,29 @@ function BackgroundElem(props) {
             })
         }
     }
-    return (
-        <div className="col-md-12 col-lg-6">
-            <div className={props.locked}>
-                {lockedText}
-                <img className="bg-img" src={props.src}></img>
-                <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>
+
+    if (window.innerWidth < 576) {
+        return (
+            <div className="px-0 col-md-2 col-lg-6">
+                <div className={props.locked}>
+                    {lockedText}
+                    <img className="bg-img" src={props.src}></img>
+                    <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>
+                </div>
             </div>
-        </div>
-    )
+        )
+    } else {
+        return (
+            <div className="col-md-2 col-lg-6">
+                <div className={props.locked}>
+                    {lockedText}
+                    <img className="bg-img" src={props.src}></img>
+                    <button onClick={() => {changeStatus(user)}} className={props.class}>{props.status}</button>
+                </div>
+            </div>
+        )
+    }
+    
 }
 
 export default Shop;
