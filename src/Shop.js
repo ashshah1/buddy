@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Button } from "react-bootstrap";
 import { Context } from "./Context";
 import { avatars, backgrounds, names } from './Vectors.js'
 import { firestore, firebase } from './firebase'
@@ -61,8 +60,8 @@ function Shop() {
     return (
         <div>
             <div className="button-container">
-                <Button variant="info" className="active">AVATARS</Button>
-                <Button variant="outline-info" onClick={toggleViews} className="not-active">BACKGROUNDS</Button>
+                <button type="button" className="active">AVATARS</button>
+                <button onClick={toggleViews} type="button" className="not-active">BACKGROUNDS</button>
             </div>
             <div className="avatar-view">
                 <div className="container">
@@ -77,8 +76,8 @@ function Shop() {
         return (
             <div>
              <div className="button-container">
-                 <Button variant="outline-info" onClick={toggleViews} className="not-active">AVATARS</Button>
-                 <Button variant="info" className="active">BACKGROUNDS</Button>
+                 <button onClick={toggleViews} type="button" className="not-active">AVATARS</button>
+                 <button className="active">BACKGROUNDS</button>
              </div>
              <div className="background-view">
                  <div className="container">
