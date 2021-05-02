@@ -109,19 +109,19 @@ export const phrases = [
     },
     {
         id: 28,
-        value: "b r e a t h e"
+        value: "Have a great day today"
     },
     {
         id: 29,
-        value: ""
+        value: "I'm proud of you!"
     },
     {
         id: 30,
-        value: ""
+        value: "You are doing enough, celebrate that"
     },
     {
         id: 31,
-        value: ""
+        value: "I believe in you!"
     },
 ]
 
