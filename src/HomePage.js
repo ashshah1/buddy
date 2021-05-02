@@ -54,18 +54,22 @@ function HomePage() {
     let profileIcon;
     let coinDiv;
     let checkIcon;
+    let currTheme;
 
     // set dark mode icons
     if (user.bgSelected === 1) {
       currShop = shopIconLight
       profileIcon = avatarIconLight
-      coinDiv = "coin-div light-div"
+      coinDiv = "coin-div"
       checkIcon = checkInIconLight;
+      currTheme = "level dark";
+
     } else {
       currShop = shopIcon
       profileIcon = avatarIcon
       coinDiv = "coin-div"
       checkIcon = checkInIcon;
+      currTheme = "level light"
     }
 
     return (
@@ -99,7 +103,7 @@ function HomePage() {
                   <img src={statsIcon} className="icon"></img>
                 </li> */}
             <div className="nav-part2 ml-auto">
-              <XPBar level={user.level} currXP={user.exp} totalXP="100"></XPBar>
+              <XPBar theme={currTheme} level={user.level} currXP={user.exp} totalXP="100"></XPBar>
               <div>
                 <img src={checkIcon} onClick={showMood} style={{ cursor: "pointer" }} className="icon"></img>
                 <img src={defaultIcons[user.currentIcon]} style={{ cursor: "pointer" }} className="icon" onClick={showProfile}></img>
