@@ -152,7 +152,7 @@ function BackgroundElem(props) {
         } else if (unBought && user.points >= (props.price) && !locked) { // replace 100 with actual price
             await userRef.update({
                 bgSelected: props.index,
-                points: firebase.firestore.FieldValue.increment(-100),
+                points: firebase.firestore.FieldValue.increment(-props.price),
                 bgOwn: firebase.firestore.FieldValue.arrayUnion(props.index)
             })
         }

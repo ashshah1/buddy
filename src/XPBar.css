@@ -14,6 +14,10 @@
     justify-content: space-between;
 }
 
+.dark {
+    color: white;
+}
+
 .level-descrip p {
     margin-bottom: .1rem;
 }
