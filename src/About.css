@@ -1,0 +1,44 @@
+.top-header {
+    font-size: 7rem;
+    text-align: center;
+    font-weight: 700;
+    color: #094C59;
+}
+
+.subheader-type {
+    font-size: 1.7rem;
+    padding-bottom: 2rem;
+}
+
+.mid-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.about-1 div {
+    width: 55%;
+    padding-bottom: 2rem;
+}
+
+.learn-more {
+    background: #094C59;
+    border-style: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 29px;
+    letter-spacing: 0.085em;
+    margin-left: auto;
+    margin-right: auto;
+}
