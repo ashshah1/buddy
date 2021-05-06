@@ -3,11 +3,12 @@
     text-align: center;
     font-weight: 700;
     color: #094C59;
+    padding-bottom: 1.5rem;
 }
 
 .subheader-type {
-    font-size: 1.7rem;
-    padding-bottom: 2rem;
+    font-size: 25px;
+    letter-spacing: .1rem;
 }
 
 .mid-div {
@@ -16,26 +17,38 @@
     justify-content: center;
 }
 
-.line-1{
+.line-1 {
     margin: auto;
     padding-top: 4rem;
     white-space: nowrap;
     overflow: hidden;
-    transform: translateY(-50%);    
+    transform: translateY(-50%);
 }
 
 /* Animation */
-.anim-typewriter{
-  animation: typewriter 4s steps(44) 1s infinite normal both,
-             blinkTextCursor 500ms steps(44) infinite normal;
+.anim-typewriter {
+    animation: typewriter 6s steps(44) 1s infinite normal both,
+        blinkTextCursor 500ms steps(44) infinite normal;
 }
-@keyframes typewriter{
-  from{width: 0;}
-  to{width: 24em;}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 30em;
+    }
 }
-@keyframes blinkTextCursor{
-  from{border-right-color: rgba(255,255,255,.75);}
-  to{border-right-color: transparent;}
+
+@keyframes blinkTextCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, .75);
+    }
+
+    to {
+        border-right-color: transparent;
+    }
 }
 
 .about-1 {
@@ -52,37 +65,60 @@
 }
 
 .learn-more {
+    display: block;
     background: #094C59;
     border-style: none;
-    border-radius: 20px;
+    border-radius: 25px;
     padding: 10px 30px;
     color: #FFFFFF;
     font-weight: bold;
     font-size: 15px;
     line-height: 29px;
-    letter-spacing: 0.085em;
+    letter-spacing: 0.1em;
     margin-left: auto;
     margin-right: auto;
 }
 
 .about-2 {
-    padding: 7rem 4rem 4rem 4rem;
+    padding: 7rem 4rem 7rem 4rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     justify-content: center;
     align-items: center;
+    background-color: #FAFAFF;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+}
+
+.about-2 .section-header {
+    text-align: left;
 }
 
 .about-3 {
     padding: 7rem;
 }
 
+.feature-image-1,
+.feature-image-2 {
+    height: 13rem;
+    width: auto;
+}
+
+.feature-image-3 {
+    height: 10rem;
+    width: auto;
+}
+
+.feature-image-4 {
+    width: 10rem;
+    height: auto;
+}
 
 .section-header {
     color: #094C59;
-    font-weight: 600;
-    padding: 1rem 0rem 3rem 0rem;
+    font-weight: 700;
+    padding: 1rem 0rem 1.5rem 0rem;
     text-align: center;
 }
 
@@ -92,18 +128,25 @@
 }
 
 .text-about {
-    width: 50%;
+    max-width: 550px;
     line-height: 26px;
     letter-spacing: 0.03em;
+    margin-right: 5rem;
 }
 
 .features-header {
     text-align: center;
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .features-container {
     display: flex;
     flex-direction: column;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .feature-item {
@@ -111,25 +154,46 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     margin: 3rem;
 }
 
-.feature-image {
-    height: 10rem;
-    width: auto;
+.about-3 p {
+    font-size: 18px;
+    ;
 }
 
 .feature-item h2 {
     text-align: left;
-    padding: 0rem 2rem 0rem 2rem;
+    padding-bottom: 1rem;
+    font-size: 20px;
 }
 
 .feature-item p {
-    font-size: 1.2rem;
+    font-size: 16px;
     font-style: italic;
-    padding: 1rem;
     text-align: left;
+}
+
+.feature-item div {
+    max-width: 550px;
+}
+
+.about-4 {
+    padding: 8rem 0 12rem 0;
+    background-color: #094C59;
+    -webkit-clip-path: polygon(0 8%, 100% 0%, 100% 92%, 0 100%);
+    clip-path: polygon(0 8%, 100% 0%, 100% 92%, 0 100%);
+}
+
+.about-4 h2 {
+    color: white;
+}
+
+iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .about-team {
@@ -138,21 +202,43 @@
     justify-content: center;
 }
 
+.zoom {
+    transition: transform .2s;
+}
+
+.zoom:hover {
+    transform: scale(1.05);
+}
+
 .team-profile {
     margin: 2rem;
-    text-align: center;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-profile .role {
+    margin-bottom: 2px;
+    font-size: 14.5px;
+    color: #4F4F4F;
 }
 
 .name {
+    margin-bottom: 2px;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 18px;
+    color: #094C59;
 }
 
-
 .profile-pic {
-   height: 10rem;
-   width: auto; 
-   border-radius: 10px;
+    height: 10rem;
+    width: auto;
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+
+.about-5 {
+    padding: 5rem 0;
 }
 
 .about-6 {
