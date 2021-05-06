@@ -10,6 +10,7 @@ import LandingPage from './LandingPage.js'
 import AddHabit from "./AddHabit.js";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import About from './About.js'
 
 import { ContextProvider } from "./Context";
 
@@ -56,6 +57,9 @@ export default function App() {
           </Route>  
           <Route exact path="/landing">
             <LandingPage />
+          </Route>
+          <Route exact path="/about">
+            <About />
           </Route> 
           <Route exact path="/">
             <HomePage />

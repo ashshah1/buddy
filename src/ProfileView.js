@@ -48,15 +48,15 @@ function ProfileView() {
 		setActive(!isActive);
 	}
 
-	let emptyBadges = [];
+	// let emptyBadges = [];
 
-	for (let i = 0; i < 12; i++) {
-		emptyBadges.push(
-			<div className="col-md-3">
-				<img className="badge-icon" src={blankSquare}></img>
-			</div>
-		)
-	}
+	// for (let i = 0; i < 12; i++) {
+	// 	emptyBadges.push(
+	// 		<div className="col-md-3">
+	// 			<img className="badge-icon" src={blankSquare}></img>
+	// 		</div>
+	// 	)
+	// }
 
 	let allIcons = [];
 	for (let i = 0; i < 6; i++) {
@@ -78,14 +78,14 @@ function ProfileView() {
 						<p className="first-name">{(user.displayName).split(' ')[0]}</p>
 						<button className="sign-out" onClick={() => fireauth.signOut()}>LOG OUT</button>
 					</div>
-					<div className="achievements-div">
+					{/* <div className="achievements-div">
 						<p className="achievements-header">Achievements</p>
 						<div className="container">
 							<div className="row">
 								{emptyBadges}
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 				<div className="bottom-level-container">
 					<a href="https://forms.gle/Bu38WEu7gBQNgcAx8" className="feedback-form">Send Feedback</a>
