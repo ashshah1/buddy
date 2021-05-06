@@ -5,6 +5,13 @@ import feature3 from './images/feature-3.png';
 import feature4 from './images/feature-4.png';
 import about1 from './images/about-1.png'
 
+import david from './images/david.png';
+import winnie from './images/winnie.png';
+import kayla from './images/kayla.png';
+import ash from './images/ash.png';
+
+import iSchool from './images/iSchool.png'
+
 import './About.css';
 
 export default function About() {
@@ -66,13 +73,48 @@ export default function About() {
                         <img className="feature-image" src={feature4} />
                     </div>
                 </div>
-                <button>Meet Your Buddy</button>
+                <button className="learn-more">Meet Your Buddy</button>
             </div>
             <div className="about-4">
-                <h1>Demo</h1>
+            <h2 className="section-header">Demo</h2>
             </div>
             <div className="about-5">
                 <h2 className="section-header">Team Members</h2>
+                <div className="about-team">
+                    <div className="team-profile">
+                        <img className="profile-pic" src={kayla}></img>
+                        <p className="name">Kayla Chea</p>
+                        <p className="role">UX Designer</p>
+                        <p className="role">Front-End Developer</p>
+                    </div>
+                    <div className="team-profile">
+                        <img className="profile-pic" src={ash}></img>
+                        <p className="name">Ash Shah</p>
+                        <p className="role">Front-End Developer</p>
+                        <p className="role">UX Designer</p>
+                    </div>
+                    <div className="team-profile">
+                        <img className="profile-pic" src={winnie}></img>
+                        <p className="name">Winnie Ma</p>
+                        <p className="role">Product Manager</p>
+                    </div>
+                    <div className="team-profile">
+                        <img className="profile-pic" src={david}></img>
+                        <p className="name">David Mai</p>
+                        <p className="role">Back-End Developer</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div className="about-6">
+                <h2 className="section-header">Project Status</h2>
+                <p>University of Washington Information School Capstone project for Winter/Spring 2021</p>
+                <p>Waiting for Frank to go over handoff documentation</p>
+            </div>
+
+            <div className="about-footer">
+                <img className="ischool-logo" src={iSchool} />
+                <p>copyright © 2021 buddy</p>
             </div>
         </div>
     )
