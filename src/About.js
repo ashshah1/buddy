@@ -11,6 +11,7 @@ import kayla from './images/kayla.png';
 import ash from './images/ash.png';
 
 import iSchool from './images/iSchool.png'
+import { init } from "ityped";
 
 import './About.css';
 
@@ -20,7 +21,7 @@ export default function About() {
             <div className="about-page about-1" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'center', height: '100vh' }}>
                 <div className="mid-div">
                     <h1 className="top-header">buddy</h1>
-                    <p className="subheader-type">// a gamified approach to habit building</p>
+                    <p className="subheader-type line-1 anim-typewriter">a gamified approach to habit building</p>
                     <button className="learn-more">learn more</button>
                 </div>
 
