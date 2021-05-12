@@ -16,7 +16,7 @@ function EditHabit(props) {
     const [state, setState] = useState("SELECT");
     const [repeat, setRepeat] = useState(props.task.taskDuration);
 
-    const [radioValue, setRadioValue] = useState('mind');
+    const [radioValue, setRadioValue] = useState(props.task.taskCategory);
 
     const colors = ["#A9E3EB", "#69AABF", "#C1F8E4", "#ACECB7", "#F5BF32", "#F98A5B", "#C1C6F8", "#C4C4C4"]
 

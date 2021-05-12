@@ -54,6 +54,20 @@
     margin: .8rem;
 }
 
+.speech-bubble:hover {
+    transform: scale(1.1);
+    transition: transform 1s;
+}
+
+.curr-avatar {
+    position: absolute;
+    bottom: 8%;
+    left: 46%;
+    width: 12rem;
+    height: auto;
+
+}
+
 .coin {
     width: 2rem;
     height: 2rem;

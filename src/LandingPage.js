@@ -49,7 +49,7 @@ function LandingPage() {
                         <div>
                             <h2>1.</h2>
                             <h2>Create Habits + Set Goals</h2>
-                            <p>Choose from our list of recommended habits or customize your own.</p>
+                            <p>Set goals for yourself with personal and customizable habits.</p>
                         </div>
                     </div>
                     <div className="landing-container landing-order">
@@ -68,14 +68,14 @@ function LandingPage() {
                             <p>Unlock new shop items as you level up and change up your background or buddy.</p>
                         </div>
                     </div>
-                    <div className="landing-container landing-order">
+                    {/* <div className="landing-container landing-order">
                         <div>
                             <h2>4.</h2>
                             <h2>View Charts</h2>
                             <p>See all of your stats in one place to measure your progress.</p>
                         </div>
                         <img src={icon4} alt="calendar"></img>
-                    </div>
+                    </div> */}
                 </div>
                 <button className="button" onClick={() => fireauth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}>
                     MEET YOUR BUDDY <span role="img" aria-label="right arrow">→</span>
