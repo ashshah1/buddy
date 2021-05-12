@@ -56,7 +56,7 @@ export default function About() {
                         <div data-aos="fade-up" data-aos-duration="1500" className="feature-item">
                             <div>
                                 <h2>Daily Check-in</h2>
-                                <p>Users can encouraged to check in with themselves and reflect on how they are feeling</p>
+                                <p>Users are encouraged to check in with themselves and reflect on how they are feeling</p>
                             </div>
                             <img className="feature-image-2" src={feature2} />
                         </div>
